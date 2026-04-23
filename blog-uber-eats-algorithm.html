@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Uber Eats algorithm in 2026: what actually moves the needle. — DeliveryEdge</title>
-<meta name="description" content="After 6 years of running ghost kitchens and 4 concepts across the US and Canada — here is what I have learned about what really drives ranking on Uber Eats">
+<title>The Uber Eats algorithm in 2026: what actually moves the needle.. DeliveryEdge</title>
+<meta name="description" content="After 6 years of running ghost kitchens and 4 concepts across the US and Canada, here is what I have learned about what really drives ranking on Uber Eats">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -17,6 +17,8 @@ body {
   color: #0a0a0a;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 :root {
   --orange: #FF5000;
@@ -520,6 +522,118 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   .ahv-chart { grid-column: 1/-1; }
   .ahv-img-box { width: 80px; height: 80px; }
 }
+
+/* LANGUAGE SWITCHER */
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+}
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.lang-toggle:hover {
+  background: rgba(255,80,0,0.08);
+  border-color: rgba(255,80,0,0.4);
+}
+.lang-switcher.open .lang-toggle {
+  background: rgba(255,80,0,0.1);
+  border-color: var(--orange);
+}
+.lang-flag {
+  font-size: 16px;
+  line-height: 1;
+}
+.lang-code {
+  color: rgba(255,255,255,0.9);
+}
+.lang-chevron {
+  color: var(--orange);
+  transition: transform 0.3s;
+}
+.lang-switcher.open .lang-chevron {
+  transform: rotate(180deg);
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1010;
+}
+.lang-switcher.open .lang-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.lang-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.lang-option:last-child { border-bottom: none; }
+.lang-option:hover {
+  background: rgba(255,80,0,0.1);
+  color: var(--orange);
+}
+.lang-option-text {
+  flex-grow: 1;
+}
+.lang-check {
+  opacity: 0;
+  color: var(--orange);
+  font-weight: 900;
+  transition: opacity 0.2s;
+}
+.lang-option.active .lang-check {
+  opacity: 1;
+}
+.lang-option.active {
+  color: var(--orange);
+  background: rgba(255,80,0,0.05);
+}
+
+@media (max-width: 900px) {
+  .lang-toggle {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+  .lang-menu {
+    right: -20px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -543,14 +657,36 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
       <li><a href="index.html#insights">Insights</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
     </ul>
-    <a href="https://calendly.com/hello-deliveryedge/30min" class="nav-cta">Book a Call</a>
+    <a href="questionnaire.html" class="nav-cta">Book a Call</a>
   </div>
 </nav>
 
 <section class="article-hero">
   <div class="hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#insights">Insights</a> / Article</div>
-    <span class="article-cat">ALGORITHM</span>
+    <div class="breadcrumb"><!-- LANGUAGE SWITCHER -->
+<div class="lang-switcher" id="langSwitcher">
+  <button class="lang-toggle" id="langToggle" aria-label="Change language">
+    <span class="lang-flag" id="langFlagCurrent">🇺🇸</span>
+    <span class="lang-code" id="langCodeCurrent">EN</span>
+    <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="lang-menu" id="langMenu">
+    <button class="lang-option" data-lang="en">
+      <span class="lang-flag">🇺🇸</span>
+      <span class="lang-option-text">English</span>
+      <span class="lang-check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="es">
+      <span class="lang-flag">🇪🇸</span>
+      <span class="lang-option-text">Español</span>
+      <span class="lang-check">✓</span>
+    </button>
+  </div>
+</div>
+<a href="index.html">Home</a> / <a href="index.html#insights">Insights</a> / Article</div>
+    <span class="article-cat" data-en="ALGORITHM" data-es="ALGORITMO">ALGORITHM</span>
     <h1 class="article-title">The Uber Eats algorithm in 2026: <em>what actually moves the needle.</em></h1>
     <div class="article-meta">
       <span><strong>By Baptiste Petit</strong> · Founder</span>
@@ -586,76 +722,76 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
 </section>
 
 <article class="article-body">
-  <p class="article-lede">After 6 years of running ghost kitchens and 4 concepts across the US and Canada — here is what I have learned about what really drives ranking on Uber Eats. Beyond the standard agency advice.</p>
+  <p class="article-lede"><span data-en="After 6 years of running ghost kitchens and 4 concepts across the US and Canada, here is what I have learned about what really drives ranking on Uber Eats. Beyond the standard agency advice." data-es="Después de 6 años operando ghost kitchens y 4 conceptos en Estados Unidos y Canadá, esto es lo que he aprendido sobre lo que realmente impulsa el ranking en Uber Eats. Más allá del consejo típico de agencia.">After 6 years of running ghost kitchens and 4 concepts across the US and Canada, here is what I have learned about what really drives ranking on Uber Eats. Beyond the standard agency advice.</span></p>
 
-  <p>Everybody asks me the same thing: <strong>how does the Uber Eats algorithm actually work?</strong> The honest answer is that nobody outside of Uber's engineering team knows all of it. But after operating 4 concepts on the platform for 6 years — and obsessively tracking what happens when we change one variable at a time — patterns become very clear.</p>
+  <p>Everybody asks me the same thing: <strong>how does the Uber Eats algorithm actually work?</strong> The honest answer is that nobody outside of Uber's engineering team knows all of it. But after operating 4 concepts on the platform for 6 years, and obsessively tracking what happens when we change one variable at a time, patterns become very clear.</p>
 
-<p>Here's what I've learned actually moves ranking. Not the stuff agencies tell you. The real stuff.</p>
+<p><span data-en="Here's what I've learned actually moves ranking. Not the stuff agencies tell you. The real stuff." data-es="Esto es lo que realmente mueve el ranking. No lo que te dicen las agencias. Lo real.">Here's what I've learned actually moves ranking. Not the stuff agencies tell you. The real stuff.</span></p>
 
-<h2>1. Click rate is the single biggest lever</h2>
+<h2><span data-en="1. Click rate is the single biggest lever" data-es="1. La tasa de clics es la palanca más importante">1. Click rate is the single biggest lever</span></h2>
 
-<p>If I had to pick one metric to optimize above all others, it's click-through rate (CTR). When a customer sees your restaurant in results and clicks on it, the algorithm registers a "positive signal." More clicks = higher rank in the next session.</p>
+<p><span data-en="If I had to pick one metric to optimize above all others, it's click-through rate (CTR). When a customer sees your restaurant in results and clicks on it, the algorithm registers a &quot;positive signal.&quot;" data-es="Si tuviera que elegir una métrica para optimizar por encima de todas, es la tasa de clics (CTR). Cuando un cliente ve tu restaurante en los resultados y hace clic, el algoritmo registra una &quot;señal positiva.&quot;">If I had to pick one metric to optimize above all others, it's click-through rate (CTR). When a customer sees your restaurant in results and clicks on it, the algorithm registers a "positive signal."</span> More clicks = higher rank in the next session.</p>
 
-<p>This is why photos matter so much. It's not about aesthetics. It's about thumb-stopping power on a 380px phone screen. A mediocre photo gets 1.8% CTR. A great photo gets 5%+. That's a 3x signal to the algorithm.</p>
+<p><span data-en="This is why photos matter so much. It's not about aesthetics. It's about thumb-stopping power on a 380px phone screen. A mediocre photo gets 1.8% CTR. A great photo gets 5%+. That's a 3x signal to the algorithm." data-es="Por esto las fotos importan tanto. No se trata de estética. Se trata del poder de detener el pulgar en una pantalla de 380px. Una foto mediocre consigue 1.8% CTR. Una gran foto consigue 5%+. Eso es una señal 3x al algoritmo.">This is why photos matter so much. It's not about aesthetics. It's about thumb-stopping power on a 380px phone screen. A mediocre photo gets 1.8% CTR. A great photo gets 5%+. That's a 3x signal to the algorithm.</span></p>
 
 <div class="key-stat">
   <div class="key-stat-num">×3</div>
   <div class="key-stat-text">is the typical CTR multiplier we see when replacing a restaurant's hero image with properly optimized delivery-first photography.</div>
 </div>
 
-<h2>2. Conversion rate matters almost as much</h2>
+<h2><span data-en="2. Conversion rate matters almost as much" data-es="2. La tasa de conversión importa casi igual">2. Conversion rate matters almost as much</span></h2>
 
-<p>Once a customer clicks into your restaurant, do they actually order? If 100 people click but only 5 order, the algorithm thinks your restaurant is "click bait" and starts suppressing you.</p>
+<p><span data-en="Once a customer clicks into your restaurant, do they actually order? If 100 people click but only 5 order, the algorithm thinks your restaurant is &quot;click bait&quot; and starts suppressing you." data-es="Una vez que un cliente hace clic en tu restaurante, ¿realmente ordena? Si 100 personas hacen clic pero solo 5 ordenan, el algoritmo piensa que tu restaurante es &quot;click bait&quot; y empieza a suprimirte.">Once a customer clicks into your restaurant, do they actually order? If 100 people click but only 5 order, the algorithm thinks your restaurant is "click bait" and starts suppressing you.</span></p>
 
 <p>The main conversion killers are:</p>
 <ul>
   <li>Menu prices that don't match the hero image</li>
-  <li>No clear bestseller — decision paralysis</li>
+  <li>No clear bestseller, decision paralysis</li>
   <li>Weak or missing descriptions</li>
   <li>Stockouts on the items people came for</li>
 </ul>
 
-<h2>3. Accept time and preparation time</h2>
+<h2><span data-en="3. Accept time and preparation time" data-es="3. Tiempo de aceptación y preparación">3. Accept time and preparation time</span></h2>
 
-<p>The platform tracks how fast you accept an order after it hits your tablet, and how long it takes you to mark it ready. Both are scored.</p>
+<p><span data-en="The platform tracks how fast you accept an order after it hits your tablet, and how long it takes you to mark it ready. Both are scored." data-es="La plataforma rastrea qué tan rápido aceptas un pedido después de que llega a tu tablet, y cuánto te tardas en marcarlo como listo. Ambos se puntúan.">The platform tracks how fast you accept an order after it hits your tablet, and how long it takes you to mark it ready. Both are scored.</span></p>
 
-<p>Restaurants that consistently accept in under 30 seconds and prep within the estimated time get rewarded. Restaurants that stall get quietly demoted.</p>
+<p><span data-en="Restaurants that consistently accept in under 30 seconds and prep within the estimated time get rewarded. Restaurants that stall get quietly demoted." data-es="Los restaurantes que consistentemente aceptan en menos de 30 segundos y preparan dentro del tiempo estimado son recompensados. Los restaurantes que se demoran son silenciosamente degradados.">Restaurants that consistently accept in under 30 seconds and prep within the estimated time get rewarded. Restaurants that stall get quietly demoted.</span></p>
 
 <div class="callout">
   <div class="callout-label">INSIDER TIP</div>
-  <p>Check your "acceptance time" in Uber Eats Manager under Reports. Most operators have never looked at it. If yours is over 60 seconds, you're leaving ranking on the table — before even talking about photos or menu.</p>
+  <p>Check your "acceptance time" in Uber Eats Manager under Reports. Most operators have never looked at it. If yours is over 60 seconds, you're leaving ranking on the table, before even talking about photos or menu.</p>
 </div>
 
-<h2>4. Ratings and reviews are weighted heavily</h2>
+<h2><span data-en="4. Ratings and reviews are weighted heavily" data-es="4. Las calificaciones y reseñas pesan mucho">4. Ratings and reviews are weighted heavily</span></h2>
 
-<p>A 4.9 rating vs a 4.6 rating is a massive gap on the platform. And contrary to what most people think, response time to negative reviews matters. Uber tracks whether you engage with customer complaints.</p>
+<p><span data-en="A 4.9 rating vs a 4.6 rating is a massive gap on the platform. And contrary to what most people think, response time to negative reviews matters. Uber tracks whether you engage with customer complaints." data-es="Una calificación de 4.9 vs 4.6 es una brecha enorme en la plataforma. Y contrario a lo que la mayoría piensa, el tiempo de respuesta a reseñas negativas importa. Uber rastrea si interactúas con las quejas de clientes.">A 4.9 rating vs a 4.6 rating is a massive gap on the platform. And contrary to what most people think, response time to negative reviews matters. Uber tracks whether you engage with customer complaints.</span></p>
 
-<p>Our rule: every single review gets a response within 24 hours. Even the 5-star ones. Especially the 5-star ones — the algorithm likes engaged merchants.</p>
+<p><span data-en="Our rule: every single review gets a response within 24 hours. Even the 5-star ones. Especially the 5-star ones, the algorithm likes engaged merchants." data-es="Nuestra regla: cada reseña recibe una respuesta en menos de 24 horas. Incluso las de 5 estrellas. Especialmente las de 5 estrellas, al algoritmo le gustan los comerciantes comprometidos.">Our rule: every single review gets a response within 24 hours. Even the 5-star ones. Especially the 5-star ones, the algorithm likes engaged merchants.</span></p>
 
-<h2>5. The dreaded "new listing boost"</h2>
+<h2><span data-en="5. The dreaded &quot;new listing boost&quot;" data-es="5. El temido &quot;boost de listado nuevo&quot;">5. The dreaded "new listing boost"</span></h2>
 
-<p>New restaurants get a 30–45 day honeymoon period where the algorithm artificially boosts their visibility. Most operators don't realize this and waste it.</p>
+<p><span data-en="New restaurants get a 30-45 day honeymoon period where the algorithm artificially boosts their visibility. Most operators don't realize this and waste it." data-es="Los restaurantes nuevos obtienen un período de luna de miel de 30-45 días donde el algoritmo impulsa artificialmente su visibilidad. La mayoría de operadores no se da cuenta y lo desperdicia.">New restaurants get a 30-45 day honeymoon period where the algorithm artificially boosts their visibility. Most operators don't realize this and waste it.</span></p>
 
 <p>If you're launching a new concept, the first 6 weeks are when you should be hitting the platform hardest with promotions, excellent service, and fast acceptance times. You're building permanent algorithmic credit.</p>
 
 <div class="article-divider"></div>
 
-<h2>What doesn't matter as much as you think</h2>
+<h2><span data-en="What doesn't matter as much as you think" data-es="Lo que no importa tanto como crees">What doesn't matter as much as you think</span></h2>
 
-<h3>Being a "Top Eats" partner</h3>
-<p>The badge is nice but it's a symptom of doing the other things right, not a cause of ranking. You don't "get" Top Eats. You earn it through the metrics above.</p>
+<h3><span data-en="Being a &quot;Top Eats&quot; partner" data-es="Ser un partner &quot;Top Eats&quot;">Being a "Top Eats" partner</span></h3>
+<p><span data-en="The badge is nice but it's a symptom of doing the other things right, not a cause of ranking. You don't &quot;get&quot; Top Eats. You earn it through the metrics above." data-es="La insignia es linda pero es un síntoma de hacer las otras cosas bien, no una causa de ranking. No &quot;obtienes&quot; Top Eats. Te lo ganas a través de las métricas anteriores.">The badge is nice but it's a symptom of doing the other things right, not a cause of ranking. You don't "get" Top Eats. You earn it through the metrics above.</span></p>
 
-<h3>Paying for extra marketing</h3>
-<p>Sponsored listings help visibility but don't permanently change your organic rank. They're rent, not equity.</p>
+<h3><span data-en="Paying for extra marketing" data-es="Pagar por marketing extra">Paying for extra marketing</span></h3>
+<p><span data-en="Sponsored listings help visibility but don't permanently change your organic rank. They're rent, not equity." data-es="Los listados patrocinados ayudan con la visibilidad pero no cambian permanentemente tu ranking orgánico. Son alquiler, no capital.">Sponsored listings help visibility but don't permanently change your organic rank. They're rent, not equity.</span></p>
 
-<h3>How old your listing is</h3>
-<p>We've overtaken restaurants that were on the platform for 5+ years within 60 days. Age is slightly weighted but nothing beats fresh, strong metrics.</p>
+<h3><span data-en="How old your listing is" data-es="La antigüedad de tu listado">How old your listing is</span></h3>
+<p><span data-en="We've overtaken restaurants that were on the platform for 5+ years within 60 days. Age is slightly weighted but nothing beats fresh, strong metrics." data-es="Hemos superado a restaurantes que estuvieron en la plataforma por más de 5 años en 60 días. La antigüedad pesa un poco pero nada le gana a métricas frescas y fuertes.">We've overtaken restaurants that were on the platform for 5+ years within 60 days. Age is slightly weighted but nothing beats fresh, strong metrics.</span></p>
 
 <h2>The compound effect</h2>
 
 <p>Here's the part most agencies won't tell you: these signals compound. A restaurant with great photos gets more clicks → more orders → better metrics → higher rank → <strong>more impressions to work with</strong>. And the cycle accelerates.</p>
 
-<p>The flip side is also true. Bad signals compound downward. That's why struggling restaurants struggle — not because they did one thing wrong, but because they're stuck in a negative compound loop.</p>
+<p>The flip side is also true. Bad signals compound downward. That's why struggling restaurants struggle, not because they did one thing wrong, but because they're stuck in a negative compound loop.</p>
 
 <p>Breaking that loop requires optimizing multiple levers at once. One fix at a time isn't enough.</p>
 
@@ -663,7 +799,7 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   <div class="ac-inner">
     <div class="ac-title">Want us to audit your restaurant?</div>
     <div class="ac-desc">Free 30-minute strategy call. No pitch, no commitment. We look at your actual numbers and tell you what's leaking money.</div>
-    <a href="https://calendly.com/hello-deliveryedge/30min" class="ac-btn">Book a Free Audit →</a>
+    <a href="questionnaire.html" class="ac-btn">Book a Free Audit →</a>
   </div>
 </div>
 </article>
@@ -691,12 +827,88 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:hello@deliveryedge.co">hello@deliveryedge.co</a></li>
-        <li><a href="https://calendly.com/hello-deliveryedge/30min">Book a call</a></li>
+        <li><a href="questionnaire.html" data-en="Book a call" data-es="Reservar llamada">Book a call</a></li>
         <li><a href="#">Miami, FL</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom"><span>© 2025 DELIVERYEDGE. ALL RIGHTS RESERVED.</span><span>DELIVERYEDGE.CO</span></div>
 </footer>
+<script>
+// LANGUAGE SWITCHER LOGIC
+(function() {
+  const switcher = document.getElementById('langSwitcher');
+  const toggle = document.getElementById('langToggle');
+  const menu = document.getElementById('langMenu');
+  if (!switcher || !toggle || !menu) return;
+
+  // Get saved language or default to EN
+  let currentLang = localStorage.getItem('de_lang') || 'en';
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    try { localStorage.setItem('de_lang', lang); } catch(e) {}
+
+    // Update toggle display
+    const flag = lang === 'es' ? '🇪🇸' : '🇺🇸';
+    const code = lang.toUpperCase();
+    document.getElementById('langFlagCurrent').textContent = flag;
+    document.getElementById('langCodeCurrent').textContent = code;
+
+    // Update active state in menu
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+
+    // Set HTML lang attribute
+    document.documentElement.lang = lang;
+
+    // Translate all elements with data-en/data-es
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const esText = el.getAttribute('data-es');
+      const enText = el.getAttribute('data-en');
+      if (lang === 'es' && esText) {
+        el.innerHTML = esText;
+      } else if (enText) {
+        el.innerHTML = enText;
+      }
+    });
+
+    // Handle placeholders with data-en-placeholder / data-es-placeholder
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+      const esP = el.getAttribute('data-es-placeholder');
+      const enP = el.getAttribute('data-en-placeholder');
+      if (lang === 'es' && esP) {
+        el.placeholder = esP;
+      } else if (enP) {
+        el.placeholder = enP;
+      }
+    });
+  }
+
+  // Toggle dropdown
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    switcher.classList.toggle('open');
+  });
+
+  // Option clicks
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      applyLanguage(lang);
+      switcher.classList.remove('open');
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', () => {
+    switcher.classList.remove('open');
+  });
+
+  // Initialize with saved language
+  applyLanguage(currentLang);
+})();
+</script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Why your food photos are killing your click rate. — DeliveryEdge</title>
-<meta name="description" content="Beautiful restaurant photography does not translate to delivery platforms. Here is why — and the 5 rules I follow on every single one of my restaurants to ">
+<title>Why your food photos are killing your click rate.. DeliveryEdge</title>
+<meta name="description" content="Beautiful restaurant photography does not translate to delivery platforms. Here is why, and the 5 rules I follow on every single one of my restaurants to ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -17,6 +17,8 @@ body {
   color: #0a0a0a;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 :root {
   --orange: #FF5000;
@@ -520,6 +522,118 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   .ahv-chart { grid-column: 1/-1; }
   .ahv-img-box { width: 80px; height: 80px; }
 }
+
+/* LANGUAGE SWITCHER */
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+}
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.lang-toggle:hover {
+  background: rgba(255,80,0,0.08);
+  border-color: rgba(255,80,0,0.4);
+}
+.lang-switcher.open .lang-toggle {
+  background: rgba(255,80,0,0.1);
+  border-color: var(--orange);
+}
+.lang-flag {
+  font-size: 16px;
+  line-height: 1;
+}
+.lang-code {
+  color: rgba(255,255,255,0.9);
+}
+.lang-chevron {
+  color: var(--orange);
+  transition: transform 0.3s;
+}
+.lang-switcher.open .lang-chevron {
+  transform: rotate(180deg);
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1010;
+}
+.lang-switcher.open .lang-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.lang-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.lang-option:last-child { border-bottom: none; }
+.lang-option:hover {
+  background: rgba(255,80,0,0.1);
+  color: var(--orange);
+}
+.lang-option-text {
+  flex-grow: 1;
+}
+.lang-check {
+  opacity: 0;
+  color: var(--orange);
+  font-weight: 900;
+  transition: opacity 0.2s;
+}
+.lang-option.active .lang-check {
+  opacity: 1;
+}
+.lang-option.active {
+  color: var(--orange);
+  background: rgba(255,80,0,0.05);
+}
+
+@media (max-width: 900px) {
+  .lang-toggle {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+  .lang-menu {
+    right: -20px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -543,14 +657,36 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
       <li><a href="index.html#insights">Insights</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
     </ul>
-    <a href="https://calendly.com/hello-deliveryedge/30min" class="nav-cta">Book a Call</a>
+    <a href="questionnaire.html" class="nav-cta">Book a Call</a>
   </div>
 </nav>
 
 <section class="article-hero">
   <div class="hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#insights">Insights</a> / Article</div>
-    <span class="article-cat">PHOTOS</span>
+    <div class="breadcrumb"><!-- LANGUAGE SWITCHER -->
+<div class="lang-switcher" id="langSwitcher">
+  <button class="lang-toggle" id="langToggle" aria-label="Change language">
+    <span class="lang-flag" id="langFlagCurrent">🇺🇸</span>
+    <span class="lang-code" id="langCodeCurrent">EN</span>
+    <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="lang-menu" id="langMenu">
+    <button class="lang-option" data-lang="en">
+      <span class="lang-flag">🇺🇸</span>
+      <span class="lang-option-text">English</span>
+      <span class="lang-check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="es">
+      <span class="lang-flag">🇪🇸</span>
+      <span class="lang-option-text">Español</span>
+      <span class="lang-check">✓</span>
+    </button>
+  </div>
+</div>
+<a href="index.html">Home</a> / <a href="index.html#insights">Insights</a> / Article</div>
+    <span class="article-cat" data-en="PHOTOS" data-es="FOTOS">PHOTOS</span>
     <h1 class="article-title">Why your food photos are <em>killing</em> your click rate.</h1>
     <div class="article-meta">
       <span><strong>By Baptiste Petit</strong> · Founder</span>
@@ -578,15 +714,15 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
 </section>
 
 <article class="article-body">
-  <p class="article-lede">Beautiful restaurant photography does not translate to delivery platforms. Here is why — and the 5 rules I follow on every single one of my restaurants to stop the scroll.</p>
+  <p class="article-lede">Beautiful restaurant photography does not translate to delivery platforms. Here is why, and the 5 rules I follow on every single one of my restaurants to stop the scroll.</p>
 
-  <p>I've reviewed over 200 restaurant listings on Uber Eats and DoorDash. The single most common mistake — by a wide margin — is photos. Not bad photos. <strong>Restaurant photos.</strong></p>
+  <p>I've reviewed over 200 restaurant listings on Uber Eats and DoorDash. The single most common mistake, by a wide margin, is photos. Not bad photos. <strong>Restaurant photos.</strong></p>
 
 <p>The problem is that restaurants hire a photographer, get beautiful images, upload them to delivery apps, and wonder why nothing moves. The photos are beautiful. But they're the wrong format for the wrong medium.</p>
 
-<h2>Delivery photos ≠ restaurant photos</h2>
+<h2><span data-en="Delivery photos ≠ restaurant photos" data-es="Fotos de delivery ≠ fotos de restaurante">Delivery photos ≠ restaurant photos</span></h2>
 
-<p>A restaurant photo is designed to be seen printed on a menu or on an Instagram feed — large, full-bleed, in a context where the customer is already committed to being there.</p>
+<p><span data-en="A restaurant photo is designed to be seen printed on a menu or on an Instagram feed, large, full-bleed, in a context where the customer is already committed to being there." data-es="Una foto de restaurante está diseñada para verse impresa en un menú o en un feed de Instagram, grande, a sangrado completo, en un contexto donde el cliente ya está comprometido a estar ahí.">A restaurant photo is designed to be seen printed on a menu or on an Instagram feed, large, full-bleed, in a context where the customer is already committed to being there.</span></p>
 
 <p>A delivery photo is seen as a <strong>380-pixel thumbnail on a phone screen</strong>, next to 19 other thumbnails, in less than 2 seconds of scrolling. The rules are completely different.</p>
 
@@ -595,31 +731,31 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   <div class="key-stat-text">is the average time a customer spends looking at your thumbnail before deciding to click or scroll past. That's all you have.</div>
 </div>
 
-<h2>The 5 rules of delivery-first photography</h2>
+<h2><span data-en="The 5 rules of delivery-first photography" data-es="Las 5 reglas de la fotografía delivery-first">The 5 rules of delivery-first photography</span></h2>
 
-<h3>Rule 1: The food fills the frame</h3>
-<p>White space is your enemy. On a small thumbnail, a photo with 40% empty plate becomes unrecognizable. Tight crop. Food taking up 80%+ of the frame.</p>
+<h3><span data-en="Rule 1: The food fills the frame" data-es="Regla 1: La comida llena el marco">Rule 1: The food fills the frame</span></h3>
+<p><span data-en="White space is your enemy. On a small thumbnail, a photo with 40% empty plate becomes unrecognizable. Tight crop. Food taking up 80%+ of the frame." data-es="El espacio en blanco es tu enemigo. En un thumbnail pequeño, una foto con 40% de plato vacío se vuelve irreconocible. Recorte cerrado. Comida ocupando 80%+ del marco.">White space is your enemy. On a small thumbnail, a photo with 40% empty plate becomes unrecognizable. Tight crop. Food taking up 80%+ of the frame.</span></p>
 
-<h3>Rule 2: Only one hero element</h3>
-<p>A burger photo should be about the burger. Not the burger, the fries, the drink, and the sauce on the side. On a thumbnail, the brain needs to identify one thing in under a second.</p>
+<h3><span data-en="Rule 2: Only one hero element" data-es="Regla 2: Solo un elemento estrella">Rule 2: Only one hero element</span></h3>
+<p><span data-en="A burger photo should be about the burger. Not the burger, the fries, the drink, and the sauce on the side. On a thumbnail, the brain needs to identify one thing in under a second." data-es="Una foto de hamburguesa debe ser sobre la hamburguesa. No la hamburguesa, las papas, la bebida, y la salsa al lado. En un thumbnail, el cerebro necesita identificar una cosa en menos de un segundo.">A burger photo should be about the burger. Not the burger, the fries, the drink, and the sauce on the side. On a thumbnail, the brain needs to identify one thing in under a second.</span></p>
 
-<h3>Rule 3: Warm colors only</h3>
-<p>Green bowls, blue plates, cold-tone backgrounds — they all read as "sad food" at thumbnail size. Warm tones (orange, red, yellow, gold) trigger appetite. This isn't opinion, it's decades of food psychology research.</p>
+<h3><span data-en="Rule 3: Warm colors only" data-es="Regla 3: Solo colores cálidos">Rule 3: Warm colors only</span></h3>
+<p><span data-en="Green bowls, blue plates, cold-tone backgrounds, they all read as &quot;sad food&quot; at thumbnail size. Warm tones (orange, red, yellow, gold) trigger appetite. This isn't opinion, it's decades of food psychology research." data-es="Bowls verdes, platos azules, fondos de tonos fríos, todos se leen como &quot;comida triste&quot; en tamaño thumbnail. Tonos cálidos (naranja, rojo, amarillo, dorado) disparan el apetito. Esto no es opinión, son décadas de investigación en psicología de la comida.">Green bowls, blue plates, cold-tone backgrounds, they all read as "sad food" at thumbnail size. Warm tones (orange, red, yellow, gold) trigger appetite. This isn't opinion, it's decades of food psychology research.</span></p>
 
-<h3>Rule 4: Bold texture over fine detail</h3>
-<p>A photo of perfectly julienned vegetables doesn't work. Melty cheese, charred grill marks, visible crispy edges, glistening sauce — that's what reads at 380px.</p>
+<h3><span data-en="Rule 4: Bold texture over fine detail" data-es="Regla 4: Textura marcada sobre detalle fino">Rule 4: Bold texture over fine detail</span></h3>
+<p><span data-en="A photo of perfectly julienned vegetables doesn't work. Melty cheese, charred grill marks, visible crispy edges, glistening sauce, that's what reads at 380px." data-es="Una foto de vegetales perfectamente en juliana no funciona. Queso derretido, marcas de parrilla quemadas, bordes crujientes visibles, salsa brillante, eso es lo que se lee a 380px.">A photo of perfectly julienned vegetables doesn't work. Melty cheese, charred grill marks, visible crispy edges, glistening sauce, that's what reads at 380px.</span></p>
 
-<h3>Rule 5: No hands, no faces, no distractions</h3>
-<p>Every element that isn't the food dilutes the message. Including "lifestyle" shots of people eating. Save those for Instagram.</p>
+<h3><span data-en="Rule 5: No hands, no faces, no distractions" data-es="Regla 5: Sin manos, sin caras, sin distracciones">Rule 5: No hands, no faces, no distractions</span></h3>
+<p><span data-en="Every element that isn't the food dilutes the message. Including &quot;lifestyle&quot; shots of people eating. Save those for Instagram." data-es="Cada elemento que no sea la comida diluye el mensaje. Incluyendo fotos &quot;lifestyle&quot; de gente comiendo. Guarda esas para Instagram.">Every element that isn't the food dilutes the message. Including "lifestyle" shots of people eating. Save those for Instagram.</span></p>
 
 <div class="callout">
   <div class="callout-label">THE TEST</div>
-  <p>Take any of your current photos. Resize it to 380px wide. Look at it on your phone while walking. Can you instantly identify what it is and feel hungry? If not, the photo is failing.</p>
+  <p><span data-en="Take any of your current photos. Resize it to 380px wide. Look at it on your phone while walking. Can you instantly identify what it is and feel hungry? If not, the photo is failing." data-es="Toma cualquiera de tus fotos actuales. Redimensionala a 380px de ancho. Míralas en tu teléfono mientras caminas. ¿Puedes identificar instantáneamente qué es y sentir hambre? Si no, la foto está fallando.">Take any of your current photos. Resize it to 380px wide. Look at it on your phone while walking. Can you instantly identify what it is and feel hungry? If not, the photo is failing.</span></p>
 </div>
 
-<h2>Real numbers from our own restaurants</h2>
+<h2><span data-en="Real numbers from our own restaurants" data-es="Números reales de nuestros propios restaurantes">Real numbers from our own restaurants</span></h2>
 
-<p>When we rebuilt the photo strategy at Tito's Kitchen in 2023, here's what happened over 45 days:</p>
+<p><span data-en="When we rebuilt the photo strategy at Tito's Kitchen in 2023, here's what happened over 45 days:" data-es="Cuando reconstruimos la estrategia de fotos en Tito's Kitchen en 2023, esto es lo que pasó en 45 días:">When we rebuilt the photo strategy at Tito's Kitchen in 2023, here's what happened over 45 days:</span></p>
 
 <ul>
   <li>Click-through rate: <strong>1.9% → 5.8%</strong> (+205%)</li>
@@ -628,25 +764,25 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   <li>Monthly orders: +340</li>
 </ul>
 
-<p>We didn't change a single recipe. We didn't change prices. We didn't run a new promo. Just the photos.</p>
+<p><span data-en="We didn't change a single recipe. We didn't change prices. We didn't run a new promo. Just the photos." data-es="No cambiamos ni una receta. No cambiamos precios. No lanzamos una nueva promo. Solo las fotos.">We didn't change a single recipe. We didn't change prices. We didn't run a new promo. Just the photos.</span></p>
 
-<h2>AI photos vs real photography — the honest truth</h2>
+<h2><span data-en="AI photos vs real photography, the honest truth" data-es="Fotos IA vs fotografía real, la verdad honesta">AI photos vs real photography, the honest truth</span></h2>
 
-<p>Everybody's debating this right now. Here's my actual view after testing both extensively:</p>
+<p><span data-en="Everybody's debating this right now. Here's my actual view after testing both extensively:" data-es="Todo el mundo está debatiendo esto ahora. Esta es mi visión real después de probar ambos extensivamente:">Everybody's debating this right now. Here's my actual view after testing both extensively:</span></p>
 
-<p><strong>AI-generated food photography, done correctly, outperforms most real photography for delivery thumbnails.</strong> Not because AI is "better" in an artistic sense — but because it lets you control every variable (lighting, angle, cropping, color, ingredient visibility) without $2,000 photographer bills per product.</p>
+<p><strong>AI-generated food photography, done correctly, outperforms most real photography for delivery thumbnails.</strong> Not because AI is "better" in an artistic sense, but because it lets you control every variable (lighting, angle, cropping, color, ingredient visibility) without $2,000 photographer bills per product.</p>
 
-<p>Real photography is still essential for your first hero banner, your website, and marketing. But for the 40+ item photos inside the menu, AI is now the pragmatic choice.</p>
+<p><span data-en="Real photography is still essential for your first hero banner, your website, and marketing. But for the 40+ item photos inside the menu, AI is now the pragmatic choice." data-es="La fotografía real sigue siendo esencial para tu primer banner principal, tu sitio web, y marketing. Pero para las 40+ fotos de items dentro del menú, la IA es ahora la opción pragmática.">Real photography is still essential for your first hero banner, your website, and marketing. But for the 40+ item photos inside the menu, AI is now the pragmatic choice.</span></p>
 
-<p>The key word is "done correctly." Bad AI photos look obviously AI. Good AI photos are indistinguishable — and they work.</p>
+<p><span data-en="The key word is &quot;done correctly.&quot; Bad AI photos look obviously AI. Good AI photos are indistinguishable, and they work." data-es="La palabra clave es &quot;hecho correctamente.&quot; Las malas fotos IA se ven obviamente IA. Las buenas fotos IA son indistinguibles, y funcionan.">The key word is "done correctly." Bad AI photos look obviously AI. Good AI photos are indistinguishable, and they work.</span></p>
 
 <div class="article-divider"></div>
 
-<h2>The opportunity cost</h2>
+<h2><span data-en="The opportunity cost" data-es="El costo de oportunidad">The opportunity cost</span></h2>
 
-<p>Every day you're running weak photos is a day you're paying for customer impressions that don't convert. Delivery platforms send you traffic. Bad photos waste that traffic.</p>
+<p><span data-en="Every day you're running weak photos is a day you're paying for customer impressions that don't convert. Delivery platforms send you traffic. Bad photos waste that traffic." data-es="Cada día que corres con fotos débiles es un día que pagas por impresiones de clientes que no convierten. Las plataformas de delivery te mandan tráfico. Las malas fotos desperdician ese tráfico.">Every day you're running weak photos is a day you're paying for customer impressions that don't convert. Delivery platforms send you traffic. Bad photos waste that traffic.</span></p>
 
-<p>If your restaurant does $15,000/month on delivery and your CTR is 1.8%, doubling it to 3.6% isn't a 100% revenue jump (platform supply caps that). But a realistic 40% lift is $6,000/month extra — without spending a dollar more on ads.</p>
+<p><span data-en="If your restaurant does $15,000/month on delivery and your CTR is 1.8%, doubling it to 3.6% isn't a 100% revenue jump (platform supply caps that). But a realistic 40% lift is $6,000/month extra, without spending a dollar more on ads." data-es="Si tu restaurante hace $15,000/mes en delivery y tu CTR es 1.8%, duplicarlo a 3.6% no es un salto del 100% en ingresos (los límites de suministro de la plataforma lo limitan). Pero un aumento realista del 40% es $6,000/mes extra, sin gastar un dólar más en ads.">If your restaurant does $15,000/month on delivery and your CTR is 1.8%, doubling it to 3.6% isn't a 100% revenue jump (platform supply caps that). But a realistic 40% lift is $6,000/month extra, without spending a dollar more on ads.</span></p>
 
 <p>That's what's on the table. Every month you wait.</p>
 
@@ -654,7 +790,7 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   <div class="ac-inner">
     <div class="ac-title">Want us to audit your restaurant?</div>
     <div class="ac-desc">Free 30-minute strategy call. No pitch, no commitment. We look at your actual numbers and tell you what's leaking money.</div>
-    <a href="https://calendly.com/hello-deliveryedge/30min" class="ac-btn">Book a Free Audit →</a>
+    <a href="questionnaire.html" class="ac-btn">Book a Free Audit →</a>
   </div>
 </div>
 </article>
@@ -667,7 +803,7 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   <div class="footer-top">
     <div>
       <div class="footer-brand">DELIVERY<span>EDGE</span>.</div>
-      <p class="footer-tagline">Menu & platform optimization for restaurants and ghost kitchens on delivery apps.</p>
+      <p class="footer-tagline"><span data-en="Menu & platform optimization for restaurants and ghost kitchens on delivery apps." data-es="Optimización de menú y plataforma para restaurantes y ghost kitchens en apps de delivery.">Menu & platform optimization for restaurants and ghost kitchens on delivery apps.</span></p>
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
@@ -682,12 +818,88 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:hello@deliveryedge.co">hello@deliveryedge.co</a></li>
-        <li><a href="https://calendly.com/hello-deliveryedge/30min">Book a call</a></li>
+        <li><a href="questionnaire.html" data-en="Book a call" data-es="Reservar llamada">Book a call</a></li>
         <li><a href="#">Miami, FL</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom"><span>© 2025 DELIVERYEDGE. ALL RIGHTS RESERVED.</span><span>DELIVERYEDGE.CO</span></div>
 </footer>
+<script>
+// LANGUAGE SWITCHER LOGIC
+(function() {
+  const switcher = document.getElementById('langSwitcher');
+  const toggle = document.getElementById('langToggle');
+  const menu = document.getElementById('langMenu');
+  if (!switcher || !toggle || !menu) return;
+
+  // Get saved language or default to EN
+  let currentLang = localStorage.getItem('de_lang') || 'en';
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    try { localStorage.setItem('de_lang', lang); } catch(e) {}
+
+    // Update toggle display
+    const flag = lang === 'es' ? '🇪🇸' : '🇺🇸';
+    const code = lang.toUpperCase();
+    document.getElementById('langFlagCurrent').textContent = flag;
+    document.getElementById('langCodeCurrent').textContent = code;
+
+    // Update active state in menu
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+
+    // Set HTML lang attribute
+    document.documentElement.lang = lang;
+
+    // Translate all elements with data-en/data-es
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const esText = el.getAttribute('data-es');
+      const enText = el.getAttribute('data-en');
+      if (lang === 'es' && esText) {
+        el.innerHTML = esText;
+      } else if (enText) {
+        el.innerHTML = enText;
+      }
+    });
+
+    // Handle placeholders with data-en-placeholder / data-es-placeholder
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+      const esP = el.getAttribute('data-es-placeholder');
+      const enP = el.getAttribute('data-en-placeholder');
+      if (lang === 'es' && esP) {
+        el.placeholder = esP;
+      } else if (enP) {
+        el.placeholder = enP;
+      }
+    });
+  }
+
+  // Toggle dropdown
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    switcher.classList.toggle('open');
+  });
+
+  // Option clicks
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      applyLanguage(lang);
+      switcher.classList.remove('open');
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', () => {
+    switcher.classList.remove('open');
+  });
+
+  // Initialize with saved language
+  applyLanguage(currentLang);
+})();
+</script>
 </body>
 </html>

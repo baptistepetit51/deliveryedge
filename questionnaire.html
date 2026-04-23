@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeliveryEdge - Strategy Call Request</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Archivo', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+:root {
+  --orange: #FF5000;
+  --orange-light: #FF7733;
+  --black: #0a0a0a;
+  --dark: #141414;
+}
+
+/* Background */
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  pointer-events: none;
+}
+.bg-blob {
+  position: fixed; top: 30%; right: -10%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, var(--orange) 0%, transparent 60%);
+  opacity: 0.12; filter: blur(80px);
+  z-index: 0; pointer-events: none;
+}
+
+/* Header */
+.qn-header {
+  position: relative; z-index: 10;
+  padding: 28px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.qn-logo {
+  display: flex; align-items: center; gap: 10px;
+  color: #fff; text-decoration: none;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 18px; letter-spacing: -1px;
+}
+.qn-back {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.qn-back:hover { color: var(--orange); }
+
+/* Progress bar */
+.progress-container {
+  position: relative; z-index: 5;
+  padding: 24px 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.progress-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+}
+.progress-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--orange);
+  width: 10%;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 12px rgba(255,80,0,0.4);
+}
+
+/* Main container */
+.qn-main {
+  position: relative; z-index: 5;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 40px 80px;
+}
+
+/* Step */
+.step {
+  display: none;
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.step.active { display: block; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.step-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--orange);
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.step-tag::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--orange);
+}
+
+.step-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  color: #fff;
+}
+.step-title em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--orange);
+}
+.step-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 40px;
+  max-width: 520px;
+}
+
+/* Options */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.opt {
+  padding: 22px 24px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  color: #fff;
+  text-align: left;
+  font-family: inherit;
+  width: 100%;
+  font-size: inherit;
+}
+.opt:hover {
+  background: rgba(255,80,0,0.06);
+  border-color: rgba(255,80,0,0.4);
+  transform: translateX(4px);
+}
+.opt.selected {
+  background: rgba(255,80,0,0.1);
+  border-color: var(--orange);
+}
+.opt-check {
+  width: 24px; height: 24px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.opt.selected .opt-check {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+.opt-check svg { opacity: 0; transition: opacity 0.2s; }
+.opt.selected .opt-check svg { opacity: 1; }
+
+.opt-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.opt-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.opt-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+}
+.opt-arrow {
+  color: rgba(255,255,255,0.3);
+  transition: all 0.2s;
+}
+.opt.selected .opt-arrow { color: var(--orange); transform: translateX(4px); }
+
+/* Input fields */
+.field {
+  margin-bottom: 20px;
+}
+.field label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  font-family: 'Archivo', sans-serif;
+  font-size: 15px;
+  transition: all 0.2s;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.field select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23FF5000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  padding-right: 50px;
+  cursor: pointer;
+}
+.field select option {
+  background: #0a0a0a;
+  color: #fff;
+  padding: 12px;
+}
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--orange);
+  background: rgba(255,80,0,0.04);
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .field-row { grid-template-columns: 1fr; }
+}
+
+/* Navigation buttons */
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.btn-back {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  padding: 14px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-back:hover {
+  border-color: #fff;
+  color: #fff;
+}
+.btn-next {
+  background: var(--orange);
+  color: #fff;
+  border: 2px solid var(--orange);
+  padding: 16px 32px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn-next:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0 #fff;
+}
+.btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.btn-submit {
+  background: var(--orange);
+  color: #fff;
+  border: 2px solid var(--orange);
+  padding: 20px 40px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  justify-content: center;
+}
+.btn-submit:hover:not(:disabled) {
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0 #fff;
+}
+.btn-submit:disabled { opacity: 0.5; cursor: wait; }
+
+/* Success state */
+.success-screen {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  animation: slideIn 0.6s ease;
+}
+.success-screen.active { display: block; }
+.success-icon {
+  width: 88px; height: 88px;
+  background: var(--orange);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 10px 40px rgba(255,80,0,0.3);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.3); }
+  to { opacity: 1; transform: scale(1); }
+}
+.success-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+.success-title em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: var(--orange);
+  font-weight: 400;
+}
+.success-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+.success-btn {
+  background: var(--orange);
+  color: #fff;
+  padding: 20px 40px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  transition: transform 0.2s;
+  border: 2px solid var(--orange);
+}
+.success-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0 #fff;
+}
+
+/* Hide radio native */
+.radio-hidden { display: none; }
+
+@media (max-width: 640px) {
+  .qn-header { padding: 20px 24px; }
+  .progress-container { padding: 20px 24px; }
+  .qn-main { padding: 40px 24px 60px; }
+  .step-title { font-size: 28px; }
+  .opt { padding: 18px 20px; grid-template-columns: 28px 1fr 20px; }
+  .opt-title { font-size: 15px; }
+}
+
+/* Pill options (replaces select dropdowns) */
+.pill-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.pill-opt {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  padding: 14px 20px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pill-opt:hover {
+  background: rgba(255,80,0,0.08);
+  border-color: rgba(255,80,0,0.4);
+  color: #fff;
+}
+.pill-opt.selected {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
+
+
+/* LANGUAGE SWITCHER */
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+}
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.lang-toggle:hover {
+  background: rgba(255,80,0,0.08);
+  border-color: rgba(255,80,0,0.4);
+}
+.lang-switcher.open .lang-toggle {
+  background: rgba(255,80,0,0.1);
+  border-color: var(--orange);
+}
+.lang-flag {
+  font-size: 16px;
+  line-height: 1;
+}
+.lang-code {
+  color: rgba(255,255,255,0.9);
+}
+.lang-chevron {
+  color: var(--orange);
+  transition: transform 0.3s;
+}
+.lang-switcher.open .lang-chevron {
+  transform: rotate(180deg);
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1010;
+}
+.lang-switcher.open .lang-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.lang-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.lang-option:last-child { border-bottom: none; }
+.lang-option:hover {
+  background: rgba(255,80,0,0.1);
+  color: var(--orange);
+}
+.lang-option-text {
+  flex-grow: 1;
+}
+.lang-check {
+  opacity: 0;
+  color: var(--orange);
+  font-weight: 900;
+  transition: opacity 0.2s;
+}
+.lang-option.active .lang-check {
+  opacity: 1;
+}
+.lang-option.active {
+  color: var(--orange);
+  background: rgba(255,80,0,0.05);
+}
+
+@media (max-width: 900px) {
+  .lang-toggle {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+  .lang-menu {
+    right: -20px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-blob"></div>
+
+<header class="qn-header">
+  <a href="index.html" class="qn-logo">
+    <svg width="28" height="28" viewBox="0 0 44 44" fill="none">
+      <line x1="12" y1="6" x2="12" y2="19" stroke="#FF5000" stroke-width="2.8" stroke-linecap="round"/>
+      <line x1="18" y1="6" x2="18" y2="19" stroke="#FF5000" stroke-width="2.8" stroke-linecap="round"/>
+      <line x1="24" y1="6" x2="24" y2="19" stroke="#FF5000" stroke-width="2.8" stroke-linecap="round"/>
+      <path d="M12 19 Q18 26 18 30 L18 38" stroke="#FF5000" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <path d="M30 17 L39 22 L30 27" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <line x1="39" y1="22" x2="29" y2="22" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>
+    </svg>
+    <span>DELIVERY<span style="color:#FF5000">EDGE</span></span>
+  </a>
+  <div style="display:flex; align-items:center; gap:16px">
+    <!-- LANGUAGE SWITCHER -->
+<div class="lang-switcher" id="langSwitcher">
+  <button class="lang-toggle" id="langToggle" aria-label="Change language">
+    <span class="lang-flag" id="langFlagCurrent">🇺🇸</span>
+    <span class="lang-code" id="langCodeCurrent">EN</span>
+    <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="lang-menu" id="langMenu">
+    <button class="lang-option" data-lang="en">
+      <span class="lang-flag">🇺🇸</span>
+      <span class="lang-option-text">English</span>
+      <span class="lang-check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="es">
+      <span class="lang-flag">🇪🇸</span>
+      <span class="lang-option-text">Español</span>
+      <span class="lang-check">✓</span>
+    </button>
+  </div>
+</div>
+    <a href="index.html" class="qn-back" data-en="← BACK" data-es="← ATRÁS">← BACK</a>
+  </div>
+</header>
+
+<div class="progress-container">
+  <div class="progress-label">
+    <span data-en="STEP" data-es="PASO">STEP <span id="currentStep">1</span> / <span id="totalSteps">6</span></span>
+    <span id="progressPct">10%</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+
+<main class="qn-main">
+  <form id="qForm" onsubmit="return false;">
+
+    <!-- STEP 1: Profile -->
+    <div class="step active" data-step="1">
+      <div class="step-tag" data-en="01 / YOUR PROFILE" data-es="01 / TU PERFIL">01 / YOUR PROFILE</div>
+      <h2 class="step-title"><span data-en="What best <em>describes you?</em>" data-es="<span data-en=&quot;What best&quot; data-es=&quot;¿Qué describe&quot;>What best</span> <em data-en=&quot;describes you?&quot; data-es=&quot;mejor tu situación?&quot;>describes you?</em>">What best <em>describes you?</em></span></h2>
+      <p class="step-desc"><span data-en="This helps us route your call to the right expertise." data-es="<span data-en=&quot;This helps us route your call to the right expertise.&quot; data-es=&quot;Esto nos ayuda a enrutar tu llamada a la experiencia correcta.&quot;>This helps us route your call to the right expertise.</span>">This helps us route your call to the right expertise.</span></p>
+
+      <div class="options-list">
+        <button type="button" class="opt" data-field="profile" data-value="existing_physical">
+          <div class="opt-check">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="opt-text">
+            <div class="opt-title"><span data-en="I run an existing physical restaurant" data-es="Opero un restaurante físico existente">I run an existing physical restaurant</span></div>
+            <div class="opt-sub"><span data-en="Already on Uber Eats / DoorDash, want more delivery orders" data-es="Ya en Uber Eats / DoorDash, quiero más pedidos de delivery">Already on Uber Eats / DoorDash, want more delivery orders</span></div>
+          </div>
+          <span class="opt-arrow">→</span>
+        </button>
+        <button type="button" class="opt" data-field="profile" data-value="existing_ghost">
+          <div class="opt-check">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="opt-text">
+            <div class="opt-title"><span data-en="I run a ghost kitchen" data-es="Opero un ghost kitchen">I run a ghost kitchen</span></div>
+            <div class="opt-sub"><span data-en="Delivery-only operation, want to scale or optimize" data-es="Operación solo delivery, quiero escalar u optimizar">Delivery-only operation, want to scale or optimize</span></div>
+          </div>
+          <span class="opt-arrow">→</span>
+        </button>
+        <button type="button" class="opt" data-field="profile" data-value="launching_new">
+          <div class="opt-check">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="opt-text">
+            <div class="opt-title"><span data-en="I'm launching a new concept" data-es="Estoy lanzando un nuevo concepto">I'm launching a new concept</span></div>
+            <div class="opt-sub"><span data-en="New ghost kitchen or delivery brand, need full setup" data-es="Nuevo ghost kitchen o marca de delivery, necesito configuración completa">New ghost kitchen or delivery brand, need full setup</span></div>
+          </div>
+          <span class="opt-arrow">→</span>
+        </button>
+        <button type="button" class="opt" data-field="profile" data-value="multi_location">
+          <div class="opt-check">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="opt-text">
+            <div class="opt-title"><span data-en="I run multiple locations / brands" data-es="Opero múltiples ubicaciones / marcas">I run multiple locations / brands</span></div>
+            <div class="opt-sub"><span data-en="2+ restaurants, need optimization across portfolio" data-es="2+ restaurantes, necesito optimización en todo el portfolio">2+ restaurants, need optimization across portfolio</span></div>
+          </div>
+          <span class="opt-arrow">→</span>
+        </button>
+      </div>
+
+      <div class="step-nav">
+        <span></span>
+        <button type="button" class="btn-next" onclick="nextStep()" disabled>
+          Continue
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Business info -->
+    <div class="step" data-step="2">
+      <div class="step-tag" data-en="02 / BUSINESS INFO" data-es="02 / INFO DEL NEGOCIO">02 / BUSINESS INFO</div>
+      <h2 class="step-title"><span data-en="Tell us about <em>your business.</em>" data-es="<span data-en=&quot;Tell us about&quot; data-es=&quot;Cuéntanos sobre&quot;>Tell us about</span> <em data-en=&quot;your business.&quot; data-es=&quot;tu negocio.&quot;>your business.</em>">Tell us about <em>your business.</em></span></h2>
+      <p class="step-desc"><span data-en="Basic info so we can prepare for the call." data-es="<span data-en=&quot;Basic info so we can prepare for the call.&quot; data-es=&quot;Info básica para que podamos prepararnos para la llamada.&quot;>Basic info so we can prepare for the call.</span>">Basic info so we can prepare for the call.</span></p>
+
+      <div class="field">
+        <label data-en="Restaurant / brand name" data-es="Nombre del restaurante / marca">Restaurant / brand name</label>
+        <input type="text" name="brand_name" placeholder="e.g. Tito's Kitchen" data-en-placeholder="e.g. Tito's Kitchen" data-es-placeholder="ej. Tito's Kitchen" required>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label data-en="City" data-es="Ciudad">City</label>
+          <input type="text" name="city" placeholder="Miami" data-en-placeholder="Miami" data-es-placeholder="Miami" required>
+        </div>
+        <div class="field">
+          <label data-en="Country" data-es="País">Country</label>
+          <input type="text" name="country" placeholder="USA" data-en-placeholder="USA" data-es-placeholder="USA" required>
+        </div>
+      </div>
+
+      <!-- Cuisine type (existing operators only) -->
+      <div class="field field-existing" style="display:none">
+        <label data-en="Cuisine type" data-es="Tipo de cocina">Cuisine type</label>
+        <input type="text" name="cuisine" placeholder="e.g. Burgers, Italian, Mexican" data-en-placeholder="e.g. Burgers, Italian, Mexican" data-es-placeholder="ej. Hamburguesas, Italiana, Mexicana">
+      </div>
+
+      <!-- Concept idea (new launch only) -->
+      <div class="field field-launching" style="display:none">
+        <label data-en="Your concept idea" data-es="Tu idea de concepto">Your concept idea</label>
+        <input type="text" name="concept" placeholder="e.g. Gourmet smash burgers, Thai street food" data-en-placeholder="e.g. Gourmet smash burgers, Thai street food" data-es-placeholder="ej. Smash burgers gourmet, comida callejera tailandesa">
+      </div>
+
+      <div class="step-nav">
+        <button type="button" class="btn-back" onclick="prevStep()" data-en="← Back" data-es="← Atrás">← Back</button>
+        <button type="button" class="btn-next" onclick="nextStep()">
+          Continue
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Current situation (different for new vs existing) -->
+    <div class="step" data-step="3">
+      <div class="step-tag" data-en="03 / CURRENT SITUATION" data-es="03 / SITUACIÓN ACTUAL">03 / CURRENT SITUATION</div>
+      <h2 class="step-title" id="step3Title">Where are you <em>right now?</em></h2>
+      <p class="step-desc" id="step3Desc">Helps us understand the starting point.</p>
+
+      <!-- For existing operators -->
+      <div class="existing-only" style="display:none">
+        <div class="field">
+          <label data-en="Which platforms are you on?" data-es="¿En qué plataformas estás?">Which platforms are you on?</label>
+          <div class="options-list">
+            <button type="button" class="opt" data-field="platforms" data-value="uber_only">
+              <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="opt-text"><div class="opt-title" data-en="Uber Eats only" data-es="Solo Uber Eats">Uber Eats only</div></div>
+              <span class="opt-arrow">→</span>
+            </button>
+            <button type="button" class="opt" data-field="platforms" data-value="doordash_only">
+              <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="opt-text"><div class="opt-title" data-en="DoorDash only" data-es="Solo DoorDash">DoorDash only</div></div>
+              <span class="opt-arrow">→</span>
+            </button>
+            <button type="button" class="opt" data-field="platforms" data-value="both">
+              <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="opt-text"><div class="opt-title" data-en="Both Uber Eats and DoorDash" data-es="Tanto Uber Eats como DoorDash">Both Uber Eats and DoorDash</div></div>
+              <span class="opt-arrow">→</span>
+            </button>
+            <button type="button" class="opt" data-field="platforms" data-value="both_plus">
+              <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="opt-text"><div class="opt-title" data-en="Both plus others" data-es="Ambos más otros">Both plus others</div><div class="opt-sub"><span data-en="Grubhub, Skip, etc." data-es="Grubhub, Skip, etc.">Grubhub, Skip, etc.</span></div></div>
+              <span class="opt-arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label data-en="Orders per month (approx)" data-es="Pedidos por mes (aprox)">Orders per month (approx)</label>
+          <div class="pill-options">
+            <button type="button" class="pill-opt" data-field="orders_per_month" data-value="under_200">Under 200</button>
+            <button type="button" class="pill-opt" data-field="orders_per_month" data-value="200_500">200 - 500</button>
+            <button type="button" class="pill-opt" data-field="orders_per_month" data-value="500_1000">500 - 1,000</button>
+            <button type="button" class="pill-opt" data-field="orders_per_month" data-value="1000_2000">1,000 - 2,000</button>
+            <button type="button" class="pill-opt" data-field="orders_per_month" data-value="over_2000">Over 2,000</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label data-en="Current average order value" data-es="Valor promedio actual por pedido">Current average order value</label>
+          <div class="pill-options">
+            <button type="button" class="pill-opt" data-field="avg_order" data-value="under_15">Under $15</button>
+            <button type="button" class="pill-opt" data-field="avg_order" data-value="15_20">$15 - $20</button>
+            <button type="button" class="pill-opt" data-field="avg_order" data-value="20_30">$20 - $30</button>
+            <button type="button" class="pill-opt" data-field="avg_order" data-value="30_45">$30 - $45</button>
+            <button type="button" class="pill-opt" data-field="avg_order" data-value="over_45">Over $45</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>What's your biggest struggle right now?</label>
+          <textarea name="struggle" placeholder="Low order volume, bad ranking, margin issues, etc." data-en-placeholder="Low order volume, bad ranking, margin issues, etc." data-es-placeholder="Bajo volumen de pedidos, mal ranking, problemas de margen, etc." rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- For new launchers -->
+      <div class="launching-only" style="display:none">
+        <div class="field">
+          <label>What stage are you at?</label>
+          <div class="options-list">
+            <button type="button" class="opt" data-field="stage" data-value="just_idea">
+              <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="opt-text"><div class="opt-title">Just an idea</div><div class="opt-sub">No kitchen yet, no concept locked in</div></div>
+              <span class="opt-arrow">→</span>
+            </button>
+            <button type="button" class="opt" data-field="stage" data-value="planning">
+              <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="opt-text"><div class="opt-title">Planning stage</div><div class="opt-sub">Concept chosen, working on logistics</div></div>
+              <span class="opt-arrow">→</span>
+            </button>
+            <button type="button" class="opt" data-field="stage" data-value="kitchen_ready">
+              <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="opt-text"><div class="opt-title">Kitchen ready</div><div class="opt-sub">Space secured, recipes done, need to go live</div></div>
+              <span class="opt-arrow">→</span>
+            </button>
+            <button type="button" class="opt" data-field="stage" data-value="about_to_launch">
+              <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="opt-text"><div class="opt-title">Ready to launch</div><div class="opt-sub">Everything set, launching within 30 days</div></div>
+              <span class="opt-arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>What's your target market / city?</label>
+          <textarea name="target_market" placeholder="Describe your target customer and delivery area" data-en-placeholder="Describe your target customer and delivery area" data-es-placeholder="Describe tu cliente objetivo y área de delivery" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button type="button" class="btn-back" onclick="prevStep()" data-en="← Back" data-es="← Atrás">← Back</button>
+        <button type="button" class="btn-next" onclick="nextStep()">
+          Continue
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Goal -->
+    <div class="step" data-step="4">
+      <div class="step-tag" data-en="04 / YOUR GOAL" data-es="04 / TU OBJETIVO">04 / YOUR GOAL</div>
+      <h2 class="step-title"><span data-en="What's the <em>main goal?</em>" data-es="<span data-en=&quot;What's the&quot; data-es=&quot;¿Cuál es el&quot;>What's the</span> <em data-en=&quot;main goal?&quot; data-es=&quot;objetivo principal?&quot;>main goal?</em>">What's the <em>main goal?</em></span></h2>
+      <p class="step-desc"><span data-en="Pick the one that matters most to you right now." data-es="<span data-en=&quot;Pick the one that matters most to you right now.&quot; data-es=&quot;Elige el que más te importa ahora mismo.&quot;>Pick the one that matters most to you right now.</span>">Pick the one that matters most to you right now.</span></p>
+
+      <div class="options-list">
+        <button type="button" class="opt" data-field="goal" data-value="more_orders">
+          <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="opt-text"><div class="opt-title" data-en="Get more orders" data-es="Obtener más pedidos">Get more orders</div><div class="opt-sub"><span data-en="Rank higher, more visibility, more volume" data-es="Rankea más alto, más visibilidad, más volumen">Rank higher, more visibility, more volume</span></div></div>
+          <span class="opt-arrow">→</span>
+        </button>
+        <button type="button" class="opt" data-field="goal" data-value="higher_aov">
+          <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="opt-text"><div class="opt-title" data-en="Higher average order" data-es="Pedido promedio más alto">Higher average order</div><div class="opt-sub"><span data-en="Smart menu structure, upsells, bundles" data-es="Estructura inteligente de menú, upsells, bundles">Smart menu structure, upsells, bundles</span></div></div>
+          <span class="opt-arrow">→</span>
+        </button>
+        <button type="button" class="opt" data-field="goal" data-value="better_margins">
+          <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="opt-text"><div class="opt-title" data-en="Better margins" data-es="Mejores márgenes">Better margins</div><div class="opt-sub"><span data-en="Fix pricing, stop bleeding money on wrong promos" data-es="Arregla precios, deja de perder dinero en promos equivocadas">Fix pricing, stop bleeding money on wrong promos</span></div></div>
+          <span class="opt-arrow">→</span>
+        </button>
+        <button type="button" class="opt" data-field="goal" data-value="full_launch">
+          <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="opt-text"><div class="opt-title" data-en="Launch strong" data-es="Lanza con fuerza">Launch strong</div><div class="opt-sub"><span data-en="Full setup from scratch, skip the trial and error" data-es="Configuración completa desde cero, sin prueba y error">Full setup from scratch, skip the trial and error</span></div></div>
+          <span class="opt-arrow">→</span>
+        </button>
+        <button type="button" class="opt" data-field="goal" data-value="full_audit">
+          <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="opt-text"><div class="opt-title" data-en="Complete rebuild" data-es="Reconstrucción completa">Complete rebuild</div><div class="opt-sub"><span data-en="Everything needs fixing, full overhaul" data-es="Todo necesita ser arreglado, revisión completa">Everything needs fixing, full overhaul</span></div></div>
+          <span class="opt-arrow">→</span>
+        </button>
+      </div>
+
+      <div class="step-nav">
+        <button type="button" class="btn-back" onclick="prevStep()" data-en="← Back" data-es="← Atrás">← Back</button>
+        <button type="button" class="btn-next" onclick="nextStep()" disabled>
+          Continue
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Budget & Timeline -->
+    <div class="step" data-step="5">
+      <div class="step-tag" data-en="05 / BUDGET & TIMELINE" data-es="05 / PRESUPUESTO Y TIEMPO">05 / BUDGET & TIMELINE</div>
+      <h2 class="step-title"><span data-en="Budget & <em>timeline.</em>" data-es="<span data-en=&quot;Budget &&quot; data-es=&quot;Presupuesto y&quot;>Budget &</span> <em data-en=&quot;timeline.&quot; data-es=&quot;tiempo.&quot;>timeline.</em>">Budget & <em>timeline.</em></span></h2>
+      <p class="step-desc"><span data-en="No surprises. Just so we're aligned before the call." data-es="<span data-en=&quot;No surprises. Just so we're aligned before the call.&quot; data-es=&quot;Sin sorpresas. Solo para estar alineados antes de la llamada.&quot;>No surprises. Just so we're aligned before the call.</span>">No surprises. Just so we're aligned before the call.</span></p>
+
+      <div class="field">
+        <label data-en="Which tier fits you best?" data-es="¿Qué tier te conviene más?">Which tier fits you best?</label>
+        <div class="options-list">
+          <button type="button" class="opt" data-field="budget" data-value="tier1">
+            <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="opt-text"><div class="opt-title" data-en="Tier 1 / $800" data-es="Tier 1 / $800">Tier 1 / $800</div><div class="opt-sub"><span data-en="Strategy only, I implement" data-es="Solo estrategia, yo implemento">Strategy only, I implement</span></div></div>
+            <span class="opt-arrow">→</span>
+          </button>
+          <button type="button" class="opt" data-field="budget" data-value="tier2">
+            <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="opt-text"><div class="opt-title" data-en="Tier 2 / $1,200" data-es="Tier 2 / $1,200">Tier 2 / $1,200</div><div class="opt-sub"><span data-en="Strategy + AI-optimized visuals" data-es="Estrategia + visuales optimizados con IA">Strategy + AI-optimized visuals</span></div></div>
+            <span class="opt-arrow">→</span>
+          </button>
+          <button type="button" class="opt" data-field="budget" data-value="tier3">
+            <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="opt-text"><div class="opt-title" data-en="Tier 3 / $1,800" data-es="Tier 3 / $1,800">Tier 3 / $1,800</div><div class="opt-sub"><span data-en="Full package, done for you" data-es="Paquete completo, hecho por ti">Full package, done for you</span></div></div>
+            <span class="opt-arrow">→</span>
+          </button>
+          <button type="button" class="opt" data-field="budget" data-value="unsure">
+            <div class="opt-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="opt-text"><div class="opt-title" data-en="Not sure yet" data-es="No estoy seguro todavía">Not sure yet</div><div class="opt-sub"><span data-en="Let's discuss on the call" data-es="Discutamos en la llamada">Let's discuss on the call</span></div></div>
+            <span class="opt-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label data-en="When do you want to start?" data-es="¿Cuándo quieres empezar?">When do you want to start?</label>
+        <div class="pill-options">
+          <button type="button" class="pill-opt" data-field="timeline" data-value="asap" data-en="ASAP" data-es="Lo antes posible">ASAP</button>
+          <button type="button" class="pill-opt" data-field="timeline" data-value="this_month" data-en="This month" data-es="Este mes">This month</button>
+          <button type="button" class="pill-opt" data-field="timeline" data-value="next_month" data-en="Next month" data-es="Próximo mes">Next month</button>
+          <button type="button" class="pill-opt" data-field="timeline" data-value="next_3_months" data-en="Within 3 months" data-es="Dentro de 3 meses">Within 3 months</button>
+          <button type="button" class="pill-opt" data-field="timeline" data-value="just_exploring" data-en="Just exploring" data-es="Solo explorando">Just exploring</button>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button type="button" class="btn-back" onclick="prevStep()" data-en="← Back" data-es="← Atrás">← Back</button>
+        <button type="button" class="btn-next" onclick="nextStep()" disabled>
+          Continue
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 6: Contact info -->
+    <div class="step" data-step="6">
+      <div class="step-tag" data-en="06 / YOUR CONTACT" data-es="06 / TU CONTACTO">06 / YOUR CONTACT</div>
+      <h2 class="step-title"><span data-en="Almost <em>done!</em>" data-es="<span data-en=&quot;Almost&quot; data-es=&quot;¡Casi&quot;>Almost</span> <em data-en=&quot;done!&quot; data-es=&quot;listo!&quot;>done!</em>">Almost <em>done!</em></span></h2>
+      <p class="step-desc"><span data-en="After submission, you'll be redirected to book your 30-minute strategy call." data-es="<span data-en=&quot;After submission, you'll be redirected to book your 30-minute strategy call.&quot; data-es=&quot;Después de enviar, serás redirigido para reservar tu llamada estratégica de 30 minutos.&quot;>After submission, you'll be redirected to book your 30-minute strategy call.</span>">After submission, you'll be redirected to book your 30-minute strategy call.</span></p>
+
+      <div class="field-row">
+        <div class="field">
+          <label data-en="First name" data-es="Nombre">First name</label>
+          <input type="text" name="first_name" required placeholder="Your first name" data-en-placeholder="Your first name" data-es-placeholder="Tu nombre">
+        </div>
+        <div class="field">
+          <label data-en="Last name" data-es="Apellido">Last name</label>
+          <input type="text" name="last_name" placeholder="Your last name" data-en-placeholder="Your last name" data-es-placeholder="Tu apellido">
+        </div>
+      </div>
+
+      <div class="field">
+        <label data-en="Email" data-es="Email">Email</label>
+        <input type="email" name="email" required placeholder="you@email.com" data-en-placeholder="you@email.com" data-es-placeholder="tu@email.com">
+      </div>
+
+      <div class="field">
+        <label data-en="Phone (optional)" data-es="Teléfono (opcional)">Phone (optional)</label>
+        <input type="tel" name="phone" placeholder="+1 305 ...">
+      </div>
+
+      <div class="field">
+        <label data-en="Anything else you want us to know? (optional)" data-es="¿Algo más que quieras que sepamos? (opcional)">Anything else you want us to know? (optional)</label>
+        <textarea name="notes" placeholder="Any specific context, questions, or goals..." data-en-placeholder="Any specific context, questions, or goals..." data-es-placeholder="Cualquier contexto específico, preguntas u objetivos..." rows="4"></textarea>
+      </div>
+
+      <!-- Hidden fields for Formspree -->
+      <input type="hidden" name="_subject" value="New DeliveryEdge Strategy Call Request">
+      <input type="hidden" name="_replyto" value="hello@deliveryedge.co">
+
+      <!-- Hidden fields that collect answers -->
+      <input type="hidden" name="profile" id="profileHidden">
+      <input type="hidden" name="platforms" id="platformsHidden">
+      <input type="hidden" name="stage" id="stageHidden">
+      <input type="hidden" name="goal" id="goalHidden">
+      <input type="hidden" name="budget" id="budgetHidden">
+
+      <div class="step-nav">
+        <button type="button" class="btn-back" onclick="prevStep()" data-en="← Back" data-es="← Atrás">← Back</button>
+        <button type="button" class="btn-submit" id="submitBtn" onclick="submitForm()">
+          Submit & Book My Call
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 class="success-title"><span data-en="You're all set.<br><em>See you on the call.</em>" data-es="<span data-en=&quot;You're all set.&quot; data-es=&quot;Todo listo.&quot;>You're all set.</span><br><em data-en=&quot;See you on the call.&quot; data-es=&quot;Nos vemos en la llamada.&quot;>See you on the call.</em>">You're all set.<br><em>See you on the call.</em></span></h2>
+    <p class="success-desc"><span data-en="Your answers are in my inbox. Now pick a time that works for you, and we'll dig into your setup." data-es="<span data-en=&quot;Your answers are in my inbox. Now pick a time that works for you, and we'll dig into your setup.&quot; data-es=&quot;Tus respuestas están en mi inbox. Ahora elige un horario que te funcione, y profundizaremos en tu setup.&quot;>Your answers are in my inbox. Now pick a time that works for you, and we'll dig into your setup.</span>">Your answers are in my inbox. Now pick a time that works for you, and we'll dig into your setup.</span></p>
+    <a href="https://calendly.com/hello-deliveryedge/30min" class="success-btn">
+      Book My 30-Min Call
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+</main>
+
+<script>
+const state = {
+  currentStep: 1,
+  totalSteps: 6,
+  answers: {}
+};
+
+function getActiveStep() {
+  return document.querySelector('.step.active');
+}
+
+function updateProgress() {
+  const pct = Math.round((state.currentStep / state.totalSteps) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('currentStep').textContent = state.currentStep;
+  document.getElementById('totalSteps').textContent = state.totalSteps;
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  const step = document.querySelector(`.step[data-step="${n}"]`);
+  if (step) {
+    step.classList.add('active');
+    state.currentStep = n;
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function nextStep() {
+  // Validate current step before moving
+  const current = getActiveStep();
+  const stepNum = parseInt(current.dataset.step);
+
+  // Step 2: require brand_name + city + country
+  if (stepNum === 2) {
+    const brand = current.querySelector('[name="brand_name"]');
+    const city = current.querySelector('[name="city"]');
+    const country = current.querySelector('[name="country"]');
+    if (!brand.value.trim() || !city.value.trim() || !country.value.trim()) {
+      alert('Please fill in your brand name, city, and country.');
+      return;
+    }
+  }
+
+  // Handle branching logic based on profile
+  let next = state.currentStep + 1;
+  showStep(next);
+  updateButtonsState();
+}
+
+function prevStep() {
+  if (state.currentStep > 1) {
+    showStep(state.currentStep - 1);
+    updateButtonsState();
+  }
+}
+
+function updateButtonsState() {
+  const current = getActiveStep();
+  const stepNum = parseInt(current.dataset.step);
+  const nextBtn = current.querySelector('.btn-next');
+
+  if (!nextBtn) return;
+
+  // For steps with options, require selection
+  if ([1, 4, 5].includes(stepNum)) {
+    const hasSelection = current.querySelector('.opt.selected');
+    nextBtn.disabled = !hasSelection;
+  } else {
+    nextBtn.disabled = false;
+  }
+}
+
+// Handle profile selection routing
+function applyProfileRouting(profile) {
+  const isExisting = ['existing_physical', 'existing_ghost', 'multi_location'].includes(profile);
+  const isLaunching = profile === 'launching_new';
+
+  // Step 2 fields
+  document.querySelectorAll('.field-existing').forEach(el => el.style.display = isExisting ? 'block' : 'none');
+  document.querySelectorAll('.field-launching').forEach(el => el.style.display = isLaunching ? 'block' : 'none');
+
+  // Step 3 sections
+  document.querySelectorAll('.existing-only').forEach(el => el.style.display = isExisting ? 'block' : 'none');
+  document.querySelectorAll('.launching-only').forEach(el => el.style.display = isLaunching ? 'block' : 'none');
+
+  // Update step 3 title
+  const step3Title = document.getElementById('step3Title');
+  const step3Desc = document.getElementById('step3Desc');
+  if (isLaunching) {
+    step3Title.innerHTML = 'How far <em>along are you?</em>';
+    step3Desc.textContent = 'Helps us know what to build with you.';
+  } else {
+    step3Title.innerHTML = 'Where are you <em>right now?</em>';
+    step3Desc.textContent = 'Helps us understand the starting point.';
+  }
+}
+
+// Click handlers for options
+document.querySelectorAll('.opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const field = opt.dataset.field;
+    const value = opt.dataset.value;
+
+    // Single select: clear siblings with same field
+    const parent = opt.closest('.options-list');
+    if (parent) {
+      parent.querySelectorAll(`.opt[data-field="${field}"]`).forEach(sib => sib.classList.remove('selected'));
+    }
+    opt.classList.add('selected');
+    state.answers[field] = value;
+
+    // Update hidden input if exists
+    const hidden = document.getElementById(field + 'Hidden');
+    if (hidden) hidden.value = value;
+
+    // Special: profile routes the form
+    if (field === 'profile') {
+      applyProfileRouting(value);
+    }
+
+    updateButtonsState();
+  });
+});
+
+async function submitForm() {
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = 'Sending...';
+
+  const form = document.getElementById('qForm');
+  const formData = new FormData(form);
+
+  // Add answers from state
+  for (const [key, val] of Object.entries(state.answers)) {
+    if (!formData.has(key)) formData.append(key, val);
+  }
+
+  try {
+    const response = await fetch('https://formspree.io/f/mvzddwne', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    // Hide form, show success
+    document.getElementById('qForm').style.display = 'none';
+    document.querySelector('.progress-container').style.display = 'none';
+    document.getElementById('successScreen').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    console.error(err);
+    // Still redirect to Calendly as fallback
+    document.getElementById('qForm').style.display = 'none';
+    document.querySelector('.progress-container').style.display = 'none';
+    document.getElementById('successScreen').classList.add('active');
+  }
+}
+
+// Init
+updateProgress();
+updateButtonsState();
+
+
+// Pill options handling
+document.querySelectorAll('.pill-opt').forEach(pill => {
+  pill.addEventListener('click', () => {
+    const field = pill.dataset.field;
+    const value = pill.dataset.value;
+    const parent = pill.parentElement;
+    parent.querySelectorAll('.pill-opt').forEach(p => p.classList.remove('selected'));
+    pill.classList.add('selected');
+    state.answers[field] = value;
+  });
+});
+
+
+// LANGUAGE SWITCHER LOGIC
+(function() {
+  const switcher = document.getElementById('langSwitcher');
+  const toggle = document.getElementById('langToggle');
+  const menu = document.getElementById('langMenu');
+  if (!switcher || !toggle || !menu) return;
+
+  // Get saved language or default to EN
+  let currentLang = localStorage.getItem('de_lang') || 'en';
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    try { localStorage.setItem('de_lang', lang); } catch(e) {}
+
+    // Update toggle display
+    const flag = lang === 'es' ? '🇪🇸' : '🇺🇸';
+    const code = lang.toUpperCase();
+    document.getElementById('langFlagCurrent').textContent = flag;
+    document.getElementById('langCodeCurrent').textContent = code;
+
+    // Update active state in menu
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+
+    // Set HTML lang attribute
+    document.documentElement.lang = lang;
+
+    // Translate all elements with data-en/data-es
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const esText = el.getAttribute('data-es');
+      const enText = el.getAttribute('data-en');
+      if (lang === 'es' && esText) {
+        el.innerHTML = esText;
+      } else if (enText) {
+        el.innerHTML = enText;
+      }
+    });
+
+    // Handle placeholders with data-en-placeholder / data-es-placeholder
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+      const esP = el.getAttribute('data-es-placeholder');
+      const enP = el.getAttribute('data-en-placeholder');
+      if (lang === 'es' && esP) {
+        el.placeholder = esP;
+      } else if (enP) {
+        el.placeholder = enP;
+      }
+    });
+  }
+
+  // Toggle dropdown
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    switcher.classList.toggle('open');
+  });
+
+  // Option clicks
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      applyLanguage(lang);
+      switcher.classList.remove('open');
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', () => {
+    switcher.classList.remove('open');
+  });
+
+  // Initialize with saved language
+  applyLanguage(currentLang);
+})();
+
+</script>
+
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The promo trap: discounts that quietly destroy margins. — DeliveryEdge</title>
-<meta name="description" content="Most operators think running a discount is the safe way to boost orders. The math says otherwise. Here is exactly how the wrong promo loses you money — and">
+<title>The promo trap: discounts that quietly destroy margins.. DeliveryEdge</title>
+<meta name="description" content="Most operators think running a discount is the safe way to boost orders. The math says otherwise. Here is exactly how the wrong promo loses you money, and">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -17,6 +17,8 @@ body {
   color: #0a0a0a;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 :root {
   --orange: #FF5000;
@@ -520,6 +522,118 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   .ahv-chart { grid-column: 1/-1; }
   .ahv-img-box { width: 80px; height: 80px; }
 }
+
+/* LANGUAGE SWITCHER */
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+}
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.lang-toggle:hover {
+  background: rgba(255,80,0,0.08);
+  border-color: rgba(255,80,0,0.4);
+}
+.lang-switcher.open .lang-toggle {
+  background: rgba(255,80,0,0.1);
+  border-color: var(--orange);
+}
+.lang-flag {
+  font-size: 16px;
+  line-height: 1;
+}
+.lang-code {
+  color: rgba(255,255,255,0.9);
+}
+.lang-chevron {
+  color: var(--orange);
+  transition: transform 0.3s;
+}
+.lang-switcher.open .lang-chevron {
+  transform: rotate(180deg);
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1010;
+}
+.lang-switcher.open .lang-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.lang-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.lang-option:last-child { border-bottom: none; }
+.lang-option:hover {
+  background: rgba(255,80,0,0.1);
+  color: var(--orange);
+}
+.lang-option-text {
+  flex-grow: 1;
+}
+.lang-check {
+  opacity: 0;
+  color: var(--orange);
+  font-weight: 900;
+  transition: opacity 0.2s;
+}
+.lang-option.active .lang-check {
+  opacity: 1;
+}
+.lang-option.active {
+  color: var(--orange);
+  background: rgba(255,80,0,0.05);
+}
+
+@media (max-width: 900px) {
+  .lang-toggle {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+  .lang-menu {
+    right: -20px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -543,14 +657,36 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
       <li><a href="index.html#insights">Insights</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
     </ul>
-    <a href="https://calendly.com/hello-deliveryedge/30min" class="nav-cta">Book a Call</a>
+    <a href="questionnaire.html" class="nav-cta">Book a Call</a>
   </div>
 </nav>
 
 <section class="article-hero">
   <div class="hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#insights">Insights</a> / Article</div>
-    <span class="article-cat">PROMOS</span>
+    <div class="breadcrumb"><!-- LANGUAGE SWITCHER -->
+<div class="lang-switcher" id="langSwitcher">
+  <button class="lang-toggle" id="langToggle" aria-label="Change language">
+    <span class="lang-flag" id="langFlagCurrent">🇺🇸</span>
+    <span class="lang-code" id="langCodeCurrent">EN</span>
+    <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="lang-menu" id="langMenu">
+    <button class="lang-option" data-lang="en">
+      <span class="lang-flag">🇺🇸</span>
+      <span class="lang-option-text">English</span>
+      <span class="lang-check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="es">
+      <span class="lang-flag">🇪🇸</span>
+      <span class="lang-option-text">Español</span>
+      <span class="lang-check">✓</span>
+    </button>
+  </div>
+</div>
+<a href="index.html">Home</a> / <a href="index.html#insights">Insights</a> / Article</div>
+    <span class="article-cat" data-en="PROMOS" data-es="PROMOS">PROMOS</span>
     <h1 class="article-title">The promo trap: discounts that <em>quietly destroy</em> margins.</h1>
     <div class="article-meta">
       <span><strong>By Baptiste Petit</strong> · Founder</span>
@@ -576,31 +712,31 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
 </section>
 
 <article class="article-body">
-  <p class="article-lede">Most operators think running a discount is the safe way to boost orders. The math says otherwise. Here is exactly how the wrong promo loses you money — and what to run instead.</p>
+  <p class="article-lede">Most operators think running a discount is the safe way to boost orders. The math says otherwise. Here is exactly how the wrong promo loses you money, and what to run instead.</p>
 
   <p>"Run a promo" is the most common advice restaurants get when their delivery numbers are down. And it's also one of the fastest ways to destroy your margin without realizing it.</p>
 
-<p>I've seen operators celebrate a "successful" promo week because order count went up 40% — without realizing they lost $800 on the week because every order came with a 25% platform-funded discount where <strong>they paid most of it.</strong></p>
+<p>I've seen operators celebrate a "successful" promo week because order count went up 40%, without realizing they lost $800 on the week because every order came with a 25% platform-funded discount where <strong>they paid most of it.</strong></p>
 
 <p>Let me walk you through the actual math.</p>
 
-<h2>The economics of a typical delivery order</h2>
+<h2><span data-en="The economics of a typical delivery order" data-es="La economía de un pedido típico de delivery">The economics of a typical delivery order</span></h2>
 
-<p>On a $20 order, here's roughly where the money goes:</p>
+<p><span data-en="On a $20 order, here's roughly where the money goes:" data-es="En un pedido de $20, aquí es aproximadamente a dónde va el dinero:">On a $20 order, here's roughly where the money goes:</span></p>
 
 <ul>
-  <li>Platform commission: 25–30% → ~$5–6 to Uber/DoorDash</li>
-  <li>Food cost: 28–33% → ~$6–7 to ingredients</li>
-  <li>Packaging: 3–5% → ~$0.60–1</li>
-  <li>Labor allocation: 20–25% → ~$4–5</li>
-  <li><strong>Remaining margin: $2–4 per order</strong></li>
+  <li>Platform commission: 25-30% → ~$5-6 to Uber/DoorDash</li>
+  <li>Food cost: 28-33% → ~$6-7 to ingredients</li>
+  <li>Packaging: 3-5% → ~$0.60-1</li>
+  <li>Labor allocation: 20-25% → ~$4-5</li>
+  <li><strong>Remaining margin: $2-4 per order</strong></li>
 </ul>
 
-<p>Your average order nets you $2–4 on a healthy day. <strong>That's your working margin.</strong></p>
+<p>Your average order nets you $2-4 on a healthy day. <strong>That's your working margin.</strong></p>
 
-<h2>What a "20% off" promo actually does</h2>
+<h2><span data-en="What a &quot;20% off&quot; promo actually does" data-es="Lo que realmente hace una promo de &quot;20% off&quot;">What a "20% off" promo actually does</span></h2>
 
-<p>Let's say you run "20% off entire menu" for a week. Customer sees $20 cart, pays $16. Here's what changes:</p>
+<p><span data-en="Let's say you run &quot;20% off entire menu&quot; for a week. Customer sees $20 cart, pays $16. Here's what changes:" data-es="Digamos que lanzas &quot;20% off menú completo&quot; por una semana. El cliente ve un carrito de $20, paga $16. Esto es lo que cambia:">Let's say you run "20% off entire menu" for a week. Customer sees $20 cart, pays $16. Here's what changes:</span></p>
 
 <ul>
   <li>Revenue: $20 → $16 per order</li>
@@ -615,32 +751,32 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   <div class="key-stat-text">is the typical margin impact of a blanket 20% discount on delivery orders. In many cases you actively lose money on each sale.</div>
 </div>
 
-<p>So if your order volume increases 30% during the promo week, but your margin per order drops 80%, the math says you're worse off.</p>
+<p><span data-en="So if your order volume increases 30% during the promo week, but your margin per order drops 80%, the math says you're worse off." data-es="Entonces si tu volumen de pedidos aumenta 30% durante la semana de promo, pero tu margen por pedido cae 80%, las matemáticas dicen que estás peor.">So if your order volume increases 30% during the promo week, but your margin per order drops 80%, the math says you're worse off.</span></p>
 
-<h2>What actually works instead</h2>
+<h2><span data-en="What actually works instead" data-es="Lo que sí funciona en su lugar">What actually works instead</span></h2>
 
-<h3>1. Platform-funded promos</h3>
-<p>Uber and DoorDash periodically run campaigns where <em>they</em> subsidize the discount — meaning the customer sees a lower price but you get paid your full amount. These are always worth participating in. They're the closest thing to a free lunch in this business.</p>
+<h3><span data-en="1. Platform-funded promos" data-es="1. Promos financiadas por la plataforma">1. Platform-funded promos</span></h3>
+<p>Uber and DoorDash periodically run campaigns where <em>they</em> subsidize the discount, meaning the customer sees a lower price but you get paid your full amount. These are always worth participating in. They're the closest thing to a free lunch in this business.</p>
 
-<h3>2. Bundle-based upsells</h3>
-<p>A "combo" that includes an item customers wouldn't normally add (a drink, a side) grows AOV without discounting. The customer feels like they got a deal. You actually make more per order.</p>
+<h3><span data-en="2. Bundle-based upsells" data-es="2. Upsells basados en bundles">2. Bundle-based upsells</span></h3>
+<p><span data-en="A &quot;combo&quot; that includes an item customers wouldn't normally add (a drink, a side) grows AOV without discounting. The customer feels like they got a deal. You actually make more per order." data-es="Un &quot;combo&quot; que incluye un item que los clientes normalmente no agregarían (una bebida, un acompañamiento) hace crecer el AOV sin descuento. El cliente siente que obtuvo una oferta. Tú de hecho ganas más por pedido.">A "combo" that includes an item customers wouldn't normally add (a drink, a side) grows AOV without discounting. The customer feels like they got a deal. You actually make more per order.</span></p>
 
-<h3>3. High-AOV-threshold promos</h3>
-<p>"Spend $30, save $5" forces customers to order more than they normally would. The $5 off on a $30 order is much less painful than 20% off on $20.</p>
+<h3><span data-en="3. High-AOV-threshold promos" data-es="3. Promos con umbral alto de AOV">3. High-AOV-threshold promos</span></h3>
+<p><span data-en="&quot;Spend $30, save $5&quot; forces customers to order more than they normally would. The $5 off on a $30 order is much less painful than 20% off on $20." data-es="&quot;Gasta $30, ahorra $5&quot; obliga a los clientes a pedir más de lo que normalmente pedirían. El descuento de $5 en un pedido de $30 es mucho menos doloroso que 20% off en $20.">"Spend $30, save $5" forces customers to order more than they normally would. The $5 off on a $30 order is much less painful than 20% off on $20.</span></p>
 
-<h3>4. Time-of-day promos</h3>
-<p>Running a discount only during your slowest hours (usually 2–5pm) fills capacity you were paying for anyway. Your fixed costs are sunk. Any order above food + packaging cost is net positive.</p>
+<h3><span data-en="4. Time-of-day promos" data-es="4. Promos por hora del día">4. Time-of-day promos</span></h3>
+<p><span data-en="Running a discount only during your slowest hours (usually 2-5pm) fills capacity you were paying for anyway. Your fixed costs are sunk. Any order above food + packaging cost is net positive." data-es="Correr un descuento solo durante tus horas más lentas (usualmente 2-5pm) llena capacidad por la que ya estabas pagando de todos modos. Tus costos fijos están hundidos. Cualquier pedido por encima del costo de comida + empaque es positivo neto.">Running a discount only during your slowest hours (usually 2-5pm) fills capacity you were paying for anyway. Your fixed costs are sunk. Any order above food + packaging cost is net positive.</span></p>
 
 <div class="callout">
   <div class="callout-label">RULE OF THUMB</div>
-  <p>Never run a blanket discount greater than 10% unless the platform is funding at least half of it. Full stop.</p>
+  <p><span data-en="Never run a blanket discount greater than 10% unless the platform is funding at least half of it. Full stop." data-es="Nunca corras un descuento general mayor al 10% a menos que la plataforma esté financiando al menos la mitad. Punto.">Never run a blanket discount greater than 10% unless the platform is funding at least half of it. Full stop.</span></p>
 </div>
 
-<h2>The retention trap</h2>
+<h2><span data-en="The retention trap" data-es="La trampa de la retención">The retention trap</span></h2>
 
-<p>Here's the other half of the story. Customers acquired through heavy discounts don't come back at full price. You've trained them that your restaurant is discounted.</p>
+<p><span data-en="Here's the other half of the story. Customers acquired through heavy discounts don't come back at full price. You've trained them that your restaurant is discounted." data-es="Aquí está la otra mitad de la historia. Los clientes adquiridos a través de fuertes descuentos no vuelven a precio completo. Los has entrenado que tu restaurante tiene descuento.">Here's the other half of the story. Customers acquired through heavy discounts don't come back at full price. You've trained them that your restaurant is discounted.</span></p>
 
-<p>Over 12 months, a restaurant that relies on heavy promotion typically shows these patterns:</p>
+<p><span data-en="Over 12 months, a restaurant that relies on heavy promotion typically shows these patterns:" data-es="En 12 meses, un restaurante que depende de fuerte promoción típicamente muestra estos patrones:">Over 12 months, a restaurant that relies on heavy promotion typically shows these patterns:</span></p>
 
 <ul>
   <li>High volume during promo weeks, low volume otherwise</li>
@@ -649,26 +785,26 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   <li>The promo becomes permanent because revenue collapses without it</li>
 </ul>
 
-<p>That's how operators end up running 20% off 365 days a year, convinced they can't stop because sales will crash. And technically, they're right — but only because they trained their customer base to never pay full price.</p>
+<p><span data-en="That's how operators end up running 20% off 365 days a year, convinced they can't stop because sales will crash. And technically, they're right, but only because they trained their customer base to never pay full price." data-es="Así es como los operadores terminan corriendo 20% off 365 días al año, convencidos de que no pueden parar porque las ventas caerán. Y técnicamente, tienen razón, pero solo porque entrenaron a su base de clientes a nunca pagar precio completo.">That's how operators end up running 20% off 365 days a year, convinced they can't stop because sales will crash. And technically, they're right, but only because they trained their customer base to never pay full price.</span></p>
 
-<h2>The discipline that works</h2>
+<h2><span data-en="The discipline that works" data-es="La disciplina que funciona">The discipline that works</span></h2>
 
-<p>After 6 years and 4 concepts, here's what I've actually seen drive durable growth:</p>
+<p><span data-en="After 6 years and 4 concepts, here's what I've actually seen drive durable growth:" data-es="Después de 6 años y 4 conceptos, esto es lo que realmente he visto que impulsa crecimiento duradero:">After 6 years and 4 concepts, here's what I've actually seen drive durable growth:</span></p>
 
 <ul>
   <li>First 45 days: hit the platform with meaningful promos to build momentum and reviews</li>
   <li>After the honeymoon: switch to bundle logic, platform-funded promos, and AOV threshold offers</li>
   <li>Reserve blanket discounts for launch weeks, slow seasons, and strategic competitive moments only</li>
-  <li>Track margin per order, not just order count — the only number that really matters</li>
+  <li>Track margin per order, not just order count, the only number that really matters</li>
 </ul>
 
-<p>Boring? Maybe. But it's what actually builds a restaurant that makes money instead of chasing volume at break-even.</p>
+<p><span data-en="Boring? Maybe. But it's what actually builds a restaurant that makes money instead of chasing volume at break-even." data-es="¿Aburrido? Tal vez. Pero es lo que realmente construye un restaurante que gana dinero en vez de perseguir volumen al punto de equilibrio.">Boring? Maybe. But it's what actually builds a restaurant that makes money instead of chasing volume at break-even.</span></p>
 
   <div class="article-cta">
   <div class="ac-inner">
     <div class="ac-title">Want us to audit your restaurant?</div>
     <div class="ac-desc">Free 30-minute strategy call. No pitch, no commitment. We look at your actual numbers and tell you what's leaking money.</div>
-    <a href="https://calendly.com/hello-deliveryedge/30min" class="ac-btn">Book a Free Audit →</a>
+    <a href="questionnaire.html" class="ac-btn">Book a Free Audit →</a>
   </div>
 </div>
 </article>
@@ -696,12 +832,88 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:hello@deliveryedge.co">hello@deliveryedge.co</a></li>
-        <li><a href="https://calendly.com/hello-deliveryedge/30min">Book a call</a></li>
+        <li><a href="questionnaire.html" data-en="Book a call" data-es="Reservar llamada">Book a call</a></li>
         <li><a href="#">Miami, FL</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom"><span>© 2025 DELIVERYEDGE. ALL RIGHTS RESERVED.</span><span>DELIVERYEDGE.CO</span></div>
 </footer>
+<script>
+// LANGUAGE SWITCHER LOGIC
+(function() {
+  const switcher = document.getElementById('langSwitcher');
+  const toggle = document.getElementById('langToggle');
+  const menu = document.getElementById('langMenu');
+  if (!switcher || !toggle || !menu) return;
+
+  // Get saved language or default to EN
+  let currentLang = localStorage.getItem('de_lang') || 'en';
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    try { localStorage.setItem('de_lang', lang); } catch(e) {}
+
+    // Update toggle display
+    const flag = lang === 'es' ? '🇪🇸' : '🇺🇸';
+    const code = lang.toUpperCase();
+    document.getElementById('langFlagCurrent').textContent = flag;
+    document.getElementById('langCodeCurrent').textContent = code;
+
+    // Update active state in menu
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+
+    // Set HTML lang attribute
+    document.documentElement.lang = lang;
+
+    // Translate all elements with data-en/data-es
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const esText = el.getAttribute('data-es');
+      const enText = el.getAttribute('data-en');
+      if (lang === 'es' && esText) {
+        el.innerHTML = esText;
+      } else if (enText) {
+        el.innerHTML = enText;
+      }
+    });
+
+    // Handle placeholders with data-en-placeholder / data-es-placeholder
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+      const esP = el.getAttribute('data-es-placeholder');
+      const enP = el.getAttribute('data-en-placeholder');
+      if (lang === 'es' && esP) {
+        el.placeholder = esP;
+      } else if (enP) {
+        el.placeholder = enP;
+      }
+    });
+  }
+
+  // Toggle dropdown
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    switcher.classList.toggle('open');
+  });
+
+  // Option clicks
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      applyLanguage(lang);
+      switcher.classList.remove('open');
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', () => {
+    switcher.classList.remove('open');
+  });
+
+  // Initialize with saved language
+  applyLanguage(currentLang);
+})();
+</script>
 </body>
 </html>
