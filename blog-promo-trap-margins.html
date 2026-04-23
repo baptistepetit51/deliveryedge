@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The promo trap: discounts that quietly destroy margins. — DeliveryEdge</title>
+<meta name="description" content="Most operators think running a discount is the safe way to boost orders. The math says otherwise. Here is exactly how the wrong promo loses you money — and">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Archivo', sans-serif;
+  background: #f8f6f1;
+  color: #0a0a0a;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+:root {
+  --orange: #FF5000;
+  --orange-light: #FF7733;
+  --black: #0a0a0a;
+  --dark: #141414;
+  --cream: #F4F0E8;
+  --off-white: #F8F6F1;
+  --border-dark: rgba(255,255,255,0.08);
+  --muted-dark: rgba(255,255,255,0.5);
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.logo {
+  color: #fff; text-decoration: none;
+  display: flex; align-items: center; gap: 12px;
+}
+.nav-right { display: flex; gap: 40px; align-items: center; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: #fff; text-decoration: none; font-size: 13px;
+  font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: #fff; transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  background: var(--orange); color: #fff !important;
+  padding: 10px 22px; font-size: 12px; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase;
+  text-decoration: none; transition: transform 0.2s;
+}
+.nav-cta:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 rgba(255,80,0,0.4); }
+
+/* HERO */
+.article-hero {
+  padding: 160px 48px 80px;
+  background: var(--black);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.article-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+.article-hero::after {
+  content: '';
+  position: absolute;
+  top: 20%; right: -5%;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, var(--orange) 0%, transparent 60%);
+  opacity: 0.12; filter: blur(60px);
+}
+.hero-inner {
+  max-width: 840px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.breadcrumb {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+.breadcrumb a { color: var(--orange); text-decoration: none; }
+.breadcrumb a:hover { color: #fff; }
+.article-cat {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  padding: 6px 12px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+.article-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 32px;
+  color: #fff;
+}
+.article-title em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--orange);
+}
+.article-meta {
+  display: flex;
+  gap: 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.5);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.article-meta strong { color: #fff; font-weight: 500; }
+
+/* CONTENT */
+.article-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 32px;
+}
+.article-lede {
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px;
+  line-height: 1.45;
+  color: #0a0a0a;
+  margin-bottom: 48px;
+  font-style: italic;
+  padding-left: 24px;
+  border-left: 3px solid var(--orange);
+}
+.article-body h2 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 36px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #0a0a0a;
+  margin-top: 56px;
+  margin-bottom: 20px;
+}
+.article-body h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+  margin-top: 40px;
+  margin-bottom: 14px;
+}
+.article-body p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(0,0,0,0.8);
+  margin-bottom: 22px;
+}
+.article-body p strong {
+  color: #0a0a0a;
+  font-weight: 700;
+}
+.article-body ul, .article-body ol {
+  margin: 22px 0 22px 24px;
+  padding-left: 0;
+}
+.article-body li {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(0,0,0,0.8);
+  margin-bottom: 12px;
+  padding-left: 12px;
+}
+.article-body ul li {
+  list-style: none;
+  position: relative;
+}
+.article-body ul li::before {
+  content: '→';
+  position: absolute;
+  left: -20px;
+  color: var(--orange);
+  font-weight: 700;
+}
+.callout {
+  background: var(--black);
+  color: #fff;
+  padding: 32px;
+  margin: 40px 0;
+  position: relative;
+  border-left: 4px solid var(--orange);
+}
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.callout p {
+  color: rgba(255,255,255,0.9);
+  font-size: 16px;
+  margin: 0;
+}
+.key-stat {
+  background: rgba(255,80,0,0.08);
+  border: 1px solid var(--orange);
+  padding: 24px;
+  margin: 32px 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.key-stat-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--orange);
+  letter-spacing: -0.03em;
+}
+.key-stat-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(0,0,0,0.75);
+}
+.article-divider {
+  height: 1px;
+  background: rgba(0,0,0,0.1);
+  margin: 56px 0;
+  position: relative;
+}
+.article-divider::after {
+  content: '✦';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f8f6f1;
+  color: var(--orange);
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+/* CTA BOX */
+.article-cta {
+  margin: 56px 0;
+  padding: 40px;
+  background: var(--orange);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.article-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.ac-inner { position: relative; }
+.ac-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.ac-desc {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.95);
+}
+.ac-btn {
+  display: inline-block;
+  background: #fff;
+  color: var(--orange);
+  padding: 14px 24px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.ac-btn:hover { transform: translate(-3px, -3px); box-shadow: 5px 5px 0 #0a0a0a; }
+
+/* RELATED / BACK */
+.back-to-blog {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px 40px;
+}
+.back-to-blog a {
+  color: var(--orange);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.back-to-blog a:hover { color: #0a0a0a; }
+
+/* FOOTER */
+footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px solid var(--orange); color: #fff; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 60px; max-width: 1400px; margin-left: auto; margin-right: auto; }
+.footer-brand { font-family: 'Archivo Black', sans-serif; font-size: 40px; letter-spacing: -0.03em; line-height: 0.9; color: #fff; margin-bottom: 16px; }
+.footer-brand span { color: var(--orange); }
+.footer-tagline { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 280px; }
+.footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; font-weight: 500; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--orange); }
+.footer-bottom { display: flex; justify-content: space-between; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; color: rgba(255,255,255,0.5); max-width: 1400px; margin: 0 auto; }
+
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .article-hero { padding: 120px 24px 60px; }
+  .article-body { padding: 60px 24px; }
+  .article-lede { font-size: 20px; padding-left: 16px; }
+  .article-body h2 { font-size: 28px; }
+  .key-stat { grid-template-columns: 1fr; gap: 12px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">
+    <svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+    <line x1="12" y1="6" x2="12" y2="19" stroke="#FF5000" stroke-width="2.8" stroke-linecap="round"/>
+    <line x1="18" y1="6" x2="18" y2="19" stroke="#FF5000" stroke-width="2.8" stroke-linecap="round"/>
+    <line x1="24" y1="6" x2="24" y2="19" stroke="#FF5000" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M12 19 Q18 26 18 30 L18 38" stroke="#FF5000" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+    <path d="M30 17 L39 22 L30 27" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="39" y1="22" x2="29" y2="22" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round"/>
+  </svg>
+    <span style="font-family:'Archivo Black',sans-serif;font-size:20px;letter-spacing:-1px">DELIVERY<span style="color:#FF5000">EDGE</span></span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#insights">Insights</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <a href="https://calendly.com/hello-deliveryedge/30min" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<section class="article-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#insights">Insights</a> / Article</div>
+    <span class="article-cat">PROMOS</span>
+    <h1 class="article-title">The promo trap: discounts that <em>quietly destroy</em> margins.</h1>
+    <div class="article-meta">
+      <span><strong>By Baptiste Petit</strong> · Founder</span>
+      <span>7 min read</span>
+      <span>2025</span>
+    </div>
+  </div>
+</section>
+
+<article class="article-body">
+  <p class="article-lede">Most operators think running a discount is the safe way to boost orders. The math says otherwise. Here is exactly how the wrong promo loses you money — and what to run instead.</p>
+
+  <p>"Run a promo" is the most common advice restaurants get when their delivery numbers are down. And it's also one of the fastest ways to destroy your margin without realizing it.</p>
+
+<p>I've seen operators celebrate a "successful" promo week because order count went up 40% — without realizing they lost $800 on the week because every order came with a 25% platform-funded discount where <strong>they paid most of it.</strong></p>
+
+<p>Let me walk you through the actual math.</p>
+
+<h2>The economics of a typical delivery order</h2>
+
+<p>On a $20 order, here's roughly where the money goes:</p>
+
+<ul>
+  <li>Platform commission: 25–30% → ~$5–6 to Uber/DoorDash</li>
+  <li>Food cost: 28–33% → ~$6–7 to ingredients</li>
+  <li>Packaging: 3–5% → ~$0.60–1</li>
+  <li>Labor allocation: 20–25% → ~$4–5</li>
+  <li><strong>Remaining margin: $2–4 per order</strong></li>
+</ul>
+
+<p>Your average order nets you $2–4 on a healthy day. <strong>That's your working margin.</strong></p>
+
+<h2>What a "20% off" promo actually does</h2>
+
+<p>Let's say you run "20% off entire menu" for a week. Customer sees $20 cart, pays $16. Here's what changes:</p>
+
+<ul>
+  <li>Revenue: $20 → $16 per order</li>
+  <li>Platform commission: stays based on $20 gross (they still take their cut)</li>
+  <li>Food + packaging: unchanged</li>
+  <li>Labor: unchanged</li>
+  <li><strong>Your margin: $2-4 → −$1 to $1 per order</strong></li>
+</ul>
+
+<div class="key-stat">
+  <div class="key-stat-num">−50%</div>
+  <div class="key-stat-text">is the typical margin impact of a blanket 20% discount on delivery orders. In many cases you actively lose money on each sale.</div>
+</div>
+
+<p>So if your order volume increases 30% during the promo week, but your margin per order drops 80%, the math says you're worse off.</p>
+
+<h2>What actually works instead</h2>
+
+<h3>1. Platform-funded promos</h3>
+<p>Uber and DoorDash periodically run campaigns where <em>they</em> subsidize the discount — meaning the customer sees a lower price but you get paid your full amount. These are always worth participating in. They're the closest thing to a free lunch in this business.</p>
+
+<h3>2. Bundle-based upsells</h3>
+<p>A "combo" that includes an item customers wouldn't normally add (a drink, a side) grows AOV without discounting. The customer feels like they got a deal. You actually make more per order.</p>
+
+<h3>3. High-AOV-threshold promos</h3>
+<p>"Spend $30, save $5" forces customers to order more than they normally would. The $5 off on a $30 order is much less painful than 20% off on $20.</p>
+
+<h3>4. Time-of-day promos</h3>
+<p>Running a discount only during your slowest hours (usually 2–5pm) fills capacity you were paying for anyway. Your fixed costs are sunk. Any order above food + packaging cost is net positive.</p>
+
+<div class="callout">
+  <div class="callout-label">RULE OF THUMB</div>
+  <p>Never run a blanket discount greater than 10% unless the platform is funding at least half of it. Full stop.</p>
+</div>
+
+<h2>The retention trap</h2>
+
+<p>Here's the other half of the story. Customers acquired through heavy discounts don't come back at full price. You've trained them that your restaurant is discounted.</p>
+
+<p>Over 12 months, a restaurant that relies on heavy promotion typically shows these patterns:</p>
+
+<ul>
+  <li>High volume during promo weeks, low volume otherwise</li>
+  <li>Declining average order value over time</li>
+  <li>Customer reviews start complaining when prices "jump" (which is actually just returning to normal)</li>
+  <li>The promo becomes permanent because revenue collapses without it</li>
+</ul>
+
+<p>That's how operators end up running 20% off 365 days a year, convinced they can't stop because sales will crash. And technically, they're right — but only because they trained their customer base to never pay full price.</p>
+
+<h2>The discipline that works</h2>
+
+<p>After 6 years and 4 concepts, here's what I've actually seen drive durable growth:</p>
+
+<ul>
+  <li>First 45 days: hit the platform with meaningful promos to build momentum and reviews</li>
+  <li>After the honeymoon: switch to bundle logic, platform-funded promos, and AOV threshold offers</li>
+  <li>Reserve blanket discounts for launch weeks, slow seasons, and strategic competitive moments only</li>
+  <li>Track margin per order, not just order count — the only number that really matters</li>
+</ul>
+
+<p>Boring? Maybe. But it's what actually builds a restaurant that makes money instead of chasing volume at break-even.</p>
+
+  <div class="article-cta">
+  <div class="ac-inner">
+    <div class="ac-title">Want us to audit your restaurant?</div>
+    <div class="ac-desc">Free 30-minute strategy call. No pitch, no commitment. We look at your actual numbers and tell you what's leaking money.</div>
+    <a href="https://calendly.com/hello-deliveryedge/30min" class="ac-btn">Book a Free Audit →</a>
+  </div>
+</div>
+</article>
+
+<div class="back-to-blog">
+  <a href="index.html#insights">← Back to all insights</a>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">DELIVERY<span>EDGE</span>.</div>
+      <p class="footer-tagline">Menu & platform optimization for restaurants and ghost kitchens on delivery apps.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@deliveryedge.co">hello@deliveryedge.co</a></li>
+        <li><a href="https://calendly.com/hello-deliveryedge/30min">Book a call</a></li>
+        <li><a href="#">Miami, FL</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 DELIVERYEDGE. ALL RIGHTS RESERVED.</span><span>DELIVERYEDGE.CO</span></div>
+</footer>
+</body>
+</html>
