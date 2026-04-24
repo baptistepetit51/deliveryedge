@@ -965,6 +965,17 @@ body {
       </div>
 
       <div class="field">
+        <label data-en="Do you have a brand guideline?" data-es="¿Tienes una guía de marca?">Do you have a brand guideline?</label>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:12px;line-height:1.5" data-en="Logo files, colors, fonts, existing visuals. If yes, it helps us work faster and deliver on-brand visuals." data-es="Archivos de logo, colores, fuentes, visuales existentes. Si sí, nos ayuda trabajar más rápido y entregar visuales alineados con tu marca.">Logo files, colors, fonts, existing visuals. If yes, it helps us work faster and deliver on-brand visuals.</p>
+        <div class="pill-options">
+          <button type="button" class="pill-opt" data-field="brand_guidelines" data-value="yes_full" data-en="Yes, full brand kit" data-es="Sí, kit completo de marca">Yes, full brand kit</button>
+          <button type="button" class="pill-opt" data-field="brand_guidelines" data-value="yes_basic" data-en="Yes, basic (logo + colors)" data-es="Sí, básico (logo + colores)">Yes, basic (logo + colors)</button>
+          <button type="button" class="pill-opt" data-field="brand_guidelines" data-value="no_need_help" data-en="No, need help creating one" data-es="No, necesito ayuda para crear uno">No, need help creating one</button>
+          <button type="button" class="pill-opt" data-field="brand_guidelines" data-value="no_existing" data-en="No existing brand yet" data-es="Aún sin marca existente">No existing brand yet</button>
+        </div>
+      </div>
+
+      <div class="field">
         <label data-en="Anything else you want us to know? (optional)" data-es="¿Algo más que quieras que sepamos? (opcional)">Anything else you want us to know? (optional)</label>
         <textarea name="notes" placeholder="Any specific context, questions, or goals..." data-en-placeholder="Any specific context, questions, or goals..." data-es-placeholder="Cualquier contexto específico, preguntas u objetivos..." rows="4"></textarea>
       </div>
@@ -979,6 +990,7 @@ body {
       <input type="hidden" name="stage" id="stageHidden">
       <input type="hidden" name="goal" id="goalHidden">
       <input type="hidden" name="budget" id="budgetHidden">
+      <input type="hidden" name="brand_guidelines" id="brand_guidelinesHidden">
 
       <div class="step-nav">
         <button type="button" class="btn-back" onclick="prevStep()" data-en="← Back" data-es="← Atrás">← Back</button>
@@ -1214,13 +1226,18 @@ document.querySelectorAll('.pill-opt').forEach(pill => {
     document.documentElement.lang = lang;
 
     // Translate all elements with data-en/data-es
+    function decodeHTML(text) {
+      const txt = document.createElement('textarea');
+      txt.innerHTML = text;
+      return txt.value;
+    }
     document.querySelectorAll('[data-en]').forEach(el => {
       const esText = el.getAttribute('data-es');
       const enText = el.getAttribute('data-en');
       if (lang === 'es' && esText) {
-        el.innerHTML = esText;
+        el.innerHTML = decodeHTML(esText);
       } else if (enText) {
-        el.innerHTML = enText;
+        el.innerHTML = decodeHTML(enText);
       }
     });
 
