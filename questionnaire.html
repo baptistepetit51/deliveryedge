@@ -577,6 +577,151 @@ body {
   }
 }
 
+
+/* iOS scroll fixes & mobile compaction */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body {
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent layout shifts from reveal animations on mobile */
+@media (max-width: 900px) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  /* Compact mobile spacing */
+  .section {
+    padding: 60px 24px !important;
+  }
+  .section-eyebrow {
+    margin-bottom: 16px !important;
+  }
+  
+  /* Reduce hero size on mobile */
+  .hero {
+    min-height: auto !important;
+    padding: 100px 24px 40px !important;
+  }
+  .hero-headline {
+    font-size: clamp(48px, 13vw, 80px) !important;
+    line-height: 0.9 !important;
+  }
+  .hero-headline .line-2 {
+    padding-left: 16px !important;
+    font-size: clamp(54px, 14vw, 90px) !important;
+  }
+  .hero-desc {
+    margin: 24px 0 28px !important;
+    font-size: 15px !important;
+  }
+  .hero-stack-cards {
+    margin-top: 32px !important;
+  }
+  .stack-card {
+    padding: 14px 16px !important;
+  }
+  .sc-value {
+    font-size: 24px !important;
+  }
+  .sc-label {
+    font-size: 8px !important;
+  }
+  
+  /* Make pillars more compact - hide the visual on mobile, just show text */
+  .pillar-panel {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .pp-right {
+    display: none !important; /* Hide complex visuals on mobile */
+  }
+  
+  /* Compact problem section */
+  .problem-rows {
+    gap: 16px !important;
+  }
+  .problem-row {
+    padding: 20px !important;
+    grid-template-columns: 1fr !important;
+  }
+  .pr-visual {
+    display: none !important;
+  }
+  
+  /* Compact case study */
+  .case-study {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    margin-top: 40px !important;
+  }
+  
+  /* Compact pricing - keep all 3 tiers but smaller */
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .pricing-card {
+    padding: 28px 24px !important;
+  }
+  
+  /* About timeline more compact */
+  .timeline {
+    padding-left: 24px !important;
+  }
+  .timeline-item {
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+  }
+  
+  /* FAQ items smaller padding */
+  .faq-item {
+    padding: 20px !important;
+  }
+  
+  /* Blog grid stack */
+  .blog-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  
+  /* Footer compaction */
+  footer {
+    padding: 40px 24px !important;
+  }
+  .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  
+  /* Sliders touch optimization */
+  .ba-slider-wrapper, .cs-slider-new {
+    touch-action: pan-y !important;
+  }
+  .ba-handle-circle, .cs-knob {
+    touch-action: none !important;
+  }
+}
+
+/* Extra small mobile (iPhone SE) */
+@media (max-width: 380px) {
+  .section {
+    padding: 48px 20px !important;
+  }
+  .hero-headline {
+    font-size: 40px !important;
+  }
+}
+
 </style>
 </head>
 <body>
