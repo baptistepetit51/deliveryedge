@@ -722,6 +722,91 @@ body {
   }
 }
 
+/* ============================================ */
+/* PROFILE BADGE — persona context bar           */
+/* Shown when user came from index path selector */
+/* ============================================ */
+.profile-badge {
+  background: linear-gradient(135deg, rgba(255,80,0,0.1), rgba(255,80,0,0.04));
+  border: 1px solid rgba(255,80,0,0.3);
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  animation: pbSlideIn 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes pbSlideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.pb-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+.pb-icon {
+  width: 26px; height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--orange);
+  border-radius: 50%;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(255,80,0,0.15);
+}
+.pb-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+#profileBadgeName {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 15px;
+  color: var(--orange);
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pb-edit {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.pb-edit:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  transform: translateY(-1px);
+}
+@media (max-width: 600px) {
+  .profile-badge {
+    padding: 12px 14px;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  #profileBadgeName { font-size: 13px; }
+  .pb-label { font-size: 10px; letter-spacing: 1px; }
+  .pb-edit { padding: 6px 10px; font-size: 9px; }
+}
 </style>
 </head>
 <body>
@@ -781,6 +866,20 @@ body {
 <main class="qn-main">
   <form id="qForm" onsubmit="return false;">
 
+    <!-- Persona badge — shown when user came from index path selector -->
+    <div class="profile-badge" id="profileBadge" style="display:none">
+      <div class="pb-content">
+        <span class="pb-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="pb-label" data-en="Your path:" data-es="Tu camino:">Your path:</span>
+        <strong id="profileBadgeName"></strong>
+      </div>
+      <button type="button" class="pb-edit" onclick="editProfile()">
+        <span data-en="Change" data-es="Cambiar">Change</span>
+      </button>
+    </div>
+
     <!-- STEP 1: Profile -->
     <div class="step active" data-step="1">
       <div class="step-tag" data-en="01 / YOUR PROFILE" data-es="01 / TU PERFIL">01 / YOUR PROFILE</div>
@@ -825,6 +924,16 @@ body {
           <div class="opt-text">
             <div class="opt-title"><span data-en="I run multiple locations / brands" data-es="Opero múltiples ubicaciones / marcas">I run multiple locations / brands</span></div>
             <div class="opt-sub"><span data-en="2+ restaurants, need optimization across portfolio" data-es="2+ restaurantes, necesito optimización en todo el portfolio">2+ restaurants, need optimization across portfolio</span></div>
+          </div>
+          <span class="opt-arrow">→</span>
+        </button>
+        <button type="button" class="opt" data-field="profile" data-value="existing_not_on_apps">
+          <div class="opt-check">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="opt-text">
+            <div class="opt-title"><span data-en="My restaurant isn't on delivery apps yet" data-es="Mi restaurante aún no está en apps de delivery">My restaurant isn't on delivery apps yet</span></div>
+            <div class="opt-sub"><span data-en="Existing physical or kitchen, ready to launch on Uber Eats / DoorDash" data-es="Físico o cocina existente, listo para lanzar en Uber Eats / DoorDash">Existing physical or kitchen, ready to launch on Uber Eats / DoorDash</span></div>
           </div>
           <span class="opt-arrow">→</span>
         </button>
@@ -1191,6 +1300,17 @@ function showStep(n) {
     updateProgress();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // Toggle profile badge: visible on steps 2+ when profile is set
+  const badge = document.getElementById('profileBadge');
+  if (badge) {
+    if (n > 1 && state.answers.profile) {
+      badge.style.display = 'flex';
+      updateBadgeLabel();
+    } else {
+      badge.style.display = 'none';
+    }
+  }
 }
 
 function nextStep() {
@@ -1240,21 +1360,27 @@ function updateButtonsState() {
 
 // Handle profile selection routing
 function applyProfileRouting(profile) {
-  const isExisting = ['existing_physical', 'existing_ghost', 'multi_location'].includes(profile);
+  const isExisting = ['existing_physical', 'existing_ghost', 'multi_location', 'existing_not_on_apps'].includes(profile);
   const isLaunching = profile === 'launching_new';
+  const isOnboarding = profile === 'existing_not_on_apps';
 
-  // Step 2 fields
+  // Step 2 fields — onboarding shows existing fields (cuisine type, not concept)
   document.querySelectorAll('.field-existing').forEach(el => el.style.display = isExisting ? 'block' : 'none');
   document.querySelectorAll('.field-launching').forEach(el => el.style.display = isLaunching ? 'block' : 'none');
 
-  // Step 3 sections
-  document.querySelectorAll('.existing-only').forEach(el => el.style.display = isExisting ? 'block' : 'none');
-  document.querySelectorAll('.launching-only').forEach(el => el.style.display = isLaunching ? 'block' : 'none');
+  // Step 3 sections — onboarding routes to launching-style (no orders/platforms yet, ask about stage)
+  const showLaunchingStep3 = isLaunching || isOnboarding;
+  const showExistingStep3 = isExisting && !isOnboarding;
+  document.querySelectorAll('.existing-only').forEach(el => el.style.display = showExistingStep3 ? 'block' : 'none');
+  document.querySelectorAll('.launching-only').forEach(el => el.style.display = showLaunchingStep3 ? 'block' : 'none');
 
-  // Update step 3 title
+  // Update step 3 title — different messaging for onboarding
   const step3Title = document.getElementById('step3Title');
   const step3Desc = document.getElementById('step3Desc');
-  if (isLaunching) {
+  if (isOnboarding) {
+    step3Title.innerHTML = 'When are you <em>ready to launch?</em>';
+    step3Desc.textContent = 'Helps us know your readiness for delivery apps.';
+  } else if (isLaunching) {
     step3Title.innerHTML = 'How far <em>along are you?</em>';
     step3Desc.textContent = 'Helps us know what to build with you.';
   } else {
@@ -1289,6 +1415,29 @@ document.querySelectorAll('.opt').forEach(opt => {
     updateButtonsState();
   });
 });
+
+// Profile labels for badge — bilingual
+const PROFILE_LABELS = {
+  existing_physical:    { en: 'Already on platforms',    es: 'Ya en plataformas' },
+  existing_ghost:       { en: 'Ghost kitchen operator',  es: 'Operador de ghost kitchen' },
+  multi_location:       { en: 'Multi-location operator', es: 'Operador multi-ubicación' },
+  launching_new:        { en: 'Launching from scratch',  es: 'Lanzando desde cero' },
+  existing_not_on_apps: { en: 'Not on apps yet',         es: 'Aún no en apps' }
+};
+
+function updateBadgeLabel() {
+  const profile = state.answers.profile;
+  if (!profile || !PROFILE_LABELS[profile]) return;
+  const lang = (localStorage.getItem('de_lang') || 'en');
+  const label = (PROFILE_LABELS[profile][lang] || PROFILE_LABELS[profile].en);
+  const el = document.getElementById('profileBadgeName');
+  if (el) el.textContent = label;
+}
+
+function editProfile() {
+  showStep(1);
+  updateButtonsState();
+}
 
 async function submitForm() {
   const btn = document.getElementById('submitBtn');
@@ -1396,6 +1545,9 @@ document.querySelectorAll('.pill-opt').forEach(pill => {
         el.placeholder = enP;
       }
     });
+
+    // Refresh persona badge label if visible (set dynamically, not via data-en/es attrs)
+    if (typeof updateBadgeLabel === 'function') updateBadgeLabel();
   }
 
   // Toggle dropdown
@@ -1420,6 +1572,36 @@ document.querySelectorAll('.pill-opt').forEach(pill => {
 
   // Initialize with saved language
   applyLanguage(currentLang);
+})();
+
+// ============================================
+// HANDLE INCOMING ?path= FROM INDEX PERSONA SELECTOR
+// Pre-selects profile and skips step 1
+// ============================================
+(function handleIncomingPath() {
+  const params = new URLSearchParams(window.location.search);
+  const path = params.get('path');
+  if (!path) return;
+
+  const map = {
+    live:    'existing_physical',     // user picks more granular if needed via Change button
+    launch:  'launching_new',
+    onboard: 'existing_not_on_apps'
+  };
+  const profile = map[path];
+  if (!profile) return;
+
+  const btn = document.querySelector(`.opt[data-field="profile"][data-value="${profile}"]`);
+  if (!btn) return;
+
+  // Programmatically click — triggers selection + applyProfileRouting + state update
+  btn.click();
+
+  // Skip step 1 → jump to business info (step 2). Small delay so click handler completes.
+  setTimeout(() => {
+    showStep(2);
+    updateButtonsState();
+  }, 50);
 })();
 
 </script>
