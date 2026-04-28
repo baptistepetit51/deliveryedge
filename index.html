@@ -2914,6 +2914,10 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
 }
 
 .mm-nav {
+  /* Hidden — categories are redundant with the accordion sections on mobile */
+  display: none;
+}
+.mm-nav-legacy {
   flex-grow: 1;
   padding: 20px 0 40px;
   display: flex;
@@ -2995,11 +2999,17 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
 }
 
 .mm-footer {
+  margin-top: auto;        /* push to bottom when nav is hidden */
   padding-top: 24px;
+  padding-bottom: 60px;     /* breathing room from very bottom */
   border-top: 1px solid rgba(255,255,255,0.08);
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s 0.6s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;             /* takes the empty space left by hidden nav */
 }
 .mobile-menu.open .mm-footer {
   opacity: 1;
@@ -6706,6 +6716,8 @@ footer {
     border: none !important;
     overflow: hidden;
     position: relative;
+    /* Force dark bg — body provides its own bg when open, no cream leak when collapsed */
+    background: #0a0a0a !important;
   }
   
   /* Visual separator between accordion bars */
@@ -6768,11 +6780,15 @@ footer {
   /* Title text */
   .mob-acc-title {
     flex: 1;
+    min-width: 0;
     font-family: 'Archivo Black', sans-serif;
     font-size: 17px;
     letter-spacing: -0.02em;
     text-transform: uppercase;
     line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   /* Chevron — rotates 45° to "X" when open */
@@ -6790,28 +6806,31 @@ footer {
     transform: rotate(45deg);
   }
   
-  /* The body — collapsed by default, expand on .is-open */
+  /* Body — collapsed by default (NO padding when closed = no white leak) */
   .mob-acc-body {
     max-height: 0;
+    padding: 0 !important;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, padding 0.4s ease;
   }
+  /* Open state — body gets padding only when expanded */
   .has-mobile-accordion.is-open .mob-acc-body {
     max-height: 12000px;
+    padding: 32px var(--de-space-6) 64px !important;
     opacity: 1;
-    transition: max-height 0.7s ease-out, opacity 0.5s ease 0.15s;
+    transition: max-height 0.7s ease-out, opacity 0.5s ease 0.15s, padding 0.4s ease;
   }
   
-  /* Body inner spacing — reintroduce section's normal breathing room */
-  .has-mobile-accordion .mob-acc-body {
-    padding: 32px var(--de-space-6) 64px;
-  }
-  
-  /* Light-bg sections keep their original light background inside body */
+  /* Light-bg sections keep cream bg INSIDE body when open (preserves original look) */
   .section-light .mob-acc-body {
     background: var(--de-bg-light, #FAF7F2);
     color: var(--de-text-on-light, #0a0a0a);
+  }
+  /* Dark-bg sections keep dark inside body */
+  .section-dark .mob-acc-body {
+    background: var(--de-bg-primary, #0a0a0a);
+    color: #fff;
   }
   
   /* Tighten sub-section internal paddings since outer is now controlled */
@@ -6824,7 +6843,7 @@ footer {
   .mob-acc-bar { padding: 20px 18px; gap: 12px; }
   .mob-acc-title { font-size: 16px; }
   .mob-acc-num { font-size: 10px; padding: 4px 8px; }
-  .has-mobile-accordion .mob-acc-body { padding: 28px var(--de-space-5) 52px; }
+  .has-mobile-accordion.is-open .mob-acc-body { padding: 28px var(--de-space-5) 52px !important; }
 }
 
 </style>
