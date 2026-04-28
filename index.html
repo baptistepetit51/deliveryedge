@@ -5259,14 +5259,21 @@ footer {
   /* Menu before/after compare - stack vertically on mobile */
   .menu-compare {
     grid-template-columns: 1fr !important;
-    gap: 12px !important;
+    gap: 24px !important;        /* room for the badges that pop up */
+    padding-top: 16px !important; /* space for the first badge */
   }
   
-  /* Menu mockups must shrink */
+  /* Menu mockups must shrink — but allow badges to escape vertically */
   .menu-mockup {
     padding: 14px !important;
     max-width: 100% !important;
-    overflow: hidden !important;
+    overflow: visible !important; /* badge sits at top: -10px, must not clip */
+  }
+  
+  /* Inner content can still clip */
+  .menu-mockup .mm-section,
+  .menu-mockup .mm-header {
+    overflow: hidden;
   }
   
   /* All visual mockups in pillars */
@@ -6710,13 +6717,86 @@ footer {
 .mob-acc-bar { display: none; }
 
 @media (max-width: 900px) {
+  /* Hide nav-links on mobile — even stronger to beat any cached/inline overrides */
+  body nav .nav-right .nav-links,
+  body nav .nav-links,
+  body .nav-links,
+  ul.nav-links {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+  /* Lang switcher should also stay clear of the burger button */
+  nav .lang-switcher {
+    margin-right: 8px;
+  }
+  
+  /* On mobile: hide the "EN"/"ES" text and chevron, keep just the flag.
+     Reduces nav-right footprint so the logo doesn't get cramped. */
+  nav .lang-toggle {
+    padding: 8px 10px !important;
+    gap: 0 !important;
+  }
+  nav .lang-code,
+  nav .lang-chevron {
+    display: none !important;
+  }
+  nav .lang-flag {
+    font-size: 18px !important;
+  }
+  /* Push the lang switcher away from the logo a touch */
+  nav {
+    gap: 0 !important;
+  }
+  nav .nav-right {
+    gap: 14px !important;
+  }
+  /* Keep the logo from overlapping the right group */
+  nav .logo span {
+    font-size: 18px !important;
+    letter-spacing: -0.5px !important;
+  }
+  nav .logo svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  nav .logo {
+    gap: 8px !important;
+  }
+  
+  /* Kill ID-specific section paddings (specificity 110 beats #id alone at 100) */
+  #problem.has-mobile-accordion,
+  #results.has-mobile-accordion,
+  #case-study.has-mobile-accordion,
+  #services.has-mobile-accordion,
+  #pricing.has-mobile-accordion,
+  #about.has-mobile-accordion,
+  #faq.has-mobile-accordion,
+  #insights.has-mobile-accordion {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: #0a0a0a !important;
+    overflow: hidden !important;
+  }
+  
+  /* Kill any pseudo-element glows from #services etc. that leak around bar */
+  #services.has-mobile-accordion::before,
+  #problem.has-mobile-accordion::before,
+  #results.has-mobile-accordion::before,
+  #pricing.has-mobile-accordion::before,
+  #about.has-mobile-accordion::before {
+    display: none !important;
+  }
+  
   /* Reset section padding — bar and body handle their own */
   .has-mobile-accordion {
     padding: 0 !important;
     border: none !important;
     overflow: hidden;
     position: relative;
-    /* Force dark bg — body provides its own bg when open, no cream leak when collapsed */
     background: #0a0a0a !important;
   }
   
@@ -8918,19 +8998,27 @@ document.addEventListener('keydown', (e) => {
   const bars = document.querySelectorAll('.mob-acc-bar');
   if (!bars.length) return;
   
+  // Open REAL RESULTS by default — gives visual content (images) on initial scroll
+  const resultsSection = document.querySelector('#results.has-mobile-accordion');
+  if (resultsSection) {
+    resultsSection.classList.add('is-open');
+    const resultsBar = resultsSection.querySelector('.mob-acc-bar');
+    if (resultsBar) resultsBar.setAttribute('aria-expanded', 'true');
+  }
+  
   bars.forEach(bar => {
     bar.addEventListener('click', () => {
       const sec = bar.closest('.has-mobile-accordion');
       const isOpen = sec.classList.toggle('is-open');
       bar.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       
-      // Smooth scroll the bar back into view when opening (tucks the bar at top)
+      // Smooth scroll the bar back into view when opening
       if (isOpen) {
         setTimeout(() => {
           const rect = bar.getBoundingClientRect();
           if (rect.top < 0 || rect.top > 100) {
             window.scrollBy({
-              top: rect.top - 70, // 70px from top of viewport (below any sticky elements)
+              top: rect.top - 70,
               behavior: 'smooth'
             });
           }
