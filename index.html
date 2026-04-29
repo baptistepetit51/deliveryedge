@@ -2245,6 +2245,17 @@ footer { background: var(--black); padding: 80px 48px 40px; border-top: 2px soli
   line-height: 1.5;
   letter-spacing: 0.5px;
 }
+.roi-scope-link {
+  color: #FF5000;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+.roi-scope-link:hover {
+  opacity: 0.7;
+}
 
 @media (max-width: 1024px) {
   .roi-calc { grid-template-columns: 1fr; padding: 32px 24px; gap: 40px; }
@@ -8055,9 +8066,181 @@ footer {
   </div>
 </section>
 
-<section class="has-mobile-accordion section section-light" id="pricing">
+<!-- ============================================================
+     SECTION: HONEST SCOPE — what DeliveryEdge does NOT do
+     Builds trust by setting clear expectations before pricing.
+     ============================================================ -->
+<style>
+.scope-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.scope-col {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 36px 32px;
+  background: rgba(255,255,255,0.02);
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+.scope-col:hover {
+  border-color: rgba(255, 80, 0, 0.3);
+}
+.scope-col.scope-do {
+  border-left: 3px solid #FF5000;
+}
+.scope-col.scope-dont {
+  border-left: 3px solid rgba(255,255,255,0.2);
+}
+.scope-eyebrow {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #FF5000;
+  margin-bottom: 12px;
+}
+.scope-col.scope-dont .scope-eyebrow {
+  color: rgba(255,255,255,0.4);
+}
+.scope-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+.scope-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.scope-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.85);
+}
+.scope-list li:first-child {
+  border-top: none;
+}
+.scope-list li .scope-dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FF5000;
+  margin-top: 8px;
+}
+.scope-col.scope-dont .scope-list li .scope-dot {
+  background: rgba(255,255,255,0.3);
+}
+.scope-list li strong {
+  color: #fff;
+  font-weight: 600;
+}
+.scope-quote {
+  margin-top: 56px;
+  padding: 32px 40px;
+  background: linear-gradient(135deg, rgba(255, 80, 0, 0.08), rgba(255, 80, 0, 0.02));
+  border-left: 3px solid #FF5000;
+  border-radius: 12px;
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.95);
+  letter-spacing: -0.3px;
+}
+.scope-quote em {
+  color: #FF5000;
+  font-style: normal;
+}
+.scope-attribution {
+  display: block;
+  margin-top: 16px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 768px) {
+  .scope-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .scope-col { padding: 28px 24px; }
+  .scope-title { font-size: 20px; }
+  .scope-quote {
+    margin-top: 32px;
+    padding: 24px 28px;
+    font-size: 17px;
+  }
+}
+</style>
+
+<section class="has-mobile-accordion section section-dark" id="scope">
   <button class="mob-acc-bar" type="button" aria-expanded="false">
     <span class="mob-acc-num">05</span>
+    <span class="mob-acc-title" data-en="Honest Scope" data-es="Alcance Honesto">Honest Scope</span>
+    <span class="mob-acc-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+  </button>
+  <div class="mob-acc-body">
+  <div class="section-eyebrow reveal" data-en="HONEST SCOPE" data-es="ALCANCE HONESTO">HONEST SCOPE</div>
+  <h2 class="sec-title reveal">SPECIALIST.<br><em>Not magician.</em></h2>
+  <p class="section-intro reveal"><span data-en="DeliveryEdge optimizes the platform layer with surgical precision. But platform optimization can't fix slow prep times, inconsistent food quality, or missing marketing. Here's exactly where my work ends and yours begins." data-es="DeliveryEdge optimiza la capa de plataforma con precisión quirúrgica. Pero la optimización de plataforma no puede arreglar tiempos de preparación lentos, calidad inconsistente, o marketing ausente. Aquí está exactamente dónde termina mi trabajo y empieza el tuyo.">DeliveryEdge optimizes the platform layer with surgical precision. But platform optimization can't fix slow prep times, inconsistent food quality, or missing marketing. Here's exactly where my work ends and yours begins.</span></p>
+
+  <div class="scope-grid reveal">
+    <!-- WHAT DELIVERYEDGE DOES -->
+    <div class="scope-col scope-do">
+      <div class="scope-eyebrow" data-en="WHAT I OWN" data-es="LO QUE YO MANEJO">WHAT I OWN</div>
+      <h3 class="scope-title" data-en="The platform advantage" data-es="La ventaja de plataforma">The platform advantage</h3>
+      <ul class="scope-list">
+        <li><span class="scope-dot"></span><span><strong data-en="Menu engineering" data-es="Ingeniería de menú">Menu engineering</strong> <span data-en="— item structure, bundles, upsells, pricing psychology" data-es="— estructura, paquetes, complementos, psicología de precios">— item structure, bundles, upsells, pricing psychology</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Photo direction" data-es="Dirección fotográfica">Photo direction</strong> <span data-en="— hero shots, item-by-item briefs, AI assets when budget is tight" data-es="— fotos principales, briefs por ítem, recursos AI cuando hay presupuesto limitado">— hero shots, item-by-item briefs, AI assets when budget is tight</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Algorithm signals" data-es="Señales del algoritmo">Algorithm signals</strong> <span data-en="— ranking factors, CTR, conversion, repeat rate" data-es="— factores de ranking, CTR, conversión, recompra">— ranking factors, CTR, conversion, repeat rate</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Promo strategy" data-es="Estrategia de promociones">Promo strategy</strong> <span data-en="— launch boost, retention, win-back, smart discounting" data-es="— impulso de lanzamiento, retención, recuperación, descuentos inteligentes">— launch boost, retention, win-back, smart discounting</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Platform operations" data-es="Operaciones de plataforma">Platform operations</strong> <span data-en="— commission negotiation, support escalations, ranking diagnostics" data-es="— negociación de comisión, escalaciones de soporte, diagnósticos de ranking">— commission negotiation, support escalations, ranking diagnostics</span></span></li>
+      </ul>
+    </div>
+
+    <!-- WHAT YOU OWN -->
+    <div class="scope-col scope-dont">
+      <div class="scope-eyebrow" data-en="WHAT YOU OWN" data-es="LO QUE TÚ MANEJAS">WHAT YOU OWN</div>
+      <h3 class="scope-title" data-en="The fundamentals" data-es="Los fundamentos">The fundamentals</h3>
+      <ul class="scope-list">
+        <li><span class="scope-dot"></span><span><strong data-en="Food quality &amp; consistency" data-es="Calidad y consistencia de la comida">Food quality &amp; consistency</strong> <span data-en="— every order matches the photo, every time" data-es="— cada orden coincide con la foto, siempre">— every order matches the photo, every time</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Prep times" data-es="Tiempos de preparación">Prep times</strong> <span data-en="— under 15 min order-to-ready, or rankings tank" data-es="— menos de 15 min de orden a listo, o el ranking colapsa">— under 15 min order-to-ready, or rankings tank</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Order accuracy" data-es="Precisión de pedidos">Order accuracy</strong> <span data-en="— missing or wrong items kill ratings overnight" data-es="— ítems faltantes o equivocados destruyen calificaciones de la noche a la mañana">— missing or wrong items kill ratings overnight</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Local marketing &amp; ads" data-es="Marketing local y anuncios">Local marketing &amp; ads</strong> <span data-en="— Meta, TikTok, IG ads in your delivery zone" data-es="— anuncios Meta, TikTok, IG en tu zona de entrega">— Meta, TikTok, IG ads in your delivery zone</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Influencer &amp; organic content" data-es="Influencers y contenido orgánico">Influencer &amp; organic content</strong> <span data-en="— food creators, owner-led IG, TikTok presence" data-es="— creadores de comida, IG dirigido por dueño, presencia TikTok">— food creators, owner-led IG, TikTok presence</span></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="scope-quote reveal">
+    <span data-en="If the food is good and the kitchen runs tight, my work compounds. If those are broken, no amount of menu engineering saves it. " data-es="Si la comida es buena y la cocina funciona apretado, mi trabajo se multiplica. Si esos están rotos, ninguna ingeniería de menú lo salva. ">If the food is good and the kitchen runs tight, my work compounds. If those are broken, no amount of menu engineering saves it. </span><em data-en="That's the deal." data-es="Ese es el trato.">That's the deal.</em>
+    <span class="scope-attribution" data-en="— TITO PETIT, FOUNDER" data-es="— TITO PETIT, FUNDADOR">— TITO PETIT, FOUNDER</span>
+  </div>
+  </div>
+</section>
+
+<section class="has-mobile-accordion section section-light" id="pricing">
+  <button class="mob-acc-bar" type="button" aria-expanded="false">
+    <span class="mob-acc-num">06</span>
     <span class="mob-acc-title" data-en="Pricing" data-es="Precios">Pricing</span>
     <span class="mob-acc-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>
   </button>
@@ -8152,7 +8335,7 @@ footer {
           <div class="re-yearly">= +$<span id="roiYearly">52,500</span> per year</div>
         </div>
 
-        <div class="roi-disclaimer"><span data-en="* Based on typical improvements: +25% orders (rank + photos), +15% AOV (menu + upsells). Results depend on food quality and market. No guaranteed numbers." data-es="* Basado en mejoras típicas: +25% pedidos (ranking + fotos), +15% AOV (menú + upsells). Los resultados dependen de la calidad de la comida y el mercado. Sin números garantizados.">* Based on typical improvements: +25% orders (rank + photos), +15% AOV (menu + upsells). Results depend on food quality and market. No guaranteed numbers.</span></div>
+        <div class="roi-disclaimer"><span data-en="* Based on typical improvements: +25% orders (rank + photos), +15% AOV (menu + upsells). Results depend on food quality, prep times, and your marketing. " data-es="* Basado en mejoras típicas: +25% pedidos (ranking + fotos), +15% AOV (menú + upsells). Los resultados dependen de la calidad de la comida, tiempos de preparación, y tu marketing. ">* Based on typical improvements: +25% orders (rank + photos), +15% AOV (menu + upsells). Results depend on food quality, prep times, and your marketing. </span><a href="#scope" class="roi-scope-link" data-en="See what's mine and what's yours →" data-es="Mira qué es mío y qué es tuyo →">See what's mine and what's yours →</a></div>
       </div>
     </div>
   </div>
@@ -8210,7 +8393,7 @@ footer {
 
 <section class="has-mobile-accordion section section-dark about-section" id="about">
   <button class="mob-acc-bar" type="button" aria-expanded="false">
-    <span class="mob-acc-num">06</span>
+    <span class="mob-acc-num">07</span>
     <span class="mob-acc-title" data-en="About" data-es="Nosotros">About</span>
     <span class="mob-acc-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>
   </button>
@@ -8396,7 +8579,7 @@ footer {
 <!-- FAQ SECTION -->
 <section class="has-mobile-accordion section section-light" id="faq">
   <button class="mob-acc-bar" type="button" aria-expanded="false">
-    <span class="mob-acc-num">07</span>
+    <span class="mob-acc-num">08</span>
     <span class="mob-acc-title" data-en="FAQ" data-es="FAQ">FAQ</span>
     <span class="mob-acc-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>
   </button>
