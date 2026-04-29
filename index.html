@@ -3,12 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Delivery platform optimization for restaurants and ghost kitchens. We boost orders on Uber Eats and DoorDash through photo strategy, menu engineering, and listing optimization. Miami-based, serving US & Canada.">
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
 <title>DeliveryEdge. More Orders. Faster.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -485,11 +479,98 @@ h2.sec-title em {
   letter-spacing: 2px; text-transform: uppercase; color: var(--muted-dark); margin-bottom: 36px;
 }
 .price-card.featured .price-note { color: rgba(255,255,255,0.6); }
-.price-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; flex-grow: 1; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; flex-grow: 1; }
 .price-features li { display: flex; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; }
 .price-card.featured .price-features li { color: rgba(255,255,255,0.95); }
 .price-features li::before { content: '→'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
 .price-card.featured .price-features li::before { color: #fff; }
+
+/* New pricing structure additions */
+.price-deliverable-tag {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: var(--orange);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.price-card.featured .price-deliverable-tag { color: #fff; opacity: 0.85; }
+
+.price-best-for {
+  margin-top: auto;
+  padding: 18px;
+  background: rgba(255,255,255,0.03);
+  border-left: 2px solid var(--orange);
+  margin-bottom: 24px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.75);
+}
+.price-best-for strong {
+  display: block;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+.price-card.featured .price-best-for {
+  background: rgba(255,255,255,0.08);
+  border-left-color: #fff;
+  color: rgba(255,255,255,0.9);
+}
+.price-card.featured .price-best-for strong { color: #fff; }
+
+/* Pricing disclaimer below the 3 cards */
+.pricing-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 40px;
+  padding: 24px 28px;
+  background: rgba(255, 80, 0, 0.06);
+  border-left: 3px solid var(--orange);
+  border-radius: 4px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pricing-disclaimer .pd-icon {
+  flex-shrink: 0;
+  color: var(--orange);
+  margin-top: 2px;
+}
+.pricing-disclaimer p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.7);
+}
+.pricing-disclaimer strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #1A1A1A;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.pricing-disclaimer .pd-link {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-left: 4px;
+}
+.pricing-disclaimer .pd-link:hover { opacity: 0.7; }
+
+@media (max-width: 768px) {
+  .pricing-disclaimer {
+    padding: 18px 20px;
+    margin-top: 28px;
+  }
+  .pricing-disclaimer p { font-size: 12.5px; }
+}
 .price-cta {
   background: var(--orange); color: #fff; padding: 18px;
   text-align: center; text-decoration: none;
@@ -8210,16 +8291,16 @@ footer {
   <p class="section-intro reveal"><span data-en="DeliveryEdge optimizes the platform layer with surgical precision. But platform optimization can't fix slow prep times, inconsistent food quality, or missing marketing. Here's exactly where my work ends and yours begins." data-es="DeliveryEdge optimiza la capa de plataforma con precisión quirúrgica. Pero la optimización de plataforma no puede arreglar tiempos de preparación lentos, calidad inconsistente, o marketing ausente. Aquí está exactamente dónde termina mi trabajo y empieza el tuyo.">DeliveryEdge optimizes the platform layer with surgical precision. But platform optimization can't fix slow prep times, inconsistent food quality, or missing marketing. Here's exactly where my work ends and yours begins.</span></p>
 
   <div class="scope-grid reveal">
-    <!-- WHAT DELIVERYEDGE DOES -->
+    <!-- WHAT DELIVERYEDGE DELIVERS -->
     <div class="scope-col scope-do">
-      <div class="scope-eyebrow" data-en="WHAT I OWN" data-es="LO QUE YO MANEJO">WHAT I OWN</div>
+      <div class="scope-eyebrow" data-en="WHAT I DELIVER" data-es="LO QUE YO ENTREGO">WHAT I DELIVER</div>
       <h3 class="scope-title" data-en="The platform advantage" data-es="La ventaja de plataforma">The platform advantage</h3>
       <ul class="scope-list">
-        <li><span class="scope-dot"></span><span><strong data-en="Menu engineering" data-es="Ingeniería de menú">Menu engineering</strong> <span data-en="— item structure, bundles, upsells, pricing psychology" data-es="— estructura, paquetes, complementos, psicología de precios">— item structure, bundles, upsells, pricing psychology</span></span></li>
-        <li><span class="scope-dot"></span><span><strong data-en="Photo direction" data-es="Dirección fotográfica">Photo direction</strong> <span data-en="— hero shots, item-by-item briefs, AI assets when budget is tight" data-es="— fotos principales, briefs por ítem, recursos AI cuando hay presupuesto limitado">— hero shots, item-by-item briefs, AI assets when budget is tight</span></span></li>
-        <li><span class="scope-dot"></span><span><strong data-en="Algorithm signals" data-es="Señales del algoritmo">Algorithm signals</strong> <span data-en="— ranking factors, CTR, conversion, repeat rate" data-es="— factores de ranking, CTR, conversión, recompra">— ranking factors, CTR, conversion, repeat rate</span></span></li>
-        <li><span class="scope-dot"></span><span><strong data-en="Promo strategy" data-es="Estrategia de promociones">Promo strategy</strong> <span data-en="— launch boost, retention, win-back, smart discounting" data-es="— impulso de lanzamiento, retención, recuperación, descuentos inteligentes">— launch boost, retention, win-back, smart discounting</span></span></li>
-        <li><span class="scope-dot"></span><span><strong data-en="Platform operations" data-es="Operaciones de plataforma">Platform operations</strong> <span data-en="— commission negotiation, support escalations, ranking diagnostics" data-es="— negociación de comisión, escalaciones de soporte, diagnósticos de ranking">— commission negotiation, support escalations, ranking diagnostics</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Menu rebuild" data-es="Reconstrucción de menú">Menu rebuild</strong> <span data-en="— full structure, combos, copy, pricing strategy" data-es="— estructura completa, combos, copy, estrategia de precios">— full structure, combos, copy, pricing strategy</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="AI-generated photos" data-es="Fotos generadas con AI">AI-generated photos</strong> <span data-en="— hero and item shots via premium AI tools (no shoots)" data-es="— hero e ítems vía herramientas premium AI (sin shoots)">— hero and item shots via premium AI tools (no shoots)</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Banner &amp; visual assets" data-es="Banner y recursos visuales">Banner &amp; visual assets</strong> <span data-en="— cover images, hero banners, brand visuals" data-es="— imágenes de portada, banners hero, visuales de marca">— cover images, hero banners, brand visuals</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Algorithm &amp; ranking strategy" data-es="Estrategia de algoritmo y ranking">Algorithm &amp; ranking strategy</strong> <span data-en="— CTR, conversion, completion rate, category positioning" data-es="— CTR, conversión, tasa de completación, posicionamiento de categoría">— CTR, conversion, completion rate, category positioning</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Promo &amp; launch playbook" data-es="Playbook de promoción y lanzamiento">Promo &amp; launch playbook</strong> <span data-en="— 30-day cadence, retention triggers, win-backs" data-es="— cadencia de 30 días, triggers de retención, win-backs">— 30-day cadence, retention triggers, win-backs</span></span></li>
       </ul>
     </div>
 
@@ -8228,9 +8309,9 @@ footer {
       <div class="scope-eyebrow" data-en="WHAT YOU OWN" data-es="LO QUE TÚ MANEJAS">WHAT YOU OWN</div>
       <h3 class="scope-title" data-en="The fundamentals" data-es="Los fundamentos">The fundamentals</h3>
       <ul class="scope-list">
-        <li><span class="scope-dot"></span><span><strong data-en="Food quality &amp; consistency" data-es="Calidad y consistencia de la comida">Food quality &amp; consistency</strong> <span data-en="— every order matches the photo, every time" data-es="— cada orden coincide con la foto, siempre">— every order matches the photo, every time</span></span></li>
-        <li><span class="scope-dot"></span><span><strong data-en="Prep times" data-es="Tiempos de preparación">Prep times</strong> <span data-en="— under 15 min order-to-ready, or rankings tank" data-es="— menos de 15 min de orden a listo, o el ranking colapsa">— under 15 min order-to-ready, or rankings tank</span></span></li>
-        <li><span class="scope-dot"></span><span><strong data-en="Order accuracy" data-es="Precisión de pedidos">Order accuracy</strong> <span data-en="— missing or wrong items kill ratings overnight" data-es="— ítems faltantes o equivocados destruyen calificaciones de la noche a la mañana">— missing or wrong items kill ratings overnight</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Applying changes on the apps" data-es="Aplicar cambios en las apps">Applying changes on the apps</strong> <span data-en="— I provide step-by-step guides; you apply on your accounts" data-es="— te doy guías paso a paso; tú aplicas en tus cuentas">— I provide step-by-step guides; you apply on your accounts</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Account setup &amp; commissions" data-es="Configuración y comisiones">Account setup &amp; commissions</strong> <span data-en="— I don't access accounts or negotiate platform fees" data-es="— no accedo a cuentas ni negocio comisiones">— I don't access accounts or negotiate platform fees</span></span></li>
+        <li><span class="scope-dot"></span><span><strong data-en="Food quality &amp; prep times" data-es="Calidad y tiempos de preparación">Food quality &amp; prep times</strong> <span data-en="— consistency, accuracy, under 15 min order-to-ready" data-es="— consistencia, precisión, menos de 15 min orden a listo">— consistency, accuracy, under 15 min order-to-ready</span></span></li>
         <li><span class="scope-dot"></span><span><strong data-en="Local marketing &amp; ads" data-es="Marketing local y anuncios">Local marketing &amp; ads</strong> <span data-en="— Meta, TikTok, IG ads in your delivery zone" data-es="— anuncios Meta, TikTok, IG en tu zona de entrega">— Meta, TikTok, IG ads in your delivery zone</span></span></li>
         <li><span class="scope-dot"></span><span><strong data-en="Influencer &amp; organic content" data-es="Influencers y contenido orgánico">Influencer &amp; organic content</strong> <span data-en="— food creators, owner-led IG, TikTok presence" data-es="— creadores de comida, IG dirigido por dueño, presencia TikTok">— food creators, owner-led IG, TikTok presence</span></span></li>
       </ul>
@@ -8347,52 +8428,89 @@ footer {
   </div>
 
   <div class="pricing-grid reveal">
+    <!-- TIER 1 — AUDIT -->
     <div class="price-card">
-      <div class="price-tier">TIER 01. STRATEGY</div>
-      <div class="price-name" data-en="Strategy Only" data-es="Solo estrategia">Strategy Only</div>
-      <p class="price-for"><span data-en="Full menu, pricing and platform plan delivered. You implement at your own pace." data-es="Menú completo, plan de precios y plataforma entregado. Tú implementas a tu ritmo.">Full menu, pricing and platform plan delivered. You implement at your own pace.</span></p>
+      <div class="price-tier">TIER 01. AUDIT</div>
+      <div class="price-name" data-en="The Diagnostic" data-es="El Diagnóstico">The Diagnostic</div>
+      <p class="price-for"><span data-en="Full audit of your delivery setup. You get the report. You execute yourself." data-es="Auditoría completa de tu setup de delivery. Tú recibes el informe. Tú ejecutas.">Full audit of your delivery setup. You get the report. You execute yourself.</span></p>
       <div class="price-amount">$800</div>
-      <div class="price-note" data-en="Fixed price · Non-recurring" data-es="Precio fijo · No recurrente">Fixed price · Non-recurring</div>
+      <div class="price-note" data-en="Fixed price · One-time delivery" data-es="Precio fijo · Entrega única">Fixed price · One-time delivery</div>
+      <div class="price-deliverable-tag" data-en="WHAT YOU GET" data-es="LO QUE RECIBES">WHAT YOU GET</div>
       <ul class="price-features">
-        <li>Full menu audit &amp; restructure</li>
-        <li>Pricing &amp; positioning strategy</li>
-        <li>Platform optimization plan</li>
-        <li>Promotion strategy</li>
-        <li>1 strategy call included</li>
+        <li><span data-en="Complete listing audit (Uber Eats + DoorDash)" data-es="Auditoría completa del listing (Uber Eats + DoorDash)">Complete listing audit (Uber Eats + DoorDash)</span></li>
+        <li><span data-en="Photo, menu &amp; ranking diagnostic" data-es="Diagnóstico de fotos, menú y ranking">Photo, menu &amp; ranking diagnostic</span></li>
+        <li><span data-en="Local market &amp; competition analysis" data-es="Análisis de mercado local y competencia">Local market &amp; competition analysis</span></li>
+        <li><span data-en="Prioritized action plan (15-25 page report)" data-es="Plan de acción priorizado (informe de 15-25 páginas)">Prioritized action plan (15-25 page report)</span></li>
+        <li><span data-en="1 strategy call to walk through findings" data-es="1 llamada estratégica para revisar hallazgos">1 strategy call to walk through findings</span></li>
       </ul>
-      <a href="questionnaire.html" class="price-cta" data-en="Get Started →" data-es="Empezar →">Get Started →</a>
+      <div class="price-best-for">
+        <strong data-en="BEST FOR:" data-es="IDEAL PARA:">BEST FOR:</strong>
+        <span data-en="Operators who want clarity before investing in a full rebuild" data-es="Operadores que quieren claridad antes de invertir en una reconstrucción completa">Operators who want clarity before investing in a full rebuild</span>
+      </div>
+      <a href="questionnaire.html" class="price-cta" data-en="Get my audit →" data-es="Obtener mi auditoría →">Get my audit →</a>
     </div>
+
+    <!-- TIER 2 — REBUILD (most popular) -->
     <div class="price-card featured">
       <div class="popular-badge" data-en="MOST POPULAR" data-es="MÁS POPULAR">MOST POPULAR</div>
-      <div class="price-tier">TIER 02. STRATEGY + VISUALS</div>
-      <div class="price-name" data-en="Strategy + Visuals" data-es="Estrategia + Visuales">Strategy + Visuals</div>
-      <p class="price-for"><span data-en="Everything in Tier 1 plus AI-optimized photos, banner and mockups created for you." data-es="Todo del Tier 1 más fotos optimizadas con IA, banner y mockups creados para ti.">Everything in Tier 1 plus AI-optimized photos, banner and mockups created for you.</span></p>
+      <div class="price-tier">TIER 02. REBUILD</div>
+      <div class="price-name" data-en="Audit + Rebuild" data-es="Auditoría + Reconstrucción">Audit + Rebuild</div>
+      <p class="price-for"><span data-en="The full diagnostic plus a complete rebuild of your menu, photos, and strategy. You apply it on the apps." data-es="El diagnóstico completo más una reconstrucción completa de tu menú, fotos y estrategia. Tú lo aplicas en las apps.">The full diagnostic plus a complete rebuild of your menu, photos, and strategy. You apply it on the apps.</span></p>
       <div class="price-amount">$1,200</div>
-      <div class="price-note" data-en="Fixed price · Non-recurring" data-es="Precio fijo · No recurrente">Fixed price · Non-recurring</div>
+      <div class="price-note" data-en="Fixed price · One-time delivery" data-es="Precio fijo · Entrega única">Fixed price · One-time delivery</div>
+      <div class="price-deliverable-tag" data-en="WHAT YOU GET" data-es="LO QUE RECIBES">WHAT YOU GET</div>
       <ul class="price-features">
-        <li>Everything in Tier 1</li>
-        <li>AI-optimized food photos</li>
-        <li>Hero visual &amp; banner ready</li>
-        <li>Photography style guide</li>
-        <li>1 call + 1 follow-up</li>
+        <li><span data-en="Everything in Tier 1" data-es="Todo lo del Tier 1">Everything in Tier 1</span></li>
+        <li><span data-en="Full menu rebuild (structure, combos, copy, pricing)" data-es="Reconstrucción completa del menú (estructura, combos, copy, precios)">Full menu rebuild (structure, combos, copy, pricing)</span></li>
+        <li><span data-en="AI-generated hero photos (8-10 main items)" data-es="Fotos hero generadas con AI (8-10 ítems principales)">AI-generated hero photos (8-10 main items)</span></li>
+        <li><span data-en="Banner &amp; cover image redesign" data-es="Rediseño de banner y portada">Banner &amp; cover image redesign</span></li>
+        <li><span data-en="30-day promo &amp; algorithm strategy" data-es="Estrategia de promo y algoritmo de 30 días">30-day promo &amp; algorithm strategy</span></li>
+        <li><span data-en="2 calls + implementation guide" data-es="2 llamadas + guía de implementación">2 calls + implementation guide</span></li>
       </ul>
-      <a href="questionnaire.html" class="price-cta" data-en="Get Started →" data-es="Empezar →">Get Started →</a>
+      <div class="price-best-for">
+        <strong data-en="BEST FOR:" data-es="IDEAL PARA:">BEST FOR:</strong>
+        <span data-en="Existing restaurants &amp; ghost kitchens needing fast, tactical fixes" data-es="Restaurantes existentes y ghost kitchens que necesitan correcciones tácticas rápidas">Existing restaurants &amp; ghost kitchens needing fast, tactical fixes</span>
+      </div>
+      <a href="questionnaire.html" class="price-cta" data-en="Get my rebuild →" data-es="Obtener mi reconstrucción →">Get my rebuild →</a>
     </div>
+
+    <!-- TIER 3 — LAUNCH PACKAGE (built from zero) -->
     <div class="price-card">
       <div class="price-tier">TIER 03. LAUNCH PACKAGE</div>
-      <div class="price-name" data-en="Launch Package" data-es="Paquete de lanzamiento">Launch Package</div>
-      <p class="price-for"><span data-en="For new launches and existing restaurants entering delivery. Menu, visuals, strategy — fully done for you. Copy-paste and go live." data-es="Para nuevos lanzamientos y restaurantes existentes que entran al delivery. Menú, visuales, estrategia — totalmente hecho por ti. Copia, pega y publica.">For new launches and existing restaurants entering delivery. Menu, visuals, strategy — fully done for you. Copy-paste and go live.</span></p>
+      <div class="price-name" data-en="Brand From Zero" data-es="Marca desde cero">Brand From Zero</div>
+      <p class="price-for"><span data-en="Full delivery brand built from scratch. New concept, new ghost kitchen, or existing restaurant entering delivery. Everything you need to go live." data-es="Marca de delivery completa construida desde cero. Nuevo concepto, nuevo ghost kitchen, o restaurante existente entrando a delivery. Todo lo necesario para salir al aire.">Full delivery brand built from scratch. New concept, new ghost kitchen, or existing restaurant entering delivery. Everything you need to go live.</span></p>
       <div class="price-amount">$1,800</div>
-      <div class="price-note" data-en="Fixed price · Non-recurring" data-es="Precio fijo · No recurrente">Fixed price · Non-recurring</div>
+      <div class="price-note" data-en="Fixed price · One-time delivery" data-es="Precio fijo · Entrega única">Fixed price · One-time delivery</div>
+      <div class="price-deliverable-tag" data-en="WHAT YOU GET" data-es="LO QUE RECIBES">WHAT YOU GET</div>
       <ul class="price-features">
-        <li>Everything in Tier 2</li>
-        <li>Full menu written &amp; ready</li>
-        <li>All visuals created by us</li>
-        <li>Step-by-step implementation</li>
-        <li>2 calls + 30-day support</li>
+        <li><span data-en="Brand naming &amp; positioning (if not defined)" data-es="Naming y posicionamiento de marca (si no está definido)">Brand naming &amp; positioning (if not defined)</span></li>
+        <li><span data-en="Full menu architecture from scratch + pricing strategy" data-es="Arquitectura completa del menú desde cero + estrategia de precios">Full menu architecture from scratch + pricing strategy</span></li>
+        <li><span data-en="AI photos for the entire menu (not just hero items)" data-es="Fotos AI para todo el menú (no sólo ítems hero)">AI photos for the entire menu (not just hero items)</span></li>
+        <li><span data-en="Banners + visual brand assets" data-es="Banners + recursos visuales de marca">Banners + visual brand assets</span></li>
+        <li><span data-en="Mini brand book (colors, fonts, voice)" data-es="Mini brand book (colores, fuentes, tono)">Mini brand book (colors, fonts, voice)</span></li>
+        <li><span data-en="Launch promo + 14-day algorithm playbook" data-es="Promo de lanzamiento + playbook de algoritmo de 14 días">Launch promo + 14-day algorithm playbook</span></li>
+        <li><span data-en="2 calls + step-by-step launch guide" data-es="2 llamadas + guía de lanzamiento paso a paso">2 calls + step-by-step launch guide</span></li>
       </ul>
-      <a href="questionnaire.html" class="price-cta" data-en="Get Started →" data-es="Empezar →">Get Started →</a>
+      <div class="price-best-for">
+        <strong data-en="BEST FOR:" data-es="IDEAL PARA:">BEST FOR:</strong>
+        <span data-en="New brands launching from zero, new ghost kitchens, restaurants entering delivery for the first time" data-es="Marcas nuevas lanzándose desde cero, nuevos ghost kitchens, restaurantes entrando a delivery por primera vez">New brands launching from zero, new ghost kitchens, restaurants entering delivery for the first time</span>
+      </div>
+      <a href="questionnaire.html" class="price-cta" data-en="Build my brand →" data-es="Construir mi marca →">Build my brand →</a>
     </div>
+  </div>
+
+  <!-- Honest disclaimer below pricing -->
+  <div class="pricing-disclaimer reveal">
+    <div class="pd-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+    </div>
+    <p>
+      <strong data-en="A few honest things about every tier:" data-es="Algunas cosas honestas sobre cada tier:">A few honest things about every tier:</strong>
+      <span data-en="You apply the deliverables on Uber Eats and DoorDash yourself (I provide step-by-step guidance, but I don't access your accounts). Photos are AI-generated using premium tools, not professional shoots. I don't negotiate platform commissions or set up your accounts. " data-es="Tú aplicas los entregables en Uber Eats y DoorDash (te doy guía paso a paso, pero no accedo a tus cuentas). Las fotos son generadas con AI usando herramientas premium, no shoots profesionales. No negocio comisiones de plataforma ni configuro tus cuentas. ">You apply the deliverables on Uber Eats and DoorDash yourself (I provide step-by-step guidance, but I don't access your accounts). Photos are AI-generated using premium tools, not professional shoots. I don't negotiate platform commissions or set up your accounts. </span>
+      <a href="#scope" class="pd-link" data-en="See full scope →" data-es="Ver alcance completo →">See full scope →</a>
+    </p>
   </div>
   </div>
 </section>
