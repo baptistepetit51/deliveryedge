@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en"><head><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About · DeliveryEdge</title>
+<meta name="description" content="DeliveryEdge is run by operators who have built and run delivery-only kitchens since 2020. Our story, our brands and why we build stores for restaurants.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="common.css"><link rel="stylesheet" href="page.css">
+<style>.ab-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.sig{display:grid;gap:2px;border-left:3px solid var(--orange);padding-left:12px}
+.sig span{color:var(--muted);font-size:14px}
+.orbit{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:center}
+.blob{position:absolute;inset:8%;border-radius:46% 54% 52% 48%/50% 44% 56% 50%;background:var(--orange);animation:morph 9s ease-in-out infinite}
+@keyframes morph{50%{border-radius:56% 44% 42% 58%/44% 58% 42% 56%;transform:rotate(8deg)}}
+.me{position:absolute;left:14%;top:14%;width:72%;height:72%;object-fit:cover;object-position:center top;z-index:1;border-radius:50%;border:6px solid #fff;box-shadow:0 24px 50px rgba(20,18,16,.2)}
+.ob{position:absolute;z-index:2;width:96px;height:96px;border-radius:24px;background:#fff;display:grid;place-items:center;box-shadow:0 16px 34px rgba(20,18,16,.16);animation:bob 5s ease-in-out infinite;padding:10px}
+.ob img{max-width:100%;max-height:100%}
+.ob.yel{background:#FFD12A}
+.o1{left:-4%;top:12%}.o2{right:-2%;top:6%;animation-delay:-1.2s}.o3{left:-2%;bottom:14%;animation-delay:-2.4s}.o4{right:-4%;bottom:22%;animation-delay:-3.6s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+.tl{margin-top:40px;display:grid;gap:18px}
+.tl-track{height:6px;border-radius:6px;background:var(--orange-soft);overflow:hidden}
+.tl-track i{display:block;height:100%;width:25%;background:var(--orange);border-radius:6px;transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.tl-years{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tl-years button{border:1.5px solid var(--line);background:var(--white);border-radius:16px;padding:14px;font:800 16px var(--display);cursor:pointer;color:var(--muted);transition:.25s}
+.tl-years button[aria-selected="true"]{background:var(--orange);border-color:var(--orange);color:#fff;transform:translateY(-3px);box-shadow:0 12px 26px rgba(255,90,0,.3)}
+.tl-card{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:32px;padding:22px;box-shadow:0 24px 60px rgba(20,18,16,.07)}
+.tl-card.swap .tl-img img{animation:tlimg .6s cubic-bezier(.2,.7,.2,1)}
+.tl-card.swap .tl-txt>*{animation:tltx .5s cubic-bezier(.2,.7,.2,1) both}
+.tl-card.swap .tl-txt>*:nth-child(2){animation-delay:.06s}.tl-card.swap .tl-txt>*:nth-child(3){animation-delay:.12s}.tl-card.swap .tl-txt>*:nth-child(4){animation-delay:.18s}
+@keyframes tlimg{from{transform:scale(1.08);filter:blur(6px);opacity:.3}to{transform:none;filter:none;opacity:1}}
+@keyframes tltx{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+.tl-img{border-radius:24px;overflow:hidden;aspect-ratio:4/3}
+.tl-img img{width:100%;height:100%;object-fit:cover}
+.tl-txt{display:grid;gap:12px}
+.tl-txt h3{font-size:clamp(28px,3.4vw,40px)}
+.tl-txt p{color:var(--muted);font-size:17px}
+.tl-stat{display:flex;gap:10px;flex-wrap:wrap}
+.tl-stat span{background:var(--orange-soft);border-radius:14px;padding:10px 14px;font-weight:700;font-size:14px}
+.tl-stat b{font-family:var(--display);color:var(--orange);font-size:22px;margin-right:4px}
+.quote-sec{padding:90px 0;background:var(--ink)}
+.big-q{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(34px,5.4vw,66px);letter-spacing:-.03em;line-height:1.05;color:#fff;text-align:center;max-width:1000px;margin-inline:auto}
+.big-q span{color:#FF8A3D}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.wy{border:1px solid var(--line);border-radius:26px;padding:24px;display:grid;gap:10px;align-content:start;transition:transform .35s cubic-bezier(.2,1.4,.4,1),box-shadow .3s}
+.wy:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(20,18,16,.08)}
+.wy>b{font-size:28px;width:56px;height:56px;border-radius:18px;background:var(--orange-soft);display:grid;place-items:center;animation:bob 5s ease-in-out infinite}
+.wy:nth-child(2)>b{animation-delay:-1.2s}.wy:nth-child(3)>b{animation-delay:-2.4s}.wy:nth-child(4)>b{animation-delay:-3.6s}
+.wy h3{font-size:21px}
+.wy p{color:var(--muted);font-size:15px}
+.prom{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.pm{background:var(--white);border-radius:28px;padding:28px;display:grid;gap:10px;border:1px solid var(--line)}
+.pm span{width:48px;height:48px;border-radius:50%;background:var(--orange);color:#fff;font:800 22px var(--display);display:grid;place-items:center}
+.pm h3{font-size:24px}
+.pm p{color:var(--muted)}
+@media (max-width:960px){.ab-grid,.tl-card{grid-template-columns:1fr}.why{grid-template-columns:1fr 1fr}.prom{grid-template-columns:1fr}.orbit{max-width:340px}.ob{width:74px;height:74px}}
+@media (max-width:520px){.why{grid-template-columns:1fr}.tl-years{grid-template-columns:1fr 1fr}}
+.ob{overflow:hidden}.ob.pink{background:#F0879C;padding:0}.ob.pink img{width:122%;max-width:none;max-height:none}.ob.bnc{padding:14px 18px}.ob.bnc img{mix-blend-mode:multiply}
+.wy>b{color:var(--orange-deep)}.ic{display:block}.tl-img img.fit{object-fit:contain;background:#fff;animation:tlimg .6s cubic-bezier(.2,.7,.2,1),bagf 5s ease-in-out .6s infinite}@keyframes bagf{0%,100%{transform:none}50%{transform:translateY(-6px) rotate(-1deg)}}.tl-img:has(img.fit){background:#fff}</style><link rel="stylesheet" href="motion.css">
+</head><body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="DeliveryEdge logo"><span>Delivery<b>Edge</b></span></a>
+    <nav class="menu" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="index.html#how">How it works</a>
+      <a href="cases.html">Case studies</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html" class="cur">About</a>
+    </nav>
+    <a href="index.html#start" class="btn"><span class="l">Book a free 30-minute call</span><span class="s">Book a call</span></a>
+    <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
+  </div>
+</header>
+<div class="mnav" id="mnav" hidden>
+  <nav class="mn-in" aria-label="Mobile">
+    <a href="index.html" class="mn-a"><span>Home</span><i>→</i></a>
+    <a href="index.html#how" class="mn-a"><span>How it works</span><i>→</i></a>
+    <a href="cases.html" class="mn-a"><span>Case studies</span><i>→</i></a>
+    <a href="pricing.html" class="mn-a"><span>Pricing</span><i>→</i></a>
+    <a href="about.html" class="mn-a cur"><span>About</span><i>→</i></a>
+    <a href="index.html#start" class="btn mn-cta">Book a free 30-minute call</a>
+    <p class="mn-note">Free, 30 minutes. We look at your store or your concept.</p>
+  </nav>
+</div>
+<main><section class="ph ab-hero">
+  <div class="wrap ab-grid">
+    <div class="head">
+      <div class="eyebrow">About</div>
+      <h1>I'm not an agency.<br><em>I run kitchens.</em></h1>
+      <p class="sub">I opened my first delivery-only kitchen in 2020. Since then I've launched my own brands and helped restaurants build theirs on the apps. Most restaurants don't know how to do it, and it isn't their job. So I made it mine.</p>
+      <div class="sig"><b>Tito Petit</b><span>Founder, DeliveryEdge · Based in Miami, working across the US and Canada</span></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a href="index.html#start" class="btn">Book a free 30-minute call</a><a href="cases.html" class="btn btn-ghost">See our results</a></div>
+    </div>
+    <div class="orbit rv">
+      <div class="blob"></div>
+      <img class="me" src="img/tito_portrait.webp" alt="Tito Petit, founder of DeliveryEdge">
+      <div class="ob o1 pink"><img src="img/c_melt.png" alt="Melt Club"></div>
+      <div class="ob o2 yel"><img src="img/c_chicken.png" alt="Chick'n'Crunch"></div>
+      <div class="ob o3 bnc"><img loading="lazy" decoding="async" src="img/c_bnc.png" alt="Brick'n'Cheese"></div>
+      <div class="ob o4"><img loading="lazy" decoding="async" src="img/c_titos.png" alt="Tito's Kitchen"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story">
+  <div class="wrap">
+    <div class="center head rv"><div class="eyebrow">The story</div><h2>From one kitchen to a playbook.</h2></div>
+    <div class="tl rv" id="tl">
+      <div class="tl-track"><i id="tl-fill"></i></div>
+      <div class="tl-years" role="tablist" aria-label="Story">
+        <button type="button" role="tab" aria-selected="true">2020</button><button type="button" role="tab" aria-selected="false">The years after</button><button type="button" role="tab" aria-selected="false">2026</button><button type="button" role="tab" aria-selected="false">Today</button>
+      </div>
+      <div class="tl-card" id="tl-card">
+        <div class="tl-img"><img loading="lazy" decoding="async" id="tl-img" src="img/tito_kitchen.webp" alt=""></div>
+        <div class="tl-txt"><span class="tag" id="tl-tag">Where it started</span><h3 id="tl-h">My first delivery-only kitchen.</h3><p id="tl-p"></p><div class="tl-stat" id="tl-stat"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-sec">
+  <div class="wrap"><blockquote class="big-q rv">"The store sells before the food does. <span>Then the food decides if they come back.</span>"</blockquote></div>
+</section>
+
+<section class="section" style="background:var(--white)">
+  <div class="wrap">
+    <div class="center head rv"><div class="eyebrow">Why us</div><h2>What you get that an agency can't give you.</h2></div>
+    <div class="why">
+      <div class="wy rv"><b><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21a1 1 0 0 0 1-1v-5.4a4 4 0 0 0-1.2-7.6 5 5 0 0 0-9.6 0A4 4 0 0 0 6 14.6V20a1 1 0 0 0 1 1z"/><path d="M6 17h12"/></svg></b><h3>Operators, not marketers</h3><p>We run our own brands on the same apps, with the same commissions. We only recommend what works on our kitchens.</p></div>
+      <div class="wy rv"><b><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.9-3.9a3 3 0 0 0-4.2 0l-.9.9a1 1 0 1 1-3-3l2.8-2.8a5.8 5.8 0 0 1 7.1-.9l.5.3a2 2 0 0 0 1.5.2L21 4"/><path d="m21 3 1 11h-2M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3M3 4h8"/></svg></b><h3>Contacts at Uber Eats and DoorDash</h3><p>We know people at both platforms. Your setup skips the general queue, and menu changes go through faster.</p></div>
+      <div class="wy rv"><b><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg></b><h3>No photographer needed</h3><p>We start from your phone photos and give your whole menu one style that sells. Your real dishes, ready for the apps.</p></div>
+      <div class="wy rv"><b><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></b><h3>We put it live ourselves</h3><p>You approve once. We enter everything in the apps and tune it for 30 days. You never touch the Manager.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="center head rv"><div class="eyebrow">How we work</div><h2>Three promises.</h2></div>
+    <div class="prom">
+      <div class="pm rv"><span>1</span><h3>One message to approve.</h3><p>We ask for everything once: menu, dish photos, logo. Then you get one message with the full store to say yes to.</p></div>
+      <div class="pm rv"><span>2</span><h3>Straight talk.</h3><p>If your store doesn't need us, we'll tell you on the first call. If your kitchen is the problem, we'll tell you that too.</p></div>
+      <div class="pm rv"><span>3</span><h3>Every dollar has a job.</h3><p>No discounts for everyone, no ads on the wrong dishes. Each offer has to bring new customers at a margin you keep.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap"><div class="cta-band rv"><div><h2>Let's talk about your store.</h2><p>30 minutes, free. I look at your store or your concept and tell you what I'd fix first.</p></div><div class="btns"><a href="index.html#start" class="btn">Book a free 30-minute call</a></div></div></div>
+</section>
+</main>
+<footer><div class="wrap foot"><a href="index.html" class="logo"><img loading="lazy" decoding="async" src="img/logo.png" alt=""><span>Delivery<b>Edge</b></span></a><span>Based in Miami, working across the US and Canada · hello@deliveryedge.co</span><span class="ft-guides">Guides: <a href="launch.html">Launch your brand on Uber Eats &amp; DoorDash</a> · <a href="grow.html">Grow your sales on the apps</a></span></div></footer>
+<script src="common.js"></script><script>(function(){
+  const S=[
+    {img:'img/tito_kitchen.webp',tag:'Where it started',h:'My first delivery-only kitchen.',p:'No dining room, no foot traffic. Just the apps. We grew it to 80 to 100 orders a day, and I learned what makes a store sell.',st:[['80–100','orders a day']]},
+    {img:'img/tito_bnc.webp',tag:'Brands and lessons',h:'More brands. More mistakes.',p:'Chick\'n\'Crunch, Brick\'n\'Cheese, Tito\'s Kitchen, across Seattle, Vancouver and Toronto. Too many promos, ads that burned money, a brand we had to close. Every mistake became a rule.',st:[['5','brands of our own']]},
+    {img:'img/melt_bag.webp',tag:'The playbook, tested',h:'Melt Club, built from zero.',p:'A second brand we launched as a test, from a kitchen we already had. Same ingredients, same team, no Instagram, no influencers. Only the store and in-app ads. In its second month, sales went up 142%, about CA$2,000 more a week.',st:[['+142%','sales in 30 days'],['16.8x','return on ads']]},
+    {img:'img/story_team.webp',tag:'DeliveryEdge',h:'Now I build stores for restaurants.',p:'The same playbook, for kitchens that don\'t have the time to learn the apps. Our first clients are rebuilding with us in Ottawa.',st:[['14','days to go live, about']]}];
+  const bs=[...document.querySelectorAll('.tl-years button')],card=$('tl-card');let i=0,hold=0;
+  function go(n){i=n;const s=S[n];bs.forEach((b,j)=>b.setAttribute('aria-selected',j===n));$('tl-fill').style.width=((n+1)*25)+'%';
+    $('tl-img').src=s.img;$('tl-img').classList.toggle('fit',/bag/.test(s.img));$('tl-tag').textContent=s.tag;$('tl-h').textContent=s.h;$('tl-p').textContent=s.p;
+    $('tl-stat').innerHTML=s.st.map(x=>`<span><b>${x[0]}</b>${x[1]}</span>`).join('');card.classList.remove('swap');void card.offsetWidth;card.classList.add('swap')}
+  bs.forEach((b,j)=>b.onclick=()=>{hold=Date.now()+8000;go(j)});go(0);setInterval(()=>{if(Date.now()>hold)go((i+1)%S.length)},4200);
+})();
+</script>
+<script src="motion.js"></script>
+</body></html>

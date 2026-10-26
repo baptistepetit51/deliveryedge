@@ -1,0 +1,17 @@
+/* Motion v2: headline mask reveals, scroll progress, spotlight, magnetic, parallax */
+.mx-bar{position:fixed;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--orange),#FF9A5C);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
+.js .head.rv h2,.js .head.rv .eyebrow,.js .head.rv .sub{transition:clip-path 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1),opacity .8s ease}
+.js .head.rv:not(.in) .eyebrow{opacity:0;transform:translateY(12px)}
+.js .head.rv:not(.in) h2{clip-path:inset(0 0 100% 0);transform:translateY(40px)}
+.js .head.rv:not(.in) .sub{opacity:0;transform:translateY(16px)}
+.js .head.rv.in h2{clip-path:inset(-20% -10% -30% -10%);transition-delay:.08s}
+.js .head.rv.in .sub{transition-delay:.25s}
+.js .head.rv:not(.in){transform:none}
+.mx-spot{position:relative;isolation:isolate}
+.mx-spot::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,90,0,.10),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none;z-index:0}
+.mx-spot.mx-dark::before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,138,61,.22),transparent 60%)}
+.mx-spot:hover::before{opacity:1}
+.mx-spot>*{position:relative;z-index:1}
+.btn{transition:transform .35s cubic-bezier(.2,1.4,.4,1),box-shadow .3s,background .25s,color .25s}
+.mx-tilt{transition:transform .5s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d;will-change:transform}
+@media (prefers-reduced-motion:reduce){.mx-bar{display:none}.js .head.rv h2,.js .head.rv .eyebrow,.js .head.rv .sub{clip-path:none!important;opacity:1!important;transform:none!important}}

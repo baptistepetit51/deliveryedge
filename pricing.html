@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en"><head><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pricing · DeliveryEdge</title>
+<meta name="description" content="One-time pricing for Store Audit, Grow, Launch and Brand concept. Founding rate until December 31, 2026. No contract, no monthly fee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="common.css"><link rel="stylesheet" href="page.css">
+<style>.pr-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.pr-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:5px;justify-self:start;margin-top:10px;box-shadow:0 8px 20px rgba(20,18,16,.05)}
+.pr-toggle button{position:relative;z-index:1;border:0;background:none;font:700 15px var(--body);padding:12px 20px;border-radius:999px;cursor:pointer;color:var(--muted);transition:color .3s}
+.pr-toggle button[aria-pressed="true"]{color:#fff}
+.pr-toggle i{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:var(--orange);transition:transform .45s cubic-bezier(.2,1.2,.4,1);box-shadow:0 8px 18px rgba(255,90,0,.3)}
+.pr-toggle.grow i{transform:translateX(100%)}
+.receipt{background:#fff;border-radius:22px 22px 6px 6px;padding:26px 26px 18px;box-shadow:0 30px 70px rgba(20,18,16,.14);transform:rotate(2deg);position:relative;font-size:15px;max-width:420px;justify-self:center;width:100%}
+.receipt::after{content:"";position:absolute;left:0;right:0;bottom:-12px;height:12px;background:radial-gradient(circle at 10px -2px,transparent 10px,#fff 11px) repeat-x;background-size:20px 12px}
+.rc-top{display:flex;gap:12px;align-items:center;padding-bottom:14px;border-bottom:2px dashed var(--line)}
+.rc-top img{width:40px;height:40px;border-radius:10px}
+.rc-top b{display:block;font-family:var(--display);font-size:18px}
+.rc-top small{color:var(--orange-deep);font-weight:700}
+#rc-list{list-style:none;margin:12px 0;padding:0;display:grid;gap:9px;min-height:250px}
+#rc-list li{display:flex;justify-content:space-between;gap:12px;animation:rcin .4s ease both}
+#rc-list li span{display:flex;gap:8px}
+#rc-list li span::before{content:"✓";color:var(--green);font-weight:800}
+#rc-list li em{font-style:normal;color:var(--green);font-weight:700;font-size:13px;white-space:nowrap}
+@keyframes rcin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.rc-tot{display:flex;justify-content:space-between;align-items:baseline;border-top:2px dashed var(--line);padding-top:14px}
+.rc-tot span{font-weight:700}
+.rc-tot b{font-family:var(--display);font-size:38px;color:var(--orange);font-variant-numeric:tabular-nums}
+.rc-foot{font-size:12px;color:var(--muted);margin-top:6px}
+.plans{display:grid;grid-template-columns:1fr 1.08fr 1.08fr;gap:20px;align-items:stretch}
+.plan{position:relative;background:var(--white);border:1.5px solid var(--line);border-radius:30px;padding:30px 26px;display:flex;flex-direction:column;gap:16px;transition:transform .4s cubic-bezier(.2,1.2,.4,1),border-color .3s,box-shadow .3s}
+.plan:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(20,18,16,.1)}
+.plan.pick{border-color:var(--orange);box-shadow:0 24px 60px rgba(255,90,0,.18);transform:translateY(-8px)}
+.pl-flag{position:absolute;top:-14px;left:26px;background:var(--ink);color:#fff;font-size:12px;font-weight:800;padding:6px 12px;border-radius:999px;opacity:.0;transform:translateY(6px);transition:.35s}
+.plan.pick .pl-flag{opacity:1;transform:none;background:var(--orange)}
+.pl-ic{font-size:26px;width:52px;height:52px;border-radius:16px;background:var(--orange-soft);display:grid;place-items:center;margin-bottom:10px;transition:transform .4s}
+.plan:hover .pl-ic{transform:rotate(-8deg) scale(1.08)}
+.pl-top h3{font-size:30px}
+.pl-top p{color:var(--muted);margin-top:6px}
+.pl-price{display:flex;align-items:baseline;gap:8px}
+.pl-price b{font-family:var(--display);font-size:54px;letter-spacing:-.03em;line-height:1}
+.pl-price span{color:var(--muted);font-weight:600}
+.pl-credit{font-size:13px;font-weight:700;color:var(--green);background:#E7F5EC;border-radius:12px;padding:8px 12px}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;flex:1}
+.plan li{display:flex;gap:10px;font-size:15px}
+.plan li::before{content:"✓";flex:none;width:20px;height:20px;border-radius:50%;background:var(--orange-soft);color:var(--orange-deep);display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:2px}
+.plan.pick li::before{background:var(--orange);color:#fff}
+.plan .btn{width:100%}
+.pl-time{text-align:center;color:var(--muted);font-weight:600}
+.care{margin-top:26px;background:var(--orange-soft);border-radius:30px;padding:30px 34px;display:flex;justify-content:space-between;align-items:center;gap:24px;overflow:hidden;position:relative}
+.care h3{font-size:30px;margin:10px 0 6px}
+.care p{color:var(--muted);max-width:560px}
+.care-r{text-align:right;flex:none}
+.care-p{display:flex;align-items:baseline;gap:6px;justify-content:flex-end}
+.care-p small{color:var(--muted);font-weight:600}
+.care-p b{font-family:var(--display);font-size:46px;color:var(--orange)}
+.care-p span{font-weight:700}
+.care-n{font-size:13px;font-weight:700;color:var(--green)}
+.pr-note{margin-top:16px;font-size:13px;color:var(--muted);text-align:center}
+.pay-sec{background:var(--ink);color:#fff}
+.pay-sec .sub{color:#C9C0B8}
+.pay-sec .eyebrow{color:#FF8A3D}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.pay-plans{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+.pay-plans button{border:1.5px solid #3A332E;background:none;color:#fff;font:700 14px var(--body);padding:11px 16px;border-radius:999px;cursor:pointer;transition:.25s}
+.pay-plans button[aria-pressed="true"]{background:var(--orange);border-color:var(--orange)}
+.pay-l{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;font-weight:700;margin-top:8px}
+.pay-l input{grid-column:1/-1}
+.pay-l b{color:#FF8A3D;font-family:var(--display);font-size:24px}
+.pay-l input{width:100%;accent-color:var(--orange)}
+.pay-card{background:#1F1B18;border:1px solid #2E2824;border-radius:30px;padding:32px;display:grid;gap:16px}
+.pay-card>small{color:#C9C0B8;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:12px}
+.pay-big{display:flex;align-items:baseline;gap:8px}
+.pay-big b{font-family:var(--display);font-size:clamp(48px,6vw,72px);color:#5BE38E;line-height:1;font-variant-numeric:tabular-nums}
+.pay-big span{color:#C9C0B8;font-weight:700}
+.pay-bar{position:relative;height:14px;border-radius:999px;background:#2E2824;margin:14px 0 8px}
+.pay-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,var(--orange),#5BE38E);transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.pay-bar span{position:absolute;top:-28px;font-size:12px;font-weight:800;color:#5BE38E;transform:translateX(-50%);transition:left .6s cubic-bezier(.2,.7,.2,1);white-space:nowrap}
+.pay-row{display:flex;justify-content:space-between;border-top:1px solid #2E2824;padding-top:12px}
+.pay-row b{font-family:var(--display);font-size:22px}
+.pay-note{font-size:12px;color:#8F857D}
+.cmp{margin-top:40px;border:1px solid var(--line);border-radius:26px;overflow:hidden}
+.cmp-r{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;align-items:center;padding:14px 22px;border-top:1px solid var(--line);transition:background .25s}
+.cmp-r:first-child{border-top:0}
+.cmp-r:hover{background:var(--paper)}
+.cmp-r>*:not(:first-child){text-align:center}
+.cmp-r i{font-style:normal;color:var(--green);font-weight:800}
+.cmp-r em{font-style:normal;color:#C9BFB6}
+.cmp-h{background:var(--paper);font-family:var(--display);font-size:20px}
+.cmp-h b:nth-child(3),.cmp-h b:nth-child(4){color:var(--orange)}
+.cmp-p b{font-family:var(--display);font-size:22px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.fact{border:1px solid var(--line);border-radius:24px;padding:24px;display:grid;gap:8px;transition:transform .3s}
+.fact:hover{transform:translateY(-4px)}
+.fact>b{font-size:26px}
+.fact h3{font-size:22px}
+.fact p{color:var(--muted)}
+@media (max-width:960px){.pr-hero,.pay-grid{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.care{flex-direction:column;align-items:flex-start}.care-r{text-align:left}.care-p{justify-content:flex-start}.facts{grid-template-columns:1fr}}
+@media (max-width:600px){.cmp-r{grid-template-columns:1.6fr .7fr .7fr .7fr;padding:12px 12px;font-size:13px}.cmp-h{font-size:15px}.pr-toggle button{padding:11px 12px;font-size:13px}.receipt{transform:none}}
+
+.stack-sec{background:var(--paper)}
+.stack-sec h2 em{font-style:normal}
+.st-pay{color:var(--orange)}
+.st-worth{color:var(--muted);text-decoration:line-through;text-decoration-thickness:4px;text-decoration-color:rgba(200,51,31,.6)}
+.vs-tg{display:inline-flex;gap:6px;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:5px;justify-self:center;margin-top:8px}
+.vs-tg button{border:0;background:none;font:700 15px var(--body);padding:10px 22px;border-radius:999px;cursor:pointer;color:var(--muted);transition:.25s}
+.vs-tg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.stack{max-width:760px;margin:34px auto 0;background:var(--white);border-radius:32px;padding:28px;box-shadow:0 30px 70px rgba(20,18,16,.1);display:grid;gap:4px}
+.sk-head{display:flex;justify-content:space-between;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 4px 10px;border-bottom:2px dashed var(--line)}
+.sk-row{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid var(--line);opacity:0;transform:translateX(-12px);transition:opacity .4s,transform .4s cubic-bezier(.2,1.2,.4,1)}
+.sk-row.on{opacity:1;transform:none}
+.sk-row i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800}
+.sk-row b{font-size:16px}
+.sk-row small{display:block;color:var(--muted);font-size:13px;font-weight:500}
+.sk-row em{font-style:normal;font-family:var(--display);font-weight:800;font-size:18px;color:var(--muted)}
+.sk-tot{display:flex;justify-content:space-between;align-items:baseline;padding:16px 4px 6px}
+.sk-tot span{font-weight:800}
+.sk-tot b{font-family:var(--display);font-size:34px;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(200,51,31,.6);text-decoration-thickness:3px;font-variant-numeric:tabular-nums}
+.sk-pay{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--orange);color:#fff;border-radius:22px;padding:20px 22px;margin-top:8px;transform:scale(.96);opacity:.4;transition:transform .5s cubic-bezier(.2,1.5,.4,1),opacity .4s}
+.sk-pay.on{transform:none;opacity:1}
+.sk-pay small{display:block;font-weight:700;color:#FFE1CC;font-size:13px}
+.sk-pay b{font-family:var(--display);font-size:46px;line-height:1}
+.sk-pay span{display:block;font-size:13px;color:#FFE1CC;margin-top:4px}
+.sk-save{background:#fff;color:var(--green);font-weight:800;padding:10px 16px;border-radius:999px;font-size:15px}
+.sk-cta{margin-top:14px;width:100%}
+@media (max-width:600px){.stack{padding:18px}.sk-row b{font-size:14px}.sk-row em{font-size:15px}.sk-pay b{font-size:38px}}
+
+.found{display:inline-flex;align-items:center;gap:8px;justify-self:start;background:#fff;border:1.5px solid #FFD4B0;border-radius:999px;padding:9px 16px;font-size:14px;color:var(--ink);box-shadow:0 8px 20px rgba(255,90,0,.1)}
+.found b{color:var(--orange-deep)}
+.found em{font-style:normal;font-weight:800;color:var(--orange)}
+.fd-dot{width:9px;height:9px;border-radius:50%;background:var(--orange);animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.pl-price s{color:var(--muted);font-weight:700;font-size:20px;text-decoration-color:var(--red);text-decoration-thickness:2px;align-self:center}
+.rc-tot span small{display:block;font-size:11px;color:var(--orange-deep);font-weight:700}
+.rc-pr{display:flex;align-items:baseline;gap:8px}
+.rc-pr s{color:var(--muted);font-weight:700;text-decoration-color:var(--red)}
+.vv-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
+.vv-art{position:relative;display:grid;place-items:center;min-height:420px}
+.vv-blob{position:absolute;width:86%;aspect-ratio:1;border-radius:46% 54% 52% 48%/50% 44% 56% 50%;background:var(--orange-soft);animation:morph 9s ease-in-out infinite}
+@keyframes morph{50%{border-radius:56% 44% 42% 58%/44% 58% 42% 56%;transform:rotate(8deg)}}
+.vv-art img{position:relative;width:min(340px,80%);animation:bob 4.5s ease-in-out infinite;filter:drop-shadow(0 20px 30px rgba(20,18,16,.15))}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-12px) rotate(1.5deg)}}
+.vv-bub{position:absolute;top:6%;right:0;background:var(--ink);color:#fff;font-weight:800;font-size:14px;padding:12px 16px;border-radius:18px 18px 18px 4px;box-shadow:0 12px 26px rgba(0,0,0,.2);animation:bob 5s ease-in-out -1s infinite}
+.stack-sec .head{text-align:left;gap:12px}
+.stack-sec .vs-tg{justify-self:start}
+.stack{margin:22px 0 0;max-width:none}
+.sk-row{grid-template-columns:auto 1fr}
+.chef-band{grid-template-columns:auto 1.3fr 1fr;padding-top:24px;padding-bottom:24px}
+.cb-chef{width:190px;margin:-50px 0 -30px;animation:bob 4.5s ease-in-out infinite;filter:drop-shadow(0 16px 24px rgba(0,0,0,.2))}
+@media (max-width:860px){.vv-grid{grid-template-columns:1fr}.vv-art{min-height:300px}.chef-band{grid-template-columns:1fr}.cb-chef{width:140px;margin:0}}
+
+.plan[data-plan="audit"] .pl-ic{animation:scan 3s ease-in-out infinite}
+@keyframes scan{0%,100%{transform:translateX(0) rotate(0)}30%{transform:translateX(6px) rotate(-12deg)}60%{transform:translateX(-4px) rotate(8deg)}}
+.plan[data-plan="grow"] .pl-ic{animation:growup 2.6s ease-in-out infinite}
+@keyframes growup{0%,100%{transform:translateY(0) scale(1)}40%{transform:translateY(-6px) scale(1.12)}}
+.plan[data-plan="launch"] .pl-ic{animation:lift 3.2s ease-in-out infinite}
+@keyframes lift{0%,60%,100%{transform:translate(0,0) rotate(0)}70%{transform:translate(3px,-4px) rotate(-6deg)}80%{transform:translate(10px,-16px) rotate(-12deg);opacity:0}81%{transform:translate(-10px,14px);opacity:0}95%{transform:translate(0,0);opacity:1}}
+.plan{transform-style:preserve-3d;will-change:transform}
+.plan .pl-price b{display:inline-block}
+.plan.pick .pl-price b{animation:pricepop 2.8s ease-in-out infinite}
+@keyframes pricepop{0%,85%,100%{transform:none}90%{transform:scale(1.06) rotate(-1deg)}95%{transform:scale(.98)}}
+.vv-art .mascot{position:relative}.chef-band .cb-m{margin:0 0 -24px}.chef-band .cb-m::after{display:none}
+@media (max-width:860px){.chef-band .cb-m{--h:200px!important;margin:0}}
+.chef-band{background:transparent;color:var(--ink);border-radius:0;padding:10px 0;box-shadow:none;grid-template-columns:auto 1.2fr auto;gap:28px}
+.chef-band::after{display:none}
+.chef-band p{color:var(--muted)}
+.chef-band .btn{background:var(--orange);color:#fff;box-shadow:0 10px 26px rgba(255,90,0,.3)}
+.chef-band .cb-m{margin:0}
+@media (max-width:860px){.chef-band{grid-template-columns:1fr;justify-items:center;text-align:center}.chef-band .btns{justify-content:center}}
+
+.chef-band{gap:4px 18px!important;align-items:center;cursor:default}
+.cb-wrap{position:relative;margin:-30px -80px -30px -40px}.cb-bubble{top:22px!important;right:-40px!important}
+.chef-band .cb-m{margin:0!important}
+.cb-bubble{position:absolute;right:-6px;top:18px;z-index:2;background:var(--white);border:1.5px solid var(--line);border-radius:18px 18px 18px 4px;padding:8px 14px;font-weight:700;font-size:14px;white-space:nowrap;box-shadow:0 12px 28px rgba(20,18,16,.12);transform:scale(.6) translateY(8px);opacity:0;transform-origin:0 100%;transition:.35s cubic-bezier(.2,1.5,.4,1)}
+.cb-bubble b{color:var(--orange-deep)}
+.chef-band.talk .cb-bubble{opacity:1;transform:none}
+.chef-band h2{transition:transform .4s cubic-bezier(.2,1.4,.4,1)}
+.chef-band.talk h2{transform:translateX(4px)}
+@media (max-width:860px){.cb-wrap{margin:0}.chef-band .cb-m{--h:240px!important}.cb-bubble{right:auto;left:62%}}
+.pl-ic,.fact>b.fi{color:var(--orange-deep)}.fact>b.fi{width:52px;height:52px;border-radius:16px;background:var(--orange-soft);display:grid;place-items:center}.ic{display:block}
+/* v35: what-you-get visual */
+@media (min-width:861px){.vv-grid{align-items:start}.vv-art{position:sticky;top:110px}}
+.vv-art{min-height:460px}
+.vv-blob,.vv-bub{display:none}
+.vv-ph{position:relative;height:380px;width:auto!important;animation:vvf 5s ease-in-out infinite!important;filter:drop-shadow(0 26px 30px rgba(20,18,16,.16))}
+@keyframes vvf{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(1deg) translateY(-10px)}}
+.vv-chips{position:absolute;inset:0;pointer-events:none}
+.vv-c{position:absolute;display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px 12px;font-size:12.5px;font-weight:700;white-space:nowrap;box-shadow:0 12px 26px rgba(20,18,16,.10);opacity:0;transform:translateY(10px) scale(.85);transition:opacity .35s,transform .5s cubic-bezier(.2,1.5,.4,1)}
+.vv-c i{width:18px;height:18px;border-radius:50%;background:var(--orange);color:#fff;font-style:normal;font-size:10px;display:grid;place-items:center}
+.vv-c.on{opacity:1;transform:none;animation:vvc 4s ease-in-out 1s infinite}
+.vv-c:nth-child(even).on{animation-delay:1.6s}
+@keyframes vvc{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.vv-live{position:absolute;left:50%;bottom:2%;transform:translate(-50%,10px) scale(.8);background:var(--green);color:#fff;font-weight:800;font-size:15px;padding:10px 18px;border-radius:999px;box-shadow:0 14px 30px rgba(31,157,85,.3);opacity:0;transition:opacity .35s,transform .5s cubic-bezier(.2,1.6,.4,1)}
+.vv-live.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:860px){.vv-art{min-height:420px}.vv-ph{height:300px}.vv-c{font-size:11.5px;padding:6px 10px}}
+@media (prefers-reduced-motion:reduce){.vv-ph,.vv-c.on{animation:none!important}}
+
+.bc{margin-top:20px;display:grid;grid-template-columns:1.1fr 1.3fr auto;gap:28px;align-items:center;background:var(--white);border:1.5px solid var(--line);border-radius:28px;padding:28px 30px;transition:border-color .3s,box-shadow .3s}
+.bc:hover{border-color:#FFC9A3;box-shadow:0 24px 50px rgba(255,90,0,.10)}
+.bc-tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ink);border-radius:999px;padding:5px 12px}.bc h3{font-family:var(--display);font-size:28px;margin:10px 0 6px}
+.bc-l>p{color:var(--muted);font-size:15px;margin-bottom:12px}
+.bc-list{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.bc-list li{position:relative;padding-left:28px;font-size:14.5px}
+.bc-list li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;background:var(--orange-soft);color:var(--orange-deep);display:grid;place-items:center;font-size:11px;font-weight:800}
+.bc-r{display:grid;justify-items:center;gap:8px}
+@media (max-width:960px){.bc{grid-template-columns:1fr;padding:24px}.bc-r{justify-items:start}}
+.bc-ex{grid-column:1/-1;display:flex;align-items:center;gap:16px;border-top:1px dashed var(--line);padding-top:18px;margin-top:4px}.bc-lg{width:54px;height:54px;border-radius:50%;flex:none}.bc-th{display:flex;gap:8px}.bc-th img{width:64px;height:64px;border-radius:12px;object-fit:cover;transition:transform .4s cubic-bezier(.2,1.4,.4,1)}.bc-th img:hover{transform:translateY(-4px) rotate(-3deg) scale(1.06)}.bc-ex p{font-size:14px;color:var(--muted)}.bc-ex a{color:var(--orange-deep);font-weight:700}@media (max-width:760px){.bc-ex{flex-wrap:wrap}.bc-th img{width:52px;height:52px}}
+/* v42: price drops from regular to founding */
+.pl-price{flex-wrap:wrap;row-gap:0}.pl-price span{white-space:nowrap}
+.pl-price s{position:relative;text-decoration:none;opacity:.55;transition:opacity .4s}
+.pl-price s::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:2px;background:var(--red);transform:scaleX(0);transform-origin:0 50%;transition:transform .5s cubic-bezier(.65,0,.35,1) 1.5s}
+.plan.in .pl-price s::after,.plan.dropped .pl-price s::after{transform:scaleX(1)}
+.pl-price b[data-from]{position:relative}
+.plan.in .pl-price b[data-from]::after{content:"↓";position:absolute;right:-22px;top:4px;font-size:18px;color:var(--green);animation:drop 1.6s cubic-bezier(.65,0,.35,1) both}
+@keyframes drop{0%{opacity:0;transform:translateY(-14px)}25%{opacity:1}80%{opacity:1;transform:translateY(10px)}100%{opacity:0;transform:translateY(16px)}}
+
+.vv-fan{position:absolute;right:-8%;top:30%;width:140px;height:140px;z-index:2}.vv-chips{z-index:4}
+.vv-fan img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:18px;border:3px solid #fff;box-shadow:0 18px 34px rgba(20,18,16,.24);opacity:0;animation:vfan 10s cubic-bezier(.22,1,.36,1) infinite}
+.vv-fan img:nth-child(2){animation-delay:2s}.vv-fan img:nth-child(3){animation-delay:4s}.vv-fan img:nth-child(4){animation-delay:6s}.vv-fan img:nth-child(5){animation-delay:8s}
+@keyframes vfan{0%{opacity:0;transform:translateY(16px) rotate(8deg) scale(.9)}5%,20%{opacity:1;transform:rotate(4deg)}26%{opacity:0;transform:translateX(-24px) rotate(-6deg) scale(.94)}100%{opacity:0}}
+@media (max-width:860px){.vv-fan{width:100px;height:100px;right:0}}
+@media (prefers-reduced-motion:reduce){.vv-fan img{animation:none}.vv-fan img:first-child{opacity:1}}
+
+.chef-band{overflow:visible!important}.chef-band .cb-wrap{margin:0 10px 0 0!important}.cb-bubble{top:20px!important;right:-150px!important}.cb-img{display:block;height:290px;width:auto;margin:-30px 0 -10px 0;filter:drop-shadow(0 18px 24px rgba(20,18,16,.14));transform-origin:50% 100%;animation:cbsw 6s ease-in-out infinite}
+.chef-band.talk .cb-img{animation:cbnod .7s cubic-bezier(.2,1.5,.4,1),cbsw 6s ease-in-out .7s infinite}
+@keyframes cbsw{0%,100%{transform:rotate(0)}40%{transform:rotate(-2deg) translateY(-4px)}70%{transform:rotate(1deg)}}
+@keyframes cbnod{40%{transform:translateY(-12px) rotate(-3deg)}}
+@media (max-width:860px){.cb-img{height:220px;margin:0 auto}}
+.pr-hero{grid-template-columns:1fr!important;justify-items:center;text-align:center}.pr-hero .head{display:grid;justify-items:center}.pr-hero .sub{max-width:620px}.pr-hero .found{justify-self:center;margin-left:auto;margin-right:auto}.plan ul{align-content:start}</style><link rel="stylesheet" href="motion.css">
+</head><body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="DeliveryEdge logo"><span>Delivery<b>Edge</b></span></a>
+    <nav class="menu" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="index.html#how">How it works</a>
+      <a href="cases.html">Case studies</a>
+      <a href="pricing.html" class="cur">Pricing</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a href="index.html#start" class="btn"><span class="l">Book a free 30-minute call</span><span class="s">Book a call</span></a>
+    <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
+  </div>
+</header>
+<div class="mnav" id="mnav" hidden>
+  <nav class="mn-in" aria-label="Mobile">
+    <a href="index.html" class="mn-a"><span>Home</span><i>→</i></a>
+    <a href="index.html#how" class="mn-a"><span>How it works</span><i>→</i></a>
+    <a href="cases.html" class="mn-a"><span>Case studies</span><i>→</i></a>
+    <a href="pricing.html" class="mn-a cur"><span>Pricing</span><i>→</i></a>
+    <a href="about.html" class="mn-a"><span>About</span><i>→</i></a>
+    <a href="index.html#start" class="btn mn-cta">Book a free 30-minute call</a>
+    <p class="mn-note">Free, 30 minutes. We look at your store or your concept.</p>
+  </nav>
+</div>
+<main><section class="ph">
+  <div class="wrap pr-hero">
+    <div class="head">
+      <div class="eyebrow">Pricing</div>
+      <h1>One price.<br><em>Everything</em> done for you.</h1>
+      <p class="sub">You pay once. We build your store, put it live on Uber Eats and DoorDash, and tune it for 30 days. No contract, no monthly fee.</p>
+      <div class="found"><span class="fd-dot"></span><b>Founding rate</b> until December 31, 2026 · <em id="fd-days">69</em> days left</div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="plans" style="padding-top:40px">
+  <div class="wrap">
+    <div class="plans">
+      <article class="plan rv" data-plan="audit">
+        <div class="pl-top"><span class="pl-ic"><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M8 11h6M11 8v6"/></svg></span><h3>Store Audit</h3><p>Know exactly what's holding your store back.</p></div>
+        <div class="pl-price"><s>$450</s><b data-count="350" data-from="450" data-prefix="$">$350</b><span>one time</span></div>
+        <div class="pl-credit">100% credited if you go with Grow or Launch</div>
+        <ul>
+          <li>Full review of your Uber Eats or DoorDash store</li>
+          <li>Score out of 100 vs your 3 closest competitors</li>
+          <li>Your 10 fixes, ranked by impact</li>
+          <li>30-minute call to walk you through it</li>
+        </ul>
+        <a href="index.html#start" class="btn btn-ghost">Get my audit</a>
+        <small class="pl-time">Ready in 48 hours</small>
+      </article>
+      <article class="plan rv" data-plan="grow">
+        <span class="pl-flag">Best if you're already live</span>
+        <div class="pl-top"><span class="pl-ic"><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><h3>Grow</h3><p>Same kitchen, same food. A store that finally sells it.</p></div>
+        <div class="pl-price"><s>$1,500</s><b data-count="1200" data-from="1500" data-prefix="$">$1,200</b><span>one time</span></div>
+        <div class="pl-credit">Pays back with about 4 extra orders a day*</div>
+        <ul>
+          <li>Menu rebuilt to sell: categories, combos, add-ons</li>
+          <li>Photos for up to 25 dishes, in one style</li>
+          <li>New banner and store look</li>
+          <li>Prices checked against your margin</li>
+          <li>Offers and in-app ads plan</li>
+          <li>Hours, prep time and tags tuned</li>
+          <li>Put live by us on Uber Eats and DoorDash</li>
+          <li>30 days of tuning after launch</li>
+        </ul>
+        <a href="index.html#start" class="btn">Book a free 30-minute call</a>
+        <small class="pl-time">Live in about 10 days</small>
+      </article>
+      <article class="plan rv" data-plan="launch">
+        <span class="pl-flag">Best if you're launching</span>
+        <div class="pl-top"><span class="pl-ic"><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22 22 0 0 1-4 2z"/><path d="M9 12H4s.5-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.5 4-2c1.1-1.6 0-5 0-5"/></svg></span><h3>Launch</h3><p>From zero to a store that looks like a real brand on day one.</p></div>
+        <div class="pl-price"><s>$2,200</s><b data-count="1800" data-from="2200" data-prefix="$">$1,800</b><span>one time</span></div>
+        <div class="pl-credit">Everything in Grow, plus:</div>
+        <ul>
+          <li>Delivery menu built from zero, with modifiers and upsells</li>
+          <li>Photos for up to 35 dishes, in one style</li>
+          <li>Brand look: logo cleanup, colors, banner</li>
+          <li>Uber Eats and DoorDash setup through our contacts</li>
+          <li>14-day launch plan: offers and ads, day by day</li>
+          <li>30 days of tuning after launch</li>
+        </ul>
+        <a href="index.html#start" class="btn">Book a free 30-minute call</a>
+        <small class="pl-time">Live in about 14 days</small>
+      </article>
+    </div>
+    <article class="bc rv" id="brand-concept">
+      <div class="bc-l">
+        <span class="bc-tag">New · for kitchens and first-timers</span>
+        <h3>Brand concept</h3>
+        <p>You have a kitchen, a recipe or just an idea, but you don't know what to launch. We find it with you, before you spend on a full launch.</p>
+        <div class="pl-price"><b>$450</b><span>one time</span></div>
+        <div class="pl-credit">100% credited if you go on to Launch</div>
+      </div>
+      <ul class="bc-list">
+        <li>What people order near you, and what's missing</li>
+        <li>3 brand concepts that fit your kitchen, staff and ingredients</li>
+        <li>For the one you pick: name, logo and art direction</li>
+        <li>Menu outline and a banner that sells</li>
+        <li>Prices set against what similar stores charge near you</li>
+        <li>45-minute call to walk you through it</li>
+      </ul>
+      <div class="bc-r"><a href="index.html#start" class="btn">Find my concept</a><small class="pl-time">Ready in about 5 days</small></div>
+      <div class="bc-ex"><img class="bc-lg" src="img/sb_logo.webp" alt="SMASH BRGR logo"><div class="bc-th"><img src="img/sb_classic.webp" alt=""><img src="img/sb_jala_fries.webp" alt=""><img loading="lazy" decoding="async" src="img/sb_sticks.webp" alt=""><img loading="lazy" decoding="async" src="img/sb_onion.webp" alt=""></div><p><b>Example: SMASH BRGR.</b> A burger concept we built from zero, not launched yet. <a href="launch.html#concept-example">See it</a></p></div>
+    </article>
+    <p class="pr-note">* Estimate at a $30 average order, keeping about 40% of each order after app commission and food cost. Prices in USD. Canadian clients are billed in CAD.</p>
+  </div>
+</section>
+
+<section class="section stack-sec" id="value">
+  <div class="wrap vv-grid">
+    <div class="vv-art rv" aria-hidden="true"><img loading="lazy" decoding="async" class="vv-ph" src="img/st_s2.webp" alt=""><div class="vv-fan"><img loading="lazy" decoding="async" src="img/sb_classic.webp" alt=""><img loading="lazy" decoding="async" src="img/sb_jala_fries.webp" alt=""><img loading="lazy" decoding="async" src="img/sb_onion.webp" alt=""><img loading="lazy" decoding="async" src="img/sb_sticks.webp" alt=""><img loading="lazy" decoding="async" src="img/sb_crispy.webp" alt=""></div><div class="vv-chips" id="vv-chips"></div><span class="vv-live">Store live ✓</span></div>
+    <div>
+      <div class="head rv"><div class="eyebrow">What you get</div><h2>You pay <em class="st-pay" id="vs-pay">$1,800</em>.<br>You get all of this.</h2>
+        <div class="vs-tg" role="group" aria-label="Plan"><button type="button" data-v="launch" aria-pressed="true">Launch</button><button type="button" data-v="grow" aria-pressed="false">Grow</button></div>
+      </div>
+      <div class="stack rv" id="stack">
+        <div id="sk-rows"></div>
+        <div class="sk-pay"><div><small>Everything above</small><b id="vs-price">$1,800</b><span>one time · 50% to start, 50% when live</span></div><div class="sk-save">Founding rate until Dec 31</div></div>
+        <a href="index.html#start" class="btn sk-cta">Book a free 30-minute call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pay-sec">
+  <div class="wrap pay-grid">
+    <div class="head rv">
+      <div class="eyebrow">Payback</div>
+      <h2>When does it pay for itself?</h2>
+      <p class="sub">Pick a plan, then move the sliders. We count only what you keep, not the full order.</p>
+      <div class="pay-plans" role="group" aria-label="Plan"><button type="button" data-p="1200" aria-pressed="true">Grow · $1,200</button><button type="button" data-p="1800" aria-pressed="false">Launch · $1,800</button></div>
+      <label class="pay-l">Extra orders a day <b id="py-o">5</b><input type="range" id="py-orders" min="1" max="20" value="5"></label>
+      <label class="pay-l">Average order <b id="py-a">$30</b><input type="range" id="py-aov" min="15" max="60" value="30"></label>
+    </div>
+    <div class="pay-card rv">
+      <small>You keep about</small>
+      <div class="pay-big"><b id="py-keep">$1,800</b><span>/month</span></div>
+      <div class="pay-bar"><i id="py-fill"></i><span id="py-mark">Paid back</span></div>
+      <div class="pay-row"><span>Paid back in</span><b id="py-days">20 days</b></div>
+      <div class="pay-row"><span>First 12 months, after the price</span><b id="py-year">+$19,800</b></div>
+      <p class="pay-note">Estimate, not a promise. Real results depend on your food, prep speed and area. Ad budget is extra and paid to the apps.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--white)">
+  <div class="wrap">
+    <div class="center head rv"><div class="eyebrow">Side by side</div><h2>What's in each plan.</h2></div>
+    <div class="cmp rv" role="table">
+      <div class="cmp-r cmp-h" role="row"><span></span><b>Audit</b><b>Grow</b><b>Launch</b></div>
+      <div class="cmp-r" role="row"><span>Store review and score /100</span><i>✓</i><i>✓</i><i>✓</i></div>
+      <div class="cmp-r" role="row"><span>Ranked list of fixes</span><i>✓</i><i>✓</i><i>✓</i></div>
+      <div class="cmp-r" role="row"><span>Menu with combos, modifiers and add-ons</span><em>–</em><i>✓</i><i>✓</i></div>
+      <div class="cmp-r" role="row"><span>Dish photos in one style</span><em>–</em><i>25</i><i>35</i></div>
+      <div class="cmp-r" role="row"><span>Banner and store look</span><em>–</em><i>✓</i><i>✓</i></div>
+      <div class="cmp-r" role="row"><span>Offers and in-app ads plan</span><em>–</em><i>✓</i><i>✓</i></div>
+      <div class="cmp-r" role="row"><span>Put live on Uber Eats and DoorDash, by us</span><em>–</em><i>✓</i><i>✓</i></div>
+      <div class="cmp-r" role="row"><span>Setup through our platform contacts</span><em>–</em><em>–</em><i>✓</i></div>
+      <div class="cmp-r" role="row"><span>Brand look and 14-day launch plan</span><em>–</em><em>–</em><i>✓</i></div>
+      <div class="cmp-r" role="row"><span>30 days of tuning</span><em>–</em><i>✓</i><i>✓</i></div>
+      <div class="cmp-r cmp-p" role="row"><span>Price</span><b>$350</b><b>$1,200</b><b>$1,800</b></div>
+    </div>
+    <div class="facts">
+      <div class="fact rv"><b class="fi"><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></b><h3>50% / 50%</h3><p>Half to start, half the day your store goes live.</p></div>
+      <div class="fact rv"><b class="fi"><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></b><h3>More locations?</h3><p>A second location of the same brand costs less. Ask us on the call.</p></div>
+      <div class="fact rv"><b class="fi"><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></b><h3>Ad budget is yours</h3><p>You pay it to the apps directly. We tell you how much, and where it works.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="center head rv"><div class="eyebrow">Questions</div><h2>Before you book.</h2></div>
+    <div class="faq">
+      <div class="faq-it"><button class="faq-q" aria-expanded="false">Why a one-time price and not a monthly fee?</button><div class="faq-a"><div>Most of the work happens once: the menu, the photos, the setup. You shouldn't pay every month for it. If you want us to keep tuning after 30 days, the Care Plan is there.</div></div></div>
+      <div class="faq-it"><button class="faq-q" aria-expanded="false">Do I have to do anything on Uber Eats or DoorDash?</button><div class="faq-a"><div>No. You add us as a manager, send your menu and dish photos once, and approve everything in one message. We do the rest.</div></div></div>
+      <div class="faq-it"><button class="faq-q" aria-expanded="false">Is the ad budget included?</button><div class="faq-a"><div>No. You pay it to the apps directly, so you always control it. We tell you the daily budget to start with and move it to the dishes and hours that sell.</div></div></div>
+      <div class="faq-it"><button class="faq-q" aria-expanded="false">Do you guarantee results?</button><div class="faq-a"><div>No one honest can. We guarantee the store is built the way that works on our own brands. Food quality and prep speed stay on your side, and they matter as much as anything we do.</div></div></div>
+      <div class="faq-it"><button class="faq-q" aria-expanded="false">I'm in Canada. Does it work the same?</button><div class="faq-a"><div>Yes. We work across the US and Canada, and Canadian clients are billed in CAD.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;background:var(--paper)">
+  <div class="wrap"><div class="cta-band rv chef-band"><div class="cb-wrap"><span class="cb-bubble" aria-hidden="true"><b>Launch</b> or <b>Grow</b>?</span><img loading="lazy" decoding="async" class="cb-img" src="img/m_loupe.webp" alt="Our chef checking which plan fits"></div><div><h2>Not sure which one?</h2><p>Tell us where you are. On a free 30-minute call, we'll tell you which plan makes sense, or if you don't need us yet.</p></div><div class="btns"><a href="index.html#start" class="btn">Book a free 30-minute call</a></div></div></div>
+</section>
+</main>
+<footer><div class="wrap foot"><a href="index.html" class="logo"><img loading="lazy" decoding="async" src="img/logo.png" alt=""><span>Delivery<b>Edge</b></span></a><span>Based in Miami, working across the US and Canada · hello@deliveryedge.co</span><span class="ft-guides">Guides: <a href="launch.html">Launch your brand on Uber Eats &amp; DoorDash</a> · <a href="grow.html">Grow your sales on the apps</a></span></div></footer>
+<script src="common.js"></script><script>(function(){
+  const L={launch:{name:'Launch package',total:1800,items:[['Delivery menu built from zero','incl.'],['Modifiers, combos and add-ons','incl.'],['35 dish photos, one style','incl.'],['Brand look and banner','incl.'],['Uber Eats + DoorDash setup','incl.'],['14-day launch plan','incl.'],['30 days of tuning','incl.']]},
+           grow:{name:'Grow package',total:1200,items:[['Menu rebuilt to sell','incl.'],['Combos and add-ons','incl.'],['25 dish photos, one style','incl.'],['New banner','incl.'],['Offers and in-app ads plan','incl.'],['Put live by us','incl.'],['30 days of tuning','incl.']]}};
+  const tg=document.querySelector('.pr-toggle');if(!tg){const lp=document.querySelector('.plan[data-plan="launch"]');if(lp)lp.classList.add('pick')}
+  if(tg){const bs=[...tg.querySelectorAll('button')],list=$('rc-list'),tot=$('rc-total');let cur='launch',auto=true;
+  function show(w){cur=w;tg.classList.toggle('grow',w==='grow');bs.forEach(b=>b.setAttribute('aria-pressed',b.dataset.who===w));
+    $('rc-plan').textContent=L[w].name;list.innerHTML='';L[w].items.forEach((it,i)=>{const li=document.createElement('li');li.style.animationDelay=(i*90)+'ms';li.innerHTML=`<span>${it[0]}</span><em>${it[1]}</em>`;list.appendChild(li)});
+    tot.dataset.prefix='$';countUp(tot,w==='launch'?1200:1800,L[w].total,900);const rg=$('rc-reg');if(rg)rg.textContent=w==='launch'?'$2,200':'$1,500';
+    document.querySelectorAll('.plan').forEach(p=>p.classList.toggle('pick',p.dataset.plan===w))}
+  bs.forEach(b=>b.onclick=()=>{auto=false;show(b.dataset.who)});show('launch');
+  setInterval(()=>{if(auto)show(cur==='launch'?'grow':'launch')},5000);}
+  // payback
+  const o=$('py-orders'),a=$('py-aov');let price=1200;
+  const money=v=>'$'+Math.round(v).toLocaleString('en-US');
+  function calc(){const keep=+o.value*30*+a.value*.4;$('py-o').textContent=o.value;$('py-a').textContent='$'+a.value;$('py-keep').textContent=money(keep);
+    const days=Math.max(1,Math.round(price/(keep/30)));$('py-days').textContent=days<60?days+' days':(days/30).toFixed(1)+' months';
+    $('py-year').textContent=(keep*12-price>=0?'+':'')+money(keep*12-price);
+    const pct=Math.min(100,days/90*100);$('py-fill').style.width=Math.max(4,100-pct*0.85)+'%';const m=$('py-mark');m.style.left=Math.max(8,Math.min(92,100-pct*0.85))+'%';m.textContent='Paid back · day '+days}
+  [o,a].forEach(x=>x.addEventListener('input',calc));
+  document.querySelectorAll('.pay-plans button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.pay-plans button').forEach(x=>x.setAttribute('aria-pressed',x===b));price=+b.dataset.p;calc()});calc();
+})();
+
+(function(){
+  const V={launch:{price:1800,rows:[['Account setup through our contacts','Uber Eats and DoorDash, skip the queue'],['Delivery menu built from zero','Categories, combos, modifiers, upsells'],['Up to 35 dish photos','One style, from your real food'],['Brand look','Logo cleanup, colors, banner'],['Prices after commission','Dish by dish, so every order pays'],['Store settings','Hours, prep time, tags'],['14-day launch plan','New-customer offers and in-app ads'],['30 days of tuning','We watch the numbers and fix what doesn\'t sell']]},
+           grow:{price:1200,rows:[['Full store audit','Score out of 100 vs your competitors'],['Menu rebuilt to sell','Categories, combos, modifiers, add-ons'],['Up to 25 dish photos','One style, from your real food'],['New banner and store look','Your best dish, front and center'],['Prices checked','Against your margin after commission'],['Offers and ads plan','New-customer offers, in-app ads'],['Put live on both apps','We enter everything, you touch nothing'],['30 days of tuning','We watch the numbers and fix what doesn\'t sell']]}};
+  const rows=$('sk-rows'),btns=[...document.querySelectorAll('.vs-tg button')],pay=document.querySelector('.sk-pay');let timer=[],ran=false,cur='launch';
+  const money=v=>'$'+Math.round(v).toLocaleString('en-US');
+  function play(w){cur=w;timer.forEach(clearTimeout);timer=[];btns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===w));const d=V[w];
+    rows.innerHTML=d.rows.map(r=>`<div class="sk-row"><i>✓</i><div><b>${r[0]}</b><small>${r[1]}</small></div></div>`).join('');
+    pay.classList.remove('on');$('vs-pay').textContent=money(d.price);$('vs-price').textContent=money(d.price);
+    const vc=$('vv-chips'),P=[[2,6],[58,2],[-4,30],[64,26],[0,54],[66,50],[4,78],[60,74]];vc.innerHTML=d.rows.map((r,i)=>`<span class="vv-c" style="left:${P[i][0]}%;top:${P[i][1]}%"><i>✓</i>${r[0].replace(/ through our contacts| built from zero| rebuilt to sell/,'')}</span>`).join('');const live=document.querySelector('.vv-live');live.classList.remove('on');
+    [...rows.children].forEach((el,i)=>timer.push(setTimeout(()=>{el.classList.add('on');vc.children[i]&&vc.children[i].classList.add('on')},200+i*200)));
+    timer.push(setTimeout(()=>live.classList.add('on'),200+d.rows.length*200+300));
+    timer.push(setTimeout(()=>pay.classList.add('on'),200+d.rows.length*200+150))}
+  btns.forEach(b=>b.onclick=()=>play(b.dataset.v));
+  document.querySelectorAll('.pr-toggle button').forEach(b=>b.addEventListener('click',()=>{if(ran)play(b.dataset.who)}));
+  new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){ran=true;play(cur);o.disconnect()}},{threshold:.3}).observe($('stack'));
+  const dl=Math.max(0,Math.ceil((new Date('2026-12-31T23:59:59')-new Date())/864e5));const fd=$('fd-days');if(fd)fd.textContent=dl;
+})();
+
+(function(){if(!matchMedia('(hover:hover)').matches)return;document.querySelectorAll('.plan').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(900px) rotateY(${x*6}deg) rotateX(${-y*6}deg) translateY(-6px)`});c.addEventListener('mouseleave',()=>c.style.transform='')})})();
+</script>
+<script>(function(){const b=document.querySelector('.chef-band');if(!b)return;const m=b.querySelector('.mascot');let t,last=0;
+const go=()=>{const n=Date.now();if(n-last<2500)return;last=n;b.classList.add('talk');m&&m._replay&&m._replay();clearTimeout(t);t=setTimeout(()=>b.classList.remove('talk'),3200)};
+b.addEventListener('mouseenter',go);b.addEventListener('click',e=>{if(!e.target.closest('a'))go()});
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){setTimeout(()=>{b.classList.add('talk');t=setTimeout(()=>b.classList.remove('talk'),3200)},1400);o.disconnect()}},{threshold:.5}).observe(b)})();</script>
+<script src="motion.js"></script>
+</body></html>
