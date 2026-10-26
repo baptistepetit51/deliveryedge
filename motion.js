@@ -5,7 +5,7 @@ const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 const bar=document.createElement('div');bar.className='mx-bar';document.body.appendChild(bar);
 // parallax targets: [selector, speed]
 const P=[['.hs',-.08],['.wn-stage',-.06],['.sb-st',-.05],['.sc-panel .sc-side',.06],['.hero .stage',-.05],['.stage',-.05]];
-const els=[];P.forEach(([s,k])=>document.querySelectorAll(s).forEach(e=>{if(!els.some(x=>x.e===e))els.push({e,k})}));
+const els=[];if(innerWidth<760)P.length=0;P.forEach(([s,k])=>document.querySelectorAll(s).forEach(e=>{if(!els.some(x=>x.e===e))els.push({e,k})}));
 let tick=false;const upd=()=>{tick=false;const h=document.documentElement,max=h.scrollHeight-innerHeight;bar.style.transform=`scaleX(${max>0?scrollY/max:0})`;
   const vh=innerHeight;els.forEach(({e,k})=>{const r=e.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)return;const c=(r.top+r.height/2-vh/2);e.style.translate=`0 ${(c*k).toFixed(1)}px`})};
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();
