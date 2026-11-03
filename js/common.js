@@ -21,7 +21,7 @@ window.$=id=>document.getElementById(id);
 document.querySelectorAll('.mascot[data-seq]:not([data-video])').forEach(m=>{
   const seq=m.dataset.seq.split(','),need=new Set(['blink','idle']);seq.forEach(s=>need.add(s));
   const names=[...new Set([...need].flatMap(k=>F[k]))];
-  m.innerHTML=names.map((n,i)=>`<img src="img/${n}.webp" data-n="${n}" alt="${i?'':(m.dataset.alt||'')}" ${i?'aria-hidden="true"':''}>`).join('');
+  m.innerHTML=names.map((n,i)=>`<img src="/img/${n}.webp" data-n="${n}" alt="${i?'':(m.dataset.alt||'')}" ${i?'aria-hidden="true"':''}>`).join('');
   const im={};m.querySelectorAll('img').forEach(x=>im[x.dataset.n]=x);
   let cur=null;const show=n=>{if(cur===n)return;Object.values(im).forEach(x=>x.classList.toggle('on',x.dataset.n===n));cur=n};
   const T=[];const at=(ms,f)=>T.push(setTimeout(f,ms));
@@ -39,7 +39,7 @@ document.querySelectorAll('.mascot[data-seq]:not([data-video])').forEach(m=>{
   if('IntersectionObserver' in window)new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){start();o.disconnect()}},{threshold:.25}).observe(m);else start()})})();
 
 (function(){
-const mk=(src,loop)=>{const v=document.createElement('video');v.muted=true;v.loop=loop;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='none';v.className='mv';const b=src.replace(/\.mp4$/,'');v.poster=b+'.jpg';[['webm','video/webm'],['mp4','video/mp4']].forEach(([e,t])=>{const s=document.createElement('source');s.src=b+'.'+e;s.type=t;v.appendChild(s)});return v};
+const mk=(src,loop)=>{const v=document.createElement('video');v.muted=true;v.loop=loop;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='none';v.className='mv';const b=src.replace(/\.mp4$/,'');v.poster=b+'.webp';[['webm','video/webm'],['mp4','video/mp4']].forEach(([e,t])=>{const s=document.createElement('source');s.src=b+'.'+e;s.type=t;v.appendChild(s)});return v};
 document.querySelectorAll('.mascot[data-video]').forEach(m=>{
   m.innerHTML='';const v=mk(m.dataset.video,false);v.setAttribute('aria-label',m.dataset.alt||'');
   const rate=+(m.dataset.rate||1),stop=+(m.dataset.stop||0);let played=false,done=false;
