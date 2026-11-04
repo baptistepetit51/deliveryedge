@@ -1,9 +1,6 @@
 {
-  "name": "DeliveryEdge",
-  "short_name": "DeliveryEdge",
-  "description": "Uber Eats and DoorDash growth for restaurants",
-  "start_url": "/",
-  "scope": "/",
+  "name": "MyWebSite",
+  "short_name": "MySite",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -18,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#FF5A00",
-  "background_color": "#FFF8F3",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone"
 }
