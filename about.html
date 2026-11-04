@@ -1,9 +1,20 @@
 <!doctype html>
-<html lang="en"><head><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About · DeliveryEdge</title>
 <meta name="description" content="DeliveryEdge is run by operators who have built and run delivery-only kitchens since 2020. Our story, our brands and why we build stores for restaurants.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="fonts-brand.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts-brand.css"></noscript>
+<link rel="canonical" href="https://deliveryedge.co/about">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DeliveryEdge">
+<meta property="og:url" content="https://deliveryedge.co/about">
+<meta property="og:title" content="About · DeliveryEdge">
+<meta property="og:description" content="DeliveryEdge is run by operators who have built and run delivery-only kitchens since 2020. Our story, our brands and why we build stores for restaurants.">
+<meta property="og:image" content="https://deliveryedge.co/img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About · DeliveryEdge">
+<meta name="twitter:description" content="DeliveryEdge is run by operators who have built and run delivery-only kitchens since 2020. Our story, our brands and why we build stores for restaurants.">
+<meta name="twitter:image" content="https://deliveryedge.co/img/og-cover.jpg">
+
 <link rel="stylesheet" href="common.css"><link rel="stylesheet" href="page.css">
 <style>.ab-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
 .sig{display:grid;gap:2px;border-left:3px solid var(--orange);padding-left:12px}
@@ -56,6 +67,8 @@
 @media (max-width:520px){.why{grid-template-columns:1fr}.tl-years{grid-template-columns:1fr 1fr}}
 .ob{overflow:hidden}.ob.pink{background:#F0879C;padding:0}.ob.pink img{width:122%;max-width:none;max-height:none}.ob.bnc{padding:14px 18px}.ob.bnc img{mix-blend-mode:multiply}
 .wy>b{color:var(--orange-deep)}.ic{display:block}.tl-img img.fit{object-fit:contain;background:#fff;animation:tlimg .6s cubic-bezier(.2,.7,.2,1),bagf 5s ease-in-out .6s infinite}@keyframes bagf{0%,100%{transform:none}50%{transform:translateY(-6px) rotate(-1deg)}}.tl-img:has(img.fit){background:#fff}</style><link rel="stylesheet" href="motion.css">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://deliveryedge.co/"},{"@type":"ListItem","position":2,"name":"About","item":"https://deliveryedge.co/about"}]}</script>
 </head><body>
 <header class="nav">
   <div class="wrap nav-in">
@@ -163,5 +176,6 @@
   bs.forEach((b,j)=>b.onclick=()=>{hold=Date.now()+8000;go(j)});go(0);setInterval(()=>{if(Date.now()>hold)go((i+1)%S.length)},4200);
 })();
 </script>
-<script src="motion.js"></script>
+<script src="motion.js" defer></script>
+<script src="js/analytics.js" defer></script>
 </body></html>
