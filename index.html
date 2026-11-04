@@ -1,10 +1,21 @@
 <!doctype html>
-<html lang="en"><head><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DeliveryEdge · Uber Eats &amp; DoorDash stores, done for you</title>
 <meta name="description" content="Done-for-you Uber Eats and DoorDash stores for restaurants: menu, photos, banner, ads plan and launch. Built by operators running delivery kitchens since 2020.">
+<link rel="stylesheet" href="fonts-brand.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts-brand.css"></noscript>
+<link rel="canonical" href="https://deliveryedge.co/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DeliveryEdge">
+<meta property="og:url" content="https://deliveryedge.co/">
+<meta property="og:title" content="DeliveryEdge · Uber Eats &amp; DoorDash stores, done for you">
+<meta property="og:description" content="Done-for-you Uber Eats and DoorDash stores for restaurants: menu, photos, banner, ads plan and launch. Built by operators running delivery kitchens since 2020.">
+<meta property="og:image" content="https://deliveryedge.co/img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeliveryEdge · Uber Eats &amp; DoorDash stores, done for you">
+<meta name="twitter:description" content="Done-for-you Uber Eats and DoorDash stores for restaurants: menu, photos, banner, ads plan and launch. Built by operators running delivery kitchens since 2020.">
+<meta name="twitter:image" content="https://deliveryedge.co/img/og-cover.jpg">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"></noscript>
+
 <style>
 /* Layout: white page with orange bands; each section uses a different device (phone, film strip, dial, tabs, articles) so nothing repeats. Single light look by choice. */
 :root{
@@ -1338,6 +1349,8 @@ a,button,[role=tab],label.lev,summary{cursor:pointer}
 }</style>
 <link rel="stylesheet" href="motion.css">
 
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["Organization","ProfessionalService"],"name":"DeliveryEdge","url":"https://deliveryedge.co/","email":"hello@deliveryedge.co","image":"https://deliveryedge.co/img/og-cover.jpg","description":"Done-for-you Uber Eats and DoorDash stores for restaurants: menu, photos, banner, ads plan and launch. Built by operators running delivery kitchens since 2020.","areaServed":["United States","Canada"],"address":{"@type":"PostalAddress","addressLocality":"Miami"},"founder":{"@type":"Person","name":"Tito Petit"}}</script>
 </head>
 <body>
 <header class="nav">
@@ -1680,7 +1693,7 @@ a,button,[role=tab],label.lev,summary{cursor:pointer}
 </section>
 </main>
 
-<footer><div class="wrap foot"><a href="#top" class="logo"><img loading="lazy" decoding="async" src="img/logo.png" alt=""><span>Delivery<b>Edge</b></span></a><span>Based in Miami, working across the US and Canada · hello@deliveryedge.co · <a href="home-a.html" style="color:#FF8A3D">Preview: home version A</a></span><span class="ft-guides">Guides: <a href="launch.html">Launch your brand on Uber Eats &amp; DoorDash</a> · <a href="grow.html">Grow your sales on the apps</a></span></div></footer>
+<footer><div class="wrap foot"><a href="#top" class="logo"><img loading="lazy" decoding="async" src="img/logo.png" alt=""><span>Delivery<b>Edge</b></span></a><span>Based in Miami, working across the US and Canada · hello@deliveryedge.co · <a href="index.html" style="color:#FF8A3D">Preview: home version A</a></span><span class="ft-guides">Guides: <a href="launch.html">Launch your brand on Uber Eats &amp; DoorDash</a> · <a href="grow.html">Grow your sales on the apps</a></span></div></footer>
 
 <script>
 document.documentElement.classList.add('js');
@@ -1935,6 +1948,7 @@ if(location.hash==='#menu')go(bs[1])})();
 (function(){const bs=[...document.querySelectorAll('.ofr button')];if(!bs.length)return;const pick=k=>bs.forEach(b=>b.setAttribute('aria-checked',b.dataset.plan===k));bs.forEach(b=>b.addEventListener('click',()=>pick(b.dataset.plan)));
 const q=new URLSearchParams(location.search).get('plan');if(q&&bs.some(b=>b.dataset.plan===q)){pick(q);if(q==='launch'||q==='concept'){const l=document.getElementById('f-launch');l&&l.click()}}})();
 </script>
-<script src="motion.js"></script>
+<script src="motion.js" defer></script>
+<script src="js/analytics.js" defer></script>
 </body>
 </html>

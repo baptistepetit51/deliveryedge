@@ -1,9 +1,20 @@
 <!doctype html>
-<html lang="en"><head><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Case studies · DeliveryEdge</title>
 <meta name="description" content="Real delivery brands and stores we built: Melt Club +142% sales in 30 days, Tito's Kitchen 4.5 stars on 1,000+ ratings, and the lessons from what didn't work.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="fonts-brand.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts-brand.css"></noscript>
+<link rel="canonical" href="https://deliveryedge.co/cases">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DeliveryEdge">
+<meta property="og:url" content="https://deliveryedge.co/cases">
+<meta property="og:title" content="Case studies · DeliveryEdge">
+<meta property="og:description" content="Real delivery brands and stores we built: Melt Club +142% sales in 30 days, Tito's Kitchen 4.5 stars on 1,000+ ratings, and the lessons from what didn't work.">
+<meta property="og:image" content="https://deliveryedge.co/img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Case studies · DeliveryEdge">
+<meta name="twitter:description" content="Real delivery brands and stores we built: Melt Club +142% sales in 30 days, Tito's Kitchen 4.5 stars on 1,000+ ratings, and the lessons from what didn't work.">
+<meta name="twitter:image" content="https://deliveryedge.co/img/og-cover.jpg">
+
 <link rel="stylesheet" href="common.css"><link rel="stylesheet" href="page.css">
 <style>.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
 .kpi{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:22px 12px;display:grid;gap:6px;animation:sfloat 4.2s ease-in-out infinite}
@@ -316,6 +327,8 @@ main{overflow-x:clip}.ls-mw{border-radius:20px;overflow:hidden;aspect-ratio:1}.l
 @media (max-width:760px){.cv-tab{left:34%;width:230px;height:170px;padding:7px}.ct-kpi{display:none}}
 @media (prefers-reduced-motion:reduce){.cv-tab,.ct-o{animation:none}}
 @media (max-width:760px){.scrollpage{animation:none!important;transform:none!important}}</style><link rel="stylesheet" href="motion.css">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://deliveryedge.co/"},{"@type":"ListItem","position":2,"name":"Case studies","item":"https://deliveryedge.co/cases"}]}</script>
 </head><body>
 <header class="nav">
   <div class="wrap nav-in">
@@ -544,6 +557,7 @@ const count=(to)=>{cancelAnimationFrame(raf);const f0=cur,t0=performance.now();c
 const set=k=>{r.dataset.n=k;bs.forEach(b=>b.setAttribute('aria-pressed',b.dataset.n==k));lv.textContent=k==2?'80%':'52%';count(k==2?2000:0)};
 bs.forEach(b=>b.addEventListener('click',()=>{auto=false;set(b.dataset.n)}));
 new IntersectionObserver((es,o)=>{if(es[0].isIntersecting&&!seen){seen=true;set(1);setTimeout(()=>{set(2)},1600);setInterval(()=>{if(auto&&!document.hidden)set(r.dataset.n==2?1:2)},5000);o.disconnect()}},{threshold:.4}).observe(r)})();</script>
-<script src="motion.js"></script>
+<script src="motion.js" defer></script>
 <script>requestAnimationFrame(()=>{const v=document.querySelector(".cs2");if(v)setTimeout(()=>v.classList.add("on"),200)})</script>
+<script src="js/analytics.js" defer></script>
 </body></html>
