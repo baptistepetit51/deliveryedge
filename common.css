@@ -1,8 +1,8 @@
 
 /* Layout: white page with orange bands; each section uses a different device (phone, film strip, dial, tabs, articles) so nothing repeats. Single light look by choice. */
 :root{
-  --orange:#FF5A00; --orange-deep:#D94A00; --orange-soft:#FFE7D9; --paper:#FFF8F3;
-  --white:#FFFFFF; --ink:#141210; --muted:#5E5650; --line:#EFE5DC; --green:#1F9D55; --red:#C8331F;
+  --orange-bright:#FF5A00; --orange:#C44500; --orange-deep:#B33F00; --orange-soft:#FFE7D9; --paper:#FFF8F3;
+  --white:#FFFFFF; --ink:#141210; --muted:#5E5650; --line:#EFE5DC; --green:#187A42; --red:#C8331F;
   --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
   --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
@@ -40,7 +40,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.03em;text-decoration:none}
 .logo img{width:36px;height:36px;border-radius:10px}
-.logo b{color:var(--orange)}
+.logo b{color:var(--orange-bright)}
 .menu{display:flex;gap:6px;font-size:15px;font-weight:500}
 .dd{position:relative}
 .dd>button,.menu>a{background:none;border:0;font:inherit;cursor:pointer;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--ink)}

@@ -39,6 +39,7 @@ document.querySelectorAll('.mascot[data-seq]:not([data-video])').forEach(m=>{
   if('IntersectionObserver' in window)new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){start();o.disconnect()}},{threshold:.25}).observe(m);else start()})})();
 
 (function(){
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 const mk=(src,loop)=>{const v=document.createElement('video');v.muted=true;v.loop=loop;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='none';v.className='mv';const b=src.replace(/\.mp4$/,'');v.poster=b+'.jpg';[['webm','video/webm'],['mp4','video/mp4']].forEach(([e,t])=>{const s=document.createElement('source');s.src=b+'.'+e;s.type=t;v.appendChild(s)});return v};
 document.querySelectorAll('.mascot[data-video]').forEach(m=>{
   m.innerHTML='';const v=mk(m.dataset.video,false);v.setAttribute('aria-label',m.dataset.alt||'');
@@ -47,12 +48,12 @@ document.querySelectorAll('.mascot[data-video]').forEach(m=>{
   m.classList.add('has-video');v.addEventListener('loadeddata',()=>{v.playbackRate=rate},{once:true});
   v.addEventListener('error',()=>{v.remove();if(!m.querySelector('video')){m.classList.remove('has-video');const i=document.createElement('img');i.src=v.poster;i.className='on';i.alt=m.dataset.alt||'';m.appendChild(i);m.classList.add('breath')}},{once:true});
   const finish=()=>{if(done)return;done=true;
-    if(idle&&idle.readyState>=2){idle.currentTime=0;idle.play().catch(()=>{});requestAnimationFrame(()=>{m.classList.add('idling')})}
+    if(idle){idle.preload='auto';idle.load();const startIdle=()=>{idle.currentTime=0;idle.play().catch(()=>{});requestAnimationFrame(()=>{m.classList.add('idling')})};if(idle.readyState>=2)startIdle();else idle.addEventListener('canplay',startIdle,{once:true})}
     else{v.pause();m.classList.add('breath')}};
   if(stop)v.addEventListener('timeupdate',()=>{if(v.currentTime>=stop)finish()});
   v.addEventListener('ended',finish);
   m.appendChild(v);
   m._replay=()=>{if(!done)return;done=false;v.currentTime=0;v.playbackRate=rate;const p=v.play();(p&&p.then?p:Promise.resolve()).then(()=>{m.classList.remove('idling','breath');if(idle)setTimeout(()=>idle.pause(),50)}).catch(()=>{done=true})};
-  new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){m.classList.add('in');if(!played){played=true;if(idle){idle.preload='auto';idle.load()}v.preload='auto';v.playbackRate=rate;v.play().catch(()=>{})}else if(done&&idle)idle.play().catch(()=>{})}else if(done&&idle)idle.pause()})},{threshold:.35}).observe(m)})})();
+  new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){m.classList.add('in');if(!played){played=true;v.preload='auto';v.playbackRate=rate;v.play().catch(()=>{})}else if(done&&idle)idle.play().catch(()=>{})}else if(done&&idle)idle.pause()})},{threshold:.35}).observe(m)})})();
 
 

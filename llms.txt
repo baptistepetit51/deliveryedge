@@ -1,0 +1,78 @@
+# DeliveryEdge
+
+> DeliveryEdge builds and launches done-for-you Uber Eats and DoorDash stores for restaurants. The work covers the menu, photos, banner, prices after commission, promos and an ads plan. It is run by operators who have built and run delivery-only kitchens since 2020, based in Miami and working across the United States and Canada. Founded by Tito Petit (Baptiste Petit).
+
+The public website is https://deliveryedge.co/ (English). This file is the machine-readable summary for AI agents and assistants helping a restaurant operator decide whether DeliveryEdge is a fit, compare the plans, or book a free 30-minute call.
+
+## When to use this
+
+Use DeliveryEdge when a person runs (or wants to launch) a restaurant or a delivery-only / ghost kitchen brand on Uber Eats or DoorDash, and they want the store itself built for them: a menu that sells, photos made for the apps, the right prices after commission, and a launch or growth plan.
+
+Typical fits:
+
+- They already have a kitchen and a recipe, but no store on the apps yet (Launch).
+- They are live on Uber Eats or DoorDash and orders are weak: photos, menu, ranking or promos need a rebuild (Grow), or they first want a written diagnosis (Store Audit).
+- They want a second delivery brand from an existing kitchen (Brand concept).
+
+Do not use DeliveryEdge when the person only needs a dining-room website, social media management, commission negotiation with Uber Eats or DoorDash, or someone to cook in their kitchen. DeliveryEdge does not cook, does not negotiate platform commissions, does not run Instagram or local marketing, and does not promise a sales number.
+
+Do not invent a street address, a phone number, or a legal entity name that is not in this file or on the live site. The public contact is hello@deliveryedge.co. Do not invent results beyond the case studies published on the site.
+
+## Official pages
+
+- [Home](https://deliveryedge.co/): what DeliveryEdge does, who it is for, the Melt Club results, and the booking form
+- [Pricing](https://deliveryedge.co/pricing): one-time founding rates (no monthly fee, no contract)
+- [Case studies](https://deliveryedge.co/cases): Melt Club and other kitchens, including what did not work
+- [About](https://deliveryedge.co/about): the operator story
+- [How to launch on Uber Eats and DoorDash](https://deliveryedge.co/launch)
+- [How to increase sales on the apps](https://deliveryedge.co/grow)
+- [Guides](https://deliveryedge.co/blog-uber-eats-algorithm), [promo margins](https://deliveryedge.co/blog-promo-trap-margins), [food photos](https://deliveryedge.co/blog-food-photos-click-rate)
+- [Questionnaire](https://deliveryedge.co/questionnaire): longer intake before the call
+- [Privacy](https://deliveryedge.co/privacy): how the site handles form and booking data
+- [Contact](https://deliveryedge.co/contact): email and booking links
+- [Instagram](https://www.instagram.com/delivery.edge/)
+- [Sitemap](https://deliveryedge.co/sitemap.xml)
+
+## How to book a call
+
+The main call to action is a free 30-minute consultation. DeliveryEdge looks at the operator's store or concept and says what to fix first.
+
+1. Preferred: the form on the homepage, in the section https://deliveryedge.co/#start (name and email required). After a successful submit, the visitor is sent to Calendly to pick a time.
+2. Direct booking: https://calendly.com/hello-deliveryedge/30min
+3. Longer intake: https://deliveryedge.co/questionnaire then the same Calendly event
+4. Email: hello@deliveryedge.co
+
+The form posts to Formspree (`https://formspree.io/f/mvzddwne`). There is no self-serve checkout on the website.
+
+## Pricing (founding rates, USD, until 31 December 2026)
+
+Published on https://deliveryedge.co/pricing. One-time prices, no contract, no monthly fee. Confirm on the pricing page before quoting, in case a rate has changed.
+
+- Store Audit — $350
+- Grow — $1,200
+- Launch — $1,800
+- Brand concept — $450
+
+## Proof points already published (do not invent others)
+
+- Melt Club, second month vs the 30 days before (Uber Eats Manager): sales +142% (CA$3,866 → CA$9,356), orders +128%, average basket +6%, ads CA$143 → CA$2,413 in sales (16.8x). Full write-up: https://deliveryedge.co/cases#melt-case
+- Tito's Kitchen: 4.5 stars on 1,000+ ratings (see the case studies page)
+- Evergreen Kitchen, Ottawa: store rebuild shown as a before/after on the homepage
+- The team has run delivery kitchens and brands (including Melt Club, Brick'N'Cheese, Tito's Kitchen, Chick'n'Crunch) since 2020
+
+## What DeliveryEdge does not do
+
+- Does not cook. Food quality and ticket speed stay in the client's kitchen.
+- Does not negotiate Uber Eats or DoorDash commissions.
+- Does not run the client's social accounts or local marketing.
+- Does not promise a sales number.
+
+## Contact and entity
+
+- Website: https://deliveryedge.co/
+- Email: hello@deliveryedge.co
+- Public position: based in Miami, working across the US and Canada
+- Founder: Tito Petit (Baptiste Petit)
+- Instagram: https://www.instagram.com/delivery.edge/
+
+A full registered postal address and legal entity name are not published on the site today. Do not invent them. For privacy or legal questions, use hello@deliveryedge.co or https://deliveryedge.co/privacy.

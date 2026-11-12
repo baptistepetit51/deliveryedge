@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en"><head><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>DeliveryEdge · Uber Eats &amp; DoorDash stores, done for you</title>
 <meta name="description" content="Done-for-you Uber Eats and DoorDash stores for restaurants: menu, photos, banner, ads plan and launch. Built by operators running delivery kitchens since 2020.">
 <link rel="stylesheet" href="fonts-brand.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts-brand.css"></noscript>
@@ -19,8 +20,8 @@
 <style>
 /* Layout: white page with orange bands; each section uses a different device (phone, film strip, dial, tabs, articles) so nothing repeats. Single light look by choice. */
 :root{
-  --orange:#FF5A00; --orange-deep:#D94A00; --orange-soft:#FFE7D9; --paper:#FFF8F3;
-  --white:#FFFFFF; --ink:#141210; --muted:#5E5650; --line:#EFE5DC; --green:#1F9D55; --red:#C8331F;
+  --orange-bright:#FF5A00; --orange:#C44500; --orange-deep:#B33F00; --orange-soft:#FFE7D9; --paper:#FFF8F3;
+  --white:#FFFFFF; --ink:#141210; --muted:#5E5650; --line:#EFE5DC; --green:#187A42; --red:#C8331F;
   --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
   --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
@@ -58,7 +59,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.03em;text-decoration:none}
 .logo img{width:36px;height:36px;border-radius:10px}
-.logo b{color:var(--orange)}
+.logo b{color:var(--orange-bright)}
 .menu{display:flex;gap:6px;font-size:15px;font-weight:500}
 .dd{position:relative}
 .dd>button,.menu>a{background:none;border:0;font:inherit;cursor:pointer;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--ink)}
@@ -77,7 +78,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .pill{display:inline-flex;gap:10px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:14px;font-weight:600}
 .pill i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
 .hero h1{font-size:clamp(46px,7vw,86px);margin:22px 0;font-weight:800}
-.hero h1 em{font-style:normal;color:var(--orange)}
+.hero h1 em{font-style:normal;color:var(--orange-bright)}
 .hero .sub{font-size:20px}
 .cta-row{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:32px}
 .textlink{font-weight:700;text-underline-offset:5px}
@@ -1346,16 +1347,46 @@ a,button,[role=tab],label.lev,summary{cursor:pointer}
 .sc-side .pc>*:not(figcaption){zoom:.72}
 .sc-side .pc figcaption{font-size:12px;line-height:1.3;text-align:center}
 .scrollpage{animation:none!important;transform:none!important}
-}</style>
+}
+/* Defer layout of below-fold sections (lab TBT was 840 ms of style/layout). */
+.section,.band-sec,.platforms{content-visibility:auto;contain-intrinsic-size:auto 800px}
+.hero,.trustbar,.final,#start{content-visibility:visible;contain-intrinsic-size:auto}
+</style>
 <link rel="stylesheet" href="motion.css">
 
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":["Organization","ProfessionalService"],"name":"DeliveryEdge","url":"https://deliveryedge.co/","email":"hello@deliveryedge.co","image":"https://deliveryedge.co/img/og-cover.jpg","description":"Done-for-you Uber Eats and DoorDash stores for restaurants: menu, photos, banner, ads plan and launch. Built by operators running delivery kitchens since 2020.","areaServed":["United States","Canada"],"address":{"@type":"PostalAddress","addressLocality":"Miami"},"founder":{"@type":"Person","name":"Tito Petit"}}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+  {"@type":["Organization","ProfessionalService"],
+   "@id":"https://deliveryedge.co/#org",
+   "name":"DeliveryEdge",
+   "url":"https://deliveryedge.co/",
+   "logo":"https://deliveryedge.co/img/logo.png",
+   "image":"https://deliveryedge.co/img/og-cover.jpg",
+   "email":"hello@deliveryedge.co",
+   "description":"Done-for-you Uber Eats and DoorDash stores for restaurants: menu, photos, banner, ads plan and launch. Built by operators running delivery kitchens since 2020.",
+   "areaServed":[{"@type":"Country","name":"United States"},{"@type":"Country","name":"Canada"}],
+   "address":{"@type":"PostalAddress","addressLocality":"Miami","addressRegion":"FL","addressCountry":"US"},
+   "founder":{"@type":"Person","name":"Tito Petit","alternateName":"Baptiste Petit"},
+   "contactPoint":{"@type":"ContactPoint","email":"hello@deliveryedge.co","contactType":"sales","availableLanguage":"English","url":"https://deliveryedge.co/#start"},"sameAs":["https://www.instagram.com/delivery.edge/"],
+   "knowsAbout":["Uber Eats store optimization","DoorDash store setup","ghost kitchens","delivery-only restaurant brands","delivery menu design","food photography for delivery apps"],
+   "makesOffer":[
+     {"@type":"Offer","name":"Store Audit","price":"350","priceCurrency":"USD","priceValidUntil":"2026-12-31","url":"https://deliveryedge.co/pricing"},
+     {"@type":"Offer","name":"Grow","price":"1200","priceCurrency":"USD","priceValidUntil":"2026-12-31","url":"https://deliveryedge.co/pricing"},
+     {"@type":"Offer","name":"Launch","price":"1800","priceCurrency":"USD","priceValidUntil":"2026-12-31","url":"https://deliveryedge.co/pricing"},
+     {"@type":"Offer","name":"Brand concept","price":"450","priceCurrency":"USD","priceValidUntil":"2026-12-31","url":"https://deliveryedge.co/pricing"}
+   ],
+   "potentialAction":{"@type":"ReserveAction","name":"Book a free 30-minute call","target":{"@type":"EntryPoint","urlTemplate":"https://deliveryedge.co/#start","actionPlatform":["https://schema.org/DesktopWebPlatform","https://schema.org/MobileWebPlatform"]}}
+  },
+  {"@type":"WebSite","@id":"https://deliveryedge.co/#website","url":"https://deliveryedge.co/","name":"DeliveryEdge","publisher":{"@id":"https://deliveryedge.co/#org"},"inLanguage":"en"},
+  {"@type":"WebPage","@id":"https://deliveryedge.co/","url":"https://deliveryedge.co/","name":"DeliveryEdge · Uber Eats & DoorDash stores, done for you","isPartOf":{"@id":"https://deliveryedge.co/#website"},"about":{"@id":"https://deliveryedge.co/#org"}}
+]}
+</script>
 </head>
 <body>
 <header class="nav">
   <div class="wrap nav-in">
-    <a href="index.html" class="logo"><img src="img/logo.png" alt="DeliveryEdge logo"><span>Delivery<b>Edge</b></span></a>
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="DeliveryEdge logo" width="36" height="36"><span>Delivery<b>Edge</b></span></a>
     <nav class="menu" aria-label="Main">
       <a href="index.html" class="cur">Home</a>
       <a href="index.html#how">How it works</a>
@@ -1413,7 +1444,7 @@ a,button,[role=tab],label.lev,summary{cursor:pointer}
 
 <section class="trustbar">
   <div class="trust-head">Brands we've built, run and rebuilt</div>
-  <div class="logo-run" aria-label="Brands we've built"><div class="logo-track"><div class="tile"><img src="img/c_melt.png" alt="Melt Club" style="height:84px"></div><div class="tile yel"><img loading="lazy" decoding="async" src="img/c_chicken.png" alt="Chick'n'Crunch" style="height:96px;border-radius:12px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_bnc.png" alt="Brick'n'Cheese" style="height:78px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_titos.png" alt="Tito's Kitchen" style="height:58px"></div><div class="tile tile-txt"><span>Evergreen<small>Kitchen · Ottawa</small></span></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_melt.png" alt="Melt Club" style="height:84px"></div><div class="tile yel"><img loading="lazy" decoding="async" src="img/c_chicken.png" alt="Chick'n'Crunch" style="height:96px;border-radius:12px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_bnc.png" alt="Brick'n'Cheese" style="height:78px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_titos.png" alt="Tito's Kitchen" style="height:58px"></div><div class="tile tile-txt"><span>Evergreen<small>Kitchen · Ottawa</small></span></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_melt.png" alt="Melt Club" style="height:84px"></div><div class="tile yel"><img loading="lazy" decoding="async" src="img/c_chicken.png" alt="Chick'n'Crunch" style="height:96px;border-radius:12px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_bnc.png" alt="Brick'n'Cheese" style="height:78px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_titos.png" alt="Tito's Kitchen" style="height:58px"></div><div class="tile tile-txt"><span>Evergreen<small>Kitchen · Ottawa</small></span></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_melt.png" alt="Melt Club" style="height:84px"></div><div class="tile yel"><img loading="lazy" decoding="async" src="img/c_chicken.png" alt="Chick'n'Crunch" style="height:96px;border-radius:12px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_bnc.png" alt="Brick'n'Cheese" style="height:78px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_titos.png" alt="Tito's Kitchen" style="height:58px"></div><div class="tile tile-txt"><span>Evergreen<small>Kitchen · Ottawa</small></span></div></div></div>
+  <div class="logo-run" aria-label="Brands we've built"><div class="logo-track"><div class="tile"><img src="img/c_melt.png" alt="Melt Club" style="height:84px"></div><div class="tile yel"><img loading="lazy" decoding="async" src="img/c_chicken.png" alt="Chick'n'Crunch" width="360" height="185" style="max-height:96px;width:auto;height:auto;object-fit:contain;border-radius:12px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_bnc.png" alt="Brick'n'Cheese" style="height:78px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_titos.png" alt="Tito's Kitchen" style="height:58px"></div><div class="tile tile-txt"><span>Evergreen<small>Kitchen · Ottawa</small></span></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_melt.png" alt="Melt Club" style="height:84px"></div><div class="tile yel"><img loading="lazy" decoding="async" src="img/c_chicken.png" alt="Chick'n'Crunch" width="360" height="185" style="max-height:96px;width:auto;height:auto;object-fit:contain;border-radius:12px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_bnc.png" alt="Brick'n'Cheese" style="height:78px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_titos.png" alt="Tito's Kitchen" style="height:58px"></div><div class="tile tile-txt"><span>Evergreen<small>Kitchen · Ottawa</small></span></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_melt.png" alt="Melt Club" style="height:84px"></div><div class="tile yel"><img loading="lazy" decoding="async" src="img/c_chicken.png" alt="Chick'n'Crunch" width="360" height="185" style="max-height:96px;width:auto;height:auto;object-fit:contain;border-radius:12px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_bnc.png" alt="Brick'n'Cheese" style="height:78px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_titos.png" alt="Tito's Kitchen" style="height:58px"></div><div class="tile tile-txt"><span>Evergreen<small>Kitchen · Ottawa</small></span></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_melt.png" alt="Melt Club" style="height:84px"></div><div class="tile yel"><img loading="lazy" decoding="async" src="img/c_chicken.png" alt="Chick'n'Crunch" width="360" height="185" style="max-height:96px;width:auto;height:auto;object-fit:contain;border-radius:12px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_bnc.png" alt="Brick'n'Cheese" style="height:78px"></div><div class="tile"><img loading="lazy" decoding="async" src="img/c_titos.png" alt="Tito's Kitchen" style="height:58px"></div><div class="tile tile-txt"><span>Evergreen<small>Kitchen · Ottawa</small></span></div></div></div>
 </section>
 
 <section class="section hiw" id="how">
@@ -1619,7 +1650,7 @@ a,button,[role=tab],label.lev,summary{cursor:pointer}
         <p>A delivery-only brand with no Instagram page, no influencers, no outside marketing. Only the store we built and in-app ads.</p>
       </div>
     </div>
-        <p class="src" style="color:var(--muted)">Uber Eats Manager, last 30 days vs the 30 before. Full numbers in the case study. <a href="#">See the Melt Club case →</a></p>
+        <p class="src" style="color:var(--muted)">Uber Eats Manager, last 30 days vs the 30 before. Full numbers in the case study. <a href="cases.html#melt-case">See the Melt Club case →</a></p>
   </div>
 </section>
 
@@ -1674,7 +1705,7 @@ a,button,[role=tab],label.lev,summary{cursor:pointer}
 <section class="section final light" id="start">
   <div class="wrap final-grid">
     <div><h2>Ready to open the right way?</h2><p class="sub" style="margin-top:18px">Tell us where you are. On a free 30-minute call, we go through your store or your concept and tell you straight what to fix first.</p></div>
-    <form class="form" id="form" novalidate>
+    <form class="form" id="form" novalidate action="https://formspree.io/f/mvzddwne" method="POST">
       <div id="form-fields" style="display:grid;gap:14px"><input type="text" name="_gotcha" id="f-gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="ofr" role="radiogroup" aria-label="What are you interested in?"><span class="ofr-l">What are you interested in?</span>
           <button type="button" role="radio" data-plan="audit" aria-checked="false">Store Audit</button><button type="button" role="radio" data-plan="grow" aria-checked="false">Grow</button><button type="button" role="radio" data-plan="launch" aria-checked="false">Launch</button><button type="button" role="radio" data-plan="concept" aria-checked="false">Brand concept</button><button type="button" role="radio" data-plan="unsure" aria-checked="true">Not sure yet</button></div>
@@ -1686,14 +1717,14 @@ a,button,[role=tab],label.lev,summary{cursor:pointer}
         <label for="f-notes">Anything we should know? <small style="color:var(--muted);font-weight:500">(optional)</small><textarea id="f-notes" rows="3" placeholder="Your goals, your timeline, what isn't working."></textarea></label>
         <button class="btn" type="submit" id="f-submit">Next: pick a time</button>
         <p class="form-note" id="form-err" hidden style="color:var(--red)">Please add your name and a valid email.</p>
-        <p class="form-note" style="color:var(--muted)">Takes 30 seconds. Then you pick a time for the free 30-minute call.</p>
+        <p class="form-note" style="color:var(--muted)">Takes 30 seconds. Then you pick a time for the free 30-minute call. <a href="https://calendly.com/hello-deliveryedge/30min">Or book a time directly</a>.</p>
       </div>
 </form>
   </div>
 </section>
 </main>
 
-<footer><div class="wrap foot"><a href="#top" class="logo"><img loading="lazy" decoding="async" src="img/logo.png" alt=""><span>Delivery<b>Edge</b></span></a><span>Based in Miami, working across the US and Canada · hello@deliveryedge.co · <a href="index.html" style="color:#FF8A3D">Preview: home version A</a></span><span class="ft-guides">Guides: <a href="launch.html">Launch your brand on Uber Eats &amp; DoorDash</a> · <a href="grow.html">Grow your sales on the apps</a></span></div></footer>
+<footer><div class="wrap foot"><a href="#top" class="logo"><img loading="lazy" decoding="async" src="img/logo.png" alt="DeliveryEdge logo"><span>Delivery<b>Edge</b></span></a><span>Based in Miami, working across the US and Canada · hello@deliveryedge.co · <a href="privacy.html">Privacy</a> · <a href="contact.html">Contact</a></span><span class="ft-guides">Guides: <a href="launch.html">Launch your brand on Uber Eats &amp; DoorDash</a> · <a href="grow.html">Grow your sales on the apps</a></span></div></footer>
 
 <script>
 document.documentElement.classList.add('js');
@@ -1858,8 +1889,11 @@ document.documentElement.classList.add('js');
     add('first_name',parts[0]);add('last_name',parts.slice(1).join(' '));add('email',email);add('phone',v('f-phone'));
     add('brand_name',v('f-name'));add('notes',v('f-notes'));add('plan',PL[plan]);add('goal',GO[plan]);add('source','website v2');
     if(launch){add('profile','launching_new');add('cuisine',v('f-cuisine'));add('city',v('f-city'))}else{add('profile','existing_ghost');add('store_link',v('f-link'))}
-    try{const r=await fetch('https://formspree.io/f/mvzddwne',{method:'POST',body:fd,headers:{Accept:'application/json'}});if(!r.ok)console.error('Formspree',r.status,await r.text())}catch(err){console.error(err)}
-    location.href=cal})}
+    let ok=false;
+    try{const r=await fetch('https://formspree.io/f/mvzddwne',{method:'POST',body:fd,headers:{Accept:'application/json'}});ok=!!r.ok;if(!r.ok)console.error('Formspree',r.status,await r.text())}catch(err){console.error(err)}
+    if(!ok){location.href=cal;return}
+    const go=(()=>{let d=false;return()=>{if(d)return;d=true;location.href=cal}})();
+    setTimeout(go,400)})}
 })();
 
 (function(){const b=document.getElementById('burger'),m=document.getElementById('mnav');if(!b||!m)return;
@@ -1891,6 +1925,7 @@ document.querySelectorAll('.mascot[data-seq]:not([data-video])').forEach(m=>{
   li.forEach((x,j)=>x.addEventListener('mouseenter',()=>{li.forEach(y=>y.classList.remove('on'));x.classList.add('on');k=j}));
 })();
 (function(){
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 const mk=(src,loop)=>{const v=document.createElement('video');v.muted=true;v.loop=loop;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='none';v.className='mv';const b=src.replace(/\.mp4$/,'');v.poster=b+'.jpg';[['webm','video/webm'],['mp4','video/mp4']].forEach(([e,t])=>{const s=document.createElement('source');s.src=b+'.'+e;s.type=t;v.appendChild(s)});return v};
 document.querySelectorAll('.mascot[data-video]').forEach(m=>{
   m.innerHTML='';const v=mk(m.dataset.video,false);v.setAttribute('aria-label',m.dataset.alt||'');
@@ -1899,13 +1934,13 @@ document.querySelectorAll('.mascot[data-video]').forEach(m=>{
   m.classList.add('has-video');v.addEventListener('loadeddata',()=>{v.playbackRate=rate},{once:true});
   v.addEventListener('error',()=>{v.remove();if(!m.querySelector('video')){m.classList.remove('has-video');const i=document.createElement('img');i.src=v.poster;i.className='on';i.alt=m.dataset.alt||'';m.appendChild(i);m.classList.add('breath')}},{once:true});
   const finish=()=>{if(done)return;done=true;
-    if(idle&&idle.readyState>=2){idle.currentTime=0;idle.play().catch(()=>{});requestAnimationFrame(()=>{m.classList.add('idling')})}
+    if(idle){idle.preload='auto';idle.load();const startIdle=()=>{idle.currentTime=0;idle.play().catch(()=>{});requestAnimationFrame(()=>{m.classList.add('idling')})};if(idle.readyState>=2)startIdle();else idle.addEventListener('canplay',startIdle,{once:true})}
     else{v.pause();m.classList.add('breath')}};
   if(stop)v.addEventListener('timeupdate',()=>{if(v.currentTime>=stop)finish()});
   v.addEventListener('ended',finish);
   m.appendChild(v);
   m._replay=()=>{if(!done)return;done=false;v.currentTime=0;v.playbackRate=rate;const p=v.play();(p&&p.then?p:Promise.resolve()).then(()=>{m.classList.remove('idling','breath');if(idle)setTimeout(()=>idle.pause(),50)}).catch(()=>{done=true})};
-  new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){m.classList.add('in');if(!played){played=true;if(idle){idle.preload='auto';idle.load()}v.preload='auto';v.playbackRate=rate;v.play().catch(()=>{})}else if(done&&idle)idle.play().catch(()=>{})}else if(done&&idle)idle.pause()})},{threshold:.35}).observe(m)})})();
+  new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){m.classList.add('in');if(!played){played=true;v.preload='auto';v.playbackRate=rate;v.play().catch(()=>{})}else if(done&&idle)idle.play().catch(()=>{})}else if(done&&idle)idle.pause()})},{threshold:.35}).observe(m)})})();
 
 
 
@@ -1949,6 +1984,6 @@ if(location.hash==='#menu')go(bs[1])})();
 const q=new URLSearchParams(location.search).get('plan');if(q&&bs.some(b=>b.dataset.plan===q)){pick(q);if(q==='launch'||q==='concept'){const l=document.getElementById('f-launch');l&&l.click()}}})();
 </script>
 <script src="motion.js" defer></script>
-<script src="js/analytics.js" defer></script>
+
 </body>
 </html>
